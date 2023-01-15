@@ -1,13 +1,22 @@
-const db = require('../config/connection');
-const { Tech } = require('../models');
+const db = require("../config/connection");
+const { Hotel, Room, User } = require("../models");
 
-const techData = require('./techData.json');
+const roomData = require("./room.json");
+const hotelData = require("./hotel.json");
+const userData = require("./user.json");
 
-db.once('open', async () => {
-  await Tech.deleteMany({});
+//Delete all existing data upon start
+db.once("open", async () => {
+  // clean database
+  await User.deleteMany({});
+  await Room.deleteMany({});
+  await Hotel.deleteMany({});
 
-  const technologies = await Tech.insertMany(techData);
+  // bulk create each model
+  const User = await User.create(userData);
+  const Room = await Hotel.insertMany(hotelData);
+  const Hotel = await Room.insertMany(roomData);
 
-  console.log('Technologies seeded!');
+  console.log("all done!");
   process.exit(0);
 });
