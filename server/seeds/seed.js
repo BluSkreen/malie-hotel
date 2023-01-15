@@ -4,7 +4,7 @@ const { Hotel, Room, User } = require("../models");
 const roomData = require("./room.json");
 const hotelData = require("./hotel.json");
 const userData = require("./user.json");
-
+// git commit -m "added apollo in package"
 //Delete all existing data upon start
 db.once("open", async () => {
   // clean database
