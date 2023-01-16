@@ -1,50 +1,80 @@
-const { gql } = require('apollo-server-express');
+const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
-  type User {
-    _id: ID
-    username: String
-    email: String
-    password: String
-    thoughts: [Thought]!
-  }
+    type User {
+        _id: ID!
+        username: String!
+        email: String!
+        address: String
+        Credit_card_number: String
+        Credit_card_expiration: Int
+        Credit_card_cvv: Int
+        password: String!
+        isAdmin: Boolean
+    }
 
-  type Thought {
-    _id: ID
-    thoughtText: String
-    thoughtAuthor: String
-    createdAt: String
-    comments: [Comment]!
-  }
+    type Room {
+        _id: ID!
+        roomNumber: Int!
+        title: String
+        price: Int
+        smoking: Boolean
+        maxPeople: Int
+        desc: String
+        numberOfBeds: Int
+        photos: String
+    }
+    type Hotel {
+        _id: ID!
+        name: String!
+        address: String
+        title: String
+        desc: String
+        rooms: [Room]
+    }
 
-  type Comment {
-    _id: ID
-    commentText: String
-    commentAuthor: String
-    createdAt: String
-  }
+    type Auth {
+        token: ID!
+        user: User
+    }
 
-  type Auth {
-    token: ID!
-    user: User
-  }
+    input UserInput {
+        _id: ID!
+        username: String!
+        email: String!
+        address: String
+        Credit_card_number: String
+        Credit_card_expiration: Int
+        Credit_card_cvv: Int
+        password: String!
+        isAdmin: Boolean
+    }
+    input HotelInput {
+        _id: ID!
+        name: String!
+        address: String
+        title: String
+        desc: String
+    }
 
-  type Query {
-    users: [User]
-    user(username: String!): User
-    thoughts(username: String): [Thought]
-    thought(thoughtId: ID!): Thought
-    me: User
-  }
+    input RoomInput {
+        _id: ID!
+        roomNumber: Int!
+        title: String
+        price: Int
+        smoking: Boolean
+        maxPeople: Int
+        desc: String
+        numberOfBeds: Int
+        photos: String
+    }
 
-  type Mutation {
-    addUser(username: String!, email: String!, password: String!): Auth
-    login(email: String!, password: String!): Auth
-    addThought(thoughtText: String!): Thought
-    addComment(thoughtId: ID!, commentText: String!): Thought
-    removeThought(thoughtId: ID!): Thought
-    removeComment(thoughtId: ID!, commentId: ID!): Thought
-  }
+    type Query {
+        user(username: String): User
+        users: [User]
+        hotel(_id: ID): Hotel
+        room(_id: ID): Room
+    }
 `;
 
 module.exports = typeDefs;
