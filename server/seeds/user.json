@@ -1,0 +1,39 @@
+[
+  {
+    "username": "myself",
+    "password": "123",
+    "email": "me@gmail.com",
+    "city": "boulder",
+    "address": "10940",
+    "phone": "8884205849",
+    "Credit_card_number": 1234567891123456,
+    "Credit_card_expiration": 4543,
+    "Credit_card_cvv": 2345,
+    "isAdmin": false
+  },
+  {
+    "username": "joe",
+    "password": "123",
+    "email": "joe@gmail.com",
+    "city": "Newark",
+    "address": "10940",
+    "phone": "8884205849",
+    "Credit_card_number": 1234567891123456,
+    "Credit_card_expiration": 4543,
+    "Credit_card_cvv": 2345,
+    "isAdmin": false
+  },
+
+  {
+    "username": "Toe",
+    "password": "123",
+    "email": "Toe@gmail.com",
+    "city": "Tucson",
+    "address": "10940",
+    "phone": "8884205849",
+    "Credit_card_number": 1234567891123456,
+    "Credit_card_expiration": 4543,
+    "Credit_card_cvv": 2345,
+    "isAdmin": false
+  }
+]

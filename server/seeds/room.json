@@ -1,0 +1,30 @@
+[
+  {
+    "roomNumber": 201,
+    "title": "Delux",
+    "price": 2000,
+    "smoking": false,
+    "maxPeople": 4,
+    "numberOfBeds": 2,
+    "desc": "the beautiful Delux room"
+  },
+  {
+    "roomNumber": 202,
+    "title": "single",
+    "price": 1000,
+    "smoking": false,
+    "maxPeople": 2,
+    "numberOfBeds": 1,
+    "desc": "the beautiful single room"
+  },
+
+  {
+    "roomNumber": 203,
+    "title": "pen house",
+    "price": 5000,
+    "smoking": false,
+    "maxPeople": 8,
+    "numberOfBeds": 4,
+    "desc": "the beautiful pen house room"
+  }
+]
