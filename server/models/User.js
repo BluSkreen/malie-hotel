@@ -16,23 +16,23 @@ const userSchema = new Schema(
     },
     address: {
       type: String,
-      required: true,
+      required: false,
     },
     phone: {
       type: String,
-      required: true,
+      required: false,
     },
     Credit_card_number: {
       type: Number,
-      required: true,
+      required: false,
     },
     Credit_card_expiration: {
       type: Number,
-      required: true,
+      required: false,
     },
     Credit_card_cvv: {
       type: Number,
-      required: true,
+      required: false,
     },
 
     password: {
