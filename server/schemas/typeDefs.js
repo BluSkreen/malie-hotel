@@ -31,6 +31,7 @@ const typeDefs = gql`
       Credit_card_expiration: Int
       Credit_card_cvv: Int
     ): Auth
+    login(email: String!, password: String!): Auth
   }
 `;
 
