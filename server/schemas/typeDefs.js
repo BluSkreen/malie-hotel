@@ -38,11 +38,15 @@ const typeDefs = gql`
 
     type Reservation {
         roomNumbers: [Int]
-        startDate: date
-        endDate: date
+        startDate: String!
+        endDate: String!
         cost: Int
         accomodations: [String]
         email: String
+    }
+
+    type Date {
+
     }
 
     type Auth {
@@ -86,9 +90,13 @@ const typeDefs = gql`
         users: [User]
         hotel(_id: ID): Hotel
         room(_id: ID): Room
-        filterRooms(startDate: date!, endDate: date!, hotelId: ID!, title: String, price: Int, smoking: Boolean, maxPeople: Int, numberOfBeds: Int): [Room]
+        filterRooms(startDate: String!, endDate: String!, hotelId: ID, title: String, price: Int, smoking: Boolean, maxPeople: Int, numberOfBeds: Int): [Room]
         allReservations(roomNumber: Int): [Reservation]
         singleReservation(_id: ID, email: String): Reservation
+    }
+
+    type Mutation {
+        addReservation
     }
 `;
 

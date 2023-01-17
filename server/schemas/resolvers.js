@@ -14,10 +14,24 @@ const resolvers = {
         room: async () => {
             return Room.find({});
         },
-        filterRooms: async () => {
-            // ToDo: turnary or switch that adds filter options to query
+        filterRooms: async (parent, { startDate, endDate, hotelId, title, price, smoking, maxPeople, numberOfBeds }) => {
+            // ToDo: turnary or switch that adds filter options to Query
+            let roomFilter = {};
+            if (hotelId != null) { roomFilter["hotelId"] = hotelId };
+            if (title != null) { roomFilter["title"] = title };
+            if (price != null) { roomFilter["price"] = price };
+            if (smoking != null) { roomFilter["smoking"] = smoking };
+            if (maxPeople != null) { roomFilter["maxPeople"] = maxPeople};
+            if (numberOfBeds != null) { roomFilter["numberOfBeds"] = numberOfBeds };
 
-            return Room.find({});
+            // rooms have reservations --> Room.reservations[]
+            // find all rooms where reservation.startDate < startDate && reservation.endDate < endDate
+            // OR
+            // reservation.startDate > startDate 
+            return rooms = Room.find(roomFilter).populate("reservations");
+
+            // let availableRooms = [];
+            // for each room, check if 
         },
         singleReservation: async (parent, { _id, email }) => {
             try {
