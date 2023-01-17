@@ -20,9 +20,11 @@ const typeDefs = gql`
         price: Int
         smoking: Boolean
         maxPeople: Int
-        desc: String
         numberOfBeds: Int
+        desc: String
         photos: String
+        hotelId: Hotel
+        reservations: [Reservation]
     }
     type Hotel {
         _id: ID!
@@ -31,6 +33,16 @@ const typeDefs = gql`
         title: String
         desc: String
         rooms: [Room]
+        photos: [String]
+    }
+
+    type Reservation {
+        roomNumbers: [Int]
+        startDate: date
+        endDate: date
+        cost: Int
+        accomodations: [String]
+        email: String
     }
 
     type Auth {
@@ -74,6 +86,9 @@ const typeDefs = gql`
         users: [User]
         hotel(_id: ID): Hotel
         room(_id: ID): Room
+        filterRooms(startDate: date!, endDate: date!, hotelId: ID!, title: String, price: Int, smoking: Boolean, maxPeople: Int, numberOfBeds: Int): [Room]
+        allReservations(roomNumber: Int): [Reservation]
+        singleReservation(_id: ID, email: String): Reservation
     }
 `;
 

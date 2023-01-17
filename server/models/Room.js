@@ -4,7 +4,7 @@ const RoomSchema = new Schema(
         roomNumber: {
             type: Number,
             required: true,
-            //unique: true,
+            unique: true,
         },
         title: {
             type: String,
@@ -30,6 +30,17 @@ const RoomSchema = new Schema(
             type: String,
             required: true,
         },
+        photos: {
+            type: [String],
+        },
+        hotelId: {
+            type: Schema.Types.ObjectId,
+            ref: "Hotel",
+        },
+        reservations:[{
+            type: Schema.Types.ObjectId,
+            ref: "Reservations",
+        }]
     },
     { timestamps: true }
 );
