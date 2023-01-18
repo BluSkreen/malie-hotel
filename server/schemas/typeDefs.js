@@ -22,15 +22,7 @@ const typeDefs = gql`
     user(username: String): User
   }
   type Mutation {
-    addUser(
-      username: String!
-      email: String!
-      password: String!
-      address: String
-      Credit_card_number: String
-      Credit_card_expiration: Int
-      Credit_card_cvv: Int
-    ): Auth
+    addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
   }
 `;
