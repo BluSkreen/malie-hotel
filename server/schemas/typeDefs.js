@@ -5,11 +5,11 @@ const typeDefs = gql`
         _id: ID!
         username: String!
         email: String!
+        password: String!
         address: String
         Credit_card_number: String
         Credit_card_expiration: Int
         Credit_card_cvv: Int
-        password: String!
         isAdmin: Boolean
     }
 
@@ -43,10 +43,6 @@ const typeDefs = gql`
         cost: Int
         accomodations: [String]
         email: String
-    }
-
-    type Date {
-
     }
 
     type Auth {
@@ -86,8 +82,8 @@ const typeDefs = gql`
     }
 
     type Query {
-        user(username: String): User
         users: [User]
+        user(username: String): User
         hotel(_id: ID): Hotel
         room(_id: ID): Room
         filterRooms(startDate: String!, endDate: String!, hotelId: ID, title: String, price: Int, smoking: Boolean, maxPeople: Int, numberOfBeds: Int): [Room]
@@ -96,8 +92,17 @@ const typeDefs = gql`
     }
 
     type Mutation {
-        addReservation
-    }
+    addUser(
+      username: String!
+      email: String!
+      password: String!
+      address: String
+      Credit_card_number: String
+      Credit_card_expiration: Int
+      Credit_card_cvv: Int
+    ): Auth
+    login(email: String!, password: String!): Auth
+  }
 `;
 
 module.exports = typeDefs;
