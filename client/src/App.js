@@ -1,4 +1,4 @@
-import { Navbar, Home, Footer } from "./components";
+import { Navbar, Home, Footer, GolfCourse } from "./components";
 
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -6,6 +6,7 @@ import { LoginProvider } from "./utils/LoginContext";
 // const [email, setEmail] = useState("");
 // const [password, setPassword] = useState("");
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+
 // import { setContext } from "@apollo/client/link/context";
 const client = new ApolloClient({
   uri: "/graphql",
@@ -34,6 +35,7 @@ function App() {
 
             <Routes>
               <Route exact path="/" element={<Home />} />
+              <Route exact path="/golfCourse" element={<GolfCourse />} />
             </Routes>
 
             <Footer />
