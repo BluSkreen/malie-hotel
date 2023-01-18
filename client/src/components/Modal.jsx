@@ -5,45 +5,49 @@ import { useState, useEffect } from "react";
 
 import { useMutation, useQuery } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
+import { ADD_USER } from "../utils/mutations";
 
 const Modal = ({ visible, onClose }) => {
   const [modalSignIn, setModalSignIn] = useState(true); // MODAL TOGGLE
-  const { email, setEmail, password, setPassword } = useLoginContext();
+  // const { email, setEmail, password, setPassword } = useLoginContext();
+  const {
+    email,
+    onEmailChange,
+    password,
+    onPasswordChange,
+    username,
+    onUsernameChange,
+    setPassword,
+    setUsername,
+    setEmail,
+  } = useLoginContext();
   const [login, { error }] = useMutation(LOGIN_USER);
-  const onEmailChange = (e) => {
-    const emailInput = e.target.value;
-    console.log(emailInput);
-    setEmail(emailInput);
-  };
-
-  const onPasswordChange = (e) => {
-    const passwordInput = e.target.value;
-    console.log(passwordInput);
-    setPassword(passwordInput);
-  };
+  const [addUser] = useMutation(ADD_USER);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      console.log("email " + email + "password: " + password);
-      const { data } = await login({
-        variables: { email, password },
-      });
+      // console.log("email " + email + "password: " + password);
 
-      //   const { token, user } = await response.json();
-      //   console.log(user);
-      console.log("sid " + data);
+      const { data } = modalSignIn
+        ? await login({
+            variables: { email, password },
+          })
+        : await addUser({
+            variables: { email, password, username },
+          });
+
       Auth.login(data.login.token);
     } catch (err) {
       console.error(err);
     }
     setEmail("");
     setPassword("");
-    console.log(setEmail, setPassword, +" hi");
+    setUsername("");
+    // console.log(setEmail, setPassword, +" hi");
   };
 
   if (!visible) return null;
-
 
   return (
     <div className="fixed inset-0 bg-black text-white bg-opacity-30 backdrop-blur-sm flex justify-center items-center font-poppins">
@@ -69,87 +73,97 @@ const Modal = ({ visible, onClose }) => {
           </div>
           <form
             className="mt-8 space-y-6"
-            action="#"
-            method="POST"
+            // action="handleFormSubmit"
+            // method="POST"
             onSubmit={handleFormSubmit}
           >
             <input type="hidden" name="remember" defaultValue="true" />
             {modalSignIn ? (
-                <div className="-space-y-px rounded-md shadow-sm">
-                    <div>
-                        <label htmlFor="email-address" className="sr-only">
-                            Email address
-                        </label>
-                        <input
-                        id="email-address"
-                        name="email"
-                        type="email"
-                        autoComplete="email"
-                        required
-                        className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                        placeholder="Email address"
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="password" className="sr-only">
-                            Password
-                        </label>
-                        <input
-                        id="password"
-                        name="password"
-                        type="password"
-                        autoComplete="current-password"
-                        required
-                        className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                        placeholder="Password"
-                        />
-                    </div>
+              <div className="-space-y-px rounded-md shadow-sm">
+                <div>
+                  <label htmlFor="email-address" className="sr-only">
+                    Email address
+                  </label>
+                  <input
+                    id="email-address"
+                    name="email"
+                    value={email}
+                    type="email"
+                    autoComplete="email"
+                    onChange={onEmailChange}
+                    required
+                    className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                    placeholder="Email address"
+                  />
                 </div>
-                ) : ( 
-                <div className="-space-y-px rounded-md shadow-sm">
-                    <div>
-                        <label htmlFor="email-address" className="sr-only">
-                            Username
-                        </label>
-                        <input
-                        id="email-address"
-                        name="email"
-                        type="email"
-                        autoComplete="email"
-                        required
-                        className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                        placeholder="Email address"
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="email-address" className="sr-only">
-                            Email address
-                        </label>
-                        <input
-                        id="email-address"
-                        name="email"
-                        type="email"
-                        autoComplete="email"
-                        required
-                        className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                        placeholder="Email address"
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="password" className="sr-only">
-                            Password
-                        </label>
-                        <input
-                        id="password"
-                        name="password"
-                        type="password"
-                        autoComplete="current-password"
-                        required
-                        className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                        placeholder="Password"
-                        />
-                    </div>
+                <div>
+                  <label htmlFor="password" className="sr-only">
+                    Password
+                  </label>
+                  <input
+                    id="password"
+                    name="password"
+                    value={password}
+                    type="password"
+                    onChange={onPasswordChange}
+                    autoComplete="current-password"
+                    required
+                    className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                    placeholder="Password"
+                  />
                 </div>
+              </div>
+            ) : (
+              <div className="-space-y-px rounded-md shadow-sm">
+                <div>
+                  <label htmlFor="username" className="sr-only">
+                    Username
+                  </label>
+                  <input
+                    id="username"
+                    name="Username"
+                    value={username}
+                    type="text"
+                    // autoComplete="text"
+                    onChange={onUsernameChange}
+                    required
+                    className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                    placeholder="username"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="email-address" className="sr-only">
+                    Email address
+                  </label>
+                  <input
+                    id="email-address"
+                    name="email"
+                    onChange={onEmailChange}
+                    type="email"
+                    value={email}
+                    autoComplete="email"
+                    required
+                    className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                    placeholder="Email address"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="password" className="sr-only">
+                    Password
+                  </label>
+                  <input
+                    id="password"
+                    name="password"
+                    onChange={onPasswordChange}
+                    value={password}
+                    type="password"
+                    autoComplete="current-password"
+                    required
+                    className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                    placeholder="Password"
+                  />
+                </div>
+              </div>
             )}
             {/* -------------- input above ^^^ -------------------------- */}
 
@@ -178,63 +192,71 @@ const Modal = ({ visible, onClose }) => {
                 </a>
               </div>
             </div>
-                {/* ---------- modal nav bellow ------------------------ */}
+            {/* ---------- modal nav bellow ------------------------ */}
             {modalSignIn ? (
-            <>
+              <>
                 <div>
-                    <button
-                        type="submit"
-                        className="group relative flex w-full justify-center rounded-md border border-transparent bg-[rgba(207,181,59)] py-2 px-4 text-sm font-medium text-black hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                    >
-                        <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-                        {/* <LockClosedIcon className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" aria-hidden="true" /> */}
-                        </span>
-                        Sign in
-                    </button>
+                  <button
+                    type="submit"
+                    className="group relative flex w-full justify-center rounded-md border border-transparent bg-[rgba(207,181,59)] py-2 px-4 text-sm font-medium text-black hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  >
+                    <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+                      {/* <LockClosedIcon className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" aria-hidden="true" /> */}
+                    </span>
+                    Sign in
+                  </button>
                 </div>
-                <p className="text-center
-                ">Not a member?</p>
+                <p
+                  className="text-center
+                "
+                >
+                  Not a member?
+                </p>
                 <div>
-                    <button
-                        type="button"
-                        className="group relative flex w-full justify-center rounded-md border border-transparent bg-[rgba(207,181,59)] py-2 px-4 text-sm font-medium text-black hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                        onClick={() => setModalSignIn(false)}
-                    >
-                        <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-                        {/* <LockClosedIcon className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" aria-hidden="true" /> */}
-                        </span>
-                        Create an Account!
-                    </button>
+                  <button
+                    type="button"
+                    className="group relative flex w-full justify-center rounded-md border border-transparent bg-[rgba(207,181,59)] py-2 px-4 text-sm font-medium text-black hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    onClick={() => setModalSignIn(false)}
+                  >
+                    <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+                      {/* <LockClosedIcon className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" aria-hidden="true" /> */}
+                    </span>
+                    Create an Account!
+                  </button>
                 </div>
-            </>
+              </>
             ) : (
-            <>
+              <>
                 <div>
-                    <button
-                        type="button"
-                        className="group relative flex w-full justify-center rounded-md border border-transparent bg-[rgba(207,181,59)] py-2 px-4 text-sm font-medium text-black hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                        onClick={() => setModalSignIn(true)}
-                    >
-                        <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-                        {/* <LockClosedIcon className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" aria-hidden="true" /> */}
-                        </span>
-                        Sign in
-                    </button>
+                  <button
+                    type="button"
+                    className="group relative flex w-full justify-center rounded-md border border-transparent bg-[rgba(207,181,59)] py-2 px-4 text-sm font-medium text-black hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    onClick={() => setModalSignIn(true)}
+                  >
+                    <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+                      {/* <LockClosedIcon className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" aria-hidden="true" /> */}
+                    </span>
+                    Sign in
+                  </button>
                 </div>
-                <p className="text-center
-                ">Not a member?</p>
+                <p
+                  className="text-center
+                "
+                >
+                  Not a member?
+                </p>
                 <div>
-                    <button
-                        type="submit"
-                        className="group relative flex w-full justify-center rounded-md border border-transparent bg-[rgba(207,181,59)] py-2 px-4 text-sm font-medium text-black hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                    >
-                        <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-                        {/* <LockClosedIcon className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" aria-hidden="true" /> */}
-                        </span>
-                        Create an Account!
-                    </button>
+                  <button
+                    type="submit"
+                    className="group relative flex w-full justify-center rounded-md border border-transparent bg-[rgba(207,181,59)] py-2 px-4 text-sm font-medium text-black hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  >
+                    <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+                      {/* <LockClosedIcon className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" aria-hidden="true" /> */}
+                    </span>
+                    Create an Account!
+                  </button>
                 </div>
-            </>
+              </>
             )}
           </form>
         </div>
