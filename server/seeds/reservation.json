@@ -1,0 +1,44 @@
+[
+    {
+        "roomNumbers": [201],
+        "startDate": [2023,4,24],
+        "endDate": [2023,4,25],
+        "cost": 120,
+        "email": "jason@gg.gg"
+    },
+    {
+        "roomNumbers": [202],
+        "startDate": [2023,4,24],
+        "endDate": [2023,4,25],
+        "cost": 120,
+        "email": "jason@gg.gg"
+    },
+    {
+        "roomNumbers": [203],
+        "startDate": [2023,4,24],
+        "endDate": [2023,4,25],
+        "cost": 120,
+        "email": "jason@gg.gg"
+    },
+    {
+        "roomNumbers": [204],
+        "startDate": [2023,4,24],
+        "endDate": [2023,4,25],
+        "cost": 120,
+        "email": "jason@gg.gg"
+    },
+    {
+        "roomNumbers": [108],
+        "startDate": [2023,4,24],
+        "endDate": [2023,4,25],
+        "cost": 120,
+        "email": "jason@gg.gg"
+    },
+    {
+        "roomNumbers": [112],
+        "startDate": [2023,4,24],
+        "endDate": [2023,4,25],
+        "cost": 120,
+        "email": "jason@gg.gg"
+    }
+]

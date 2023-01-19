@@ -12,26 +12,9 @@ const RoomSchema = new Schema(
     },
     price: {
       type: Number,
-      required: true,
-    },
-    smoking: {
-      type: Boolean,
-      required: true,
-    },
-    maxPeople: {
-      type: Number,
-      required: true,
-    },
-    numberOfBeds: {
-      type: Number,
-      required: true,
     },
     desc: {
       type: String,
-      required: true,
-    },
-    photos: {
-      type: [String],
     },
     hotelId: {
       type: Schema.Types.ObjectId,
@@ -40,7 +23,7 @@ const RoomSchema = new Schema(
     reservations: [
       {
         type: Schema.Types.ObjectId,
-        ref: "Reservations",
+        ref: "Reservation",
       },
     ],
   },
