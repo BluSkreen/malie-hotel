@@ -84,7 +84,7 @@ const Home = () => {
       <section className="flex justify-center bg-black w-full pt-4">
         <form className="w-full max-w-sm mb-10" onSubmit={handleFormSubmit}>
           <h1 className="text-white">MAKE A RESERVATION</h1>
-          <div className="flex items-center border-b border-[rgba(207,181,59)] py-2">
+          <div className="flex items-center border-b border-yellow-500 py-2">
             <div className="inline-block relative w-64 mr-4">
               <input
                 type="date"
@@ -203,7 +203,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section className=" bg-black text-[30px]">
+      <section className=" bg-grey-900 text-[30px]">
         <h1 className=" text-[48px] p-4 pt-10 text-[rgba(207,181,59)] font-amita font-bold pl-10">
           Activities & Events
         </h1>
@@ -260,7 +260,7 @@ const Home = () => {
               </div>
             </div> */}
         {/* <div className="flex">
-          <div className="   bg-black text-white p-8 border-solid border-4 border-[rgba(207,181,59)]">
+          <div className="   bg-grey-900 text-white p-8 border-solid border-4 border-[rgba(207,181,59)]">
             <img
               src="https://images.unsplash.com/photo-1662515049537-5c4442e107d6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDV8fGJlYWNoJTIwZ29sZnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
               alt="golf"
@@ -268,7 +268,7 @@ const Home = () => {
             />
             <p className="pt-6 font-amita">18 Hole Professional Course</p>
           </div>
-          <div className="   bg-black text-white p-8 border-solid border-4 border-[rgba(207,181,59)]">
+          <div className="   bg-grey-900 text-white p-8 border-solid border-4 border-[rgba(207,181,59)]">
             <img
               src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8c3BhfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
               alt=""
@@ -276,7 +276,7 @@ const Home = () => {
             />
             <p className="pt-6 font-amita">World Class Spa Experience</p>
           </div>
-          <div className="   bg-black text-white p-8 border-solid border-4 border-[rgba(207,181,59)]">
+          <div className="   bg-grey-900 text-white p-8 border-solid border-4 border-[rgba(207,181,59)]">
             <img
               src="https://images.unsplash.com/photo-1638693940422-b676efe57668?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fHRyb3BpY2FsJTIwd2VkZGluZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
               alt=""

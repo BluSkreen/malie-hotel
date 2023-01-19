@@ -31,3 +31,16 @@ export const GET_USERS = gql`
     }
   }
 `;
+
+export const QUERY_ROOMS = gql`
+query filterRooms($startDate: [Int]!, $endDate: [Int]!) {
+    filterRooms(startDate: $startDate, endDate: $endDate) {
+        choiceKing
+        choiceQueen
+        deluxKing
+        deluxQueen
+        exclusiveKing
+        exclusiveQueen
+    }
+}
+`;

@@ -3,7 +3,7 @@ import React from "react";
 const GolfCourse = () => {
   return (
     <div>
-      {/* section for photo carousel */}
+      {/* section for carousel */}
       <section className="bg-[rgba(207,181,59)] text-white pt-5 pb-20">
         <h1 className="text-[48px] font-amita font-bold pl-10 pb-5">
           Golfing at your Dream Resort
@@ -132,7 +132,7 @@ const GolfCourse = () => {
           <img
             src="https://images.unsplash.com/photo-1519682271141-57c25ad60410?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGFyZWFsJTIwZ29sZiUyMGNvdXJzZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
             alt="Pink Socks"
-            className="border-solid border-[rgba(207,181,59)] border-4 rounded max-w-[700px] "
+            className="border-solid border-[rgba(207,181,59)] border-4 rounded max-w-[700px] max-w-sm h-auto transition-shadow ease-in-out duration-300 shadow-none shadow-black shadow-2xl"
           />
         </div>
       </section>
@@ -192,7 +192,7 @@ const GolfCourse = () => {
       </section>
 
       {/* section for text section */}
-      <section className="p-4 bg-stone-300 text-violet-900">
+      <section className="p-4 bg-stone-300">
         {/* <div className="container px-5 py-2 mx-auto lg:pt-24 lg:px-32"> */}
         {/* <div className="mt-5 p-4 pb-10"> */}
         <h1 className="text-[48px] font-amita font-bold pl-10">
@@ -224,28 +224,13 @@ const GolfCourse = () => {
           <img
             src={require("../assets/royalGolfCourseMedium.jpg")}
             alt="Golf Course"
-            className="border-solid border-indigo-600 border-4 rounded max-w-[700px]"
+            className="border-solid border-[rgba(207,181,59)] border-4 rounded max-w-[700px] max-w-sm h-auto transition-shadow ease-in-out duration-300 shadow-none shadow-black shadow-2xl"
           />
         </div>
         {/* </div>
         </div> */}
       </section>
 
-      {/* <section className="p-4 mt-10">
-        <h1 className="text-[48px] font-amita font-bold pl-10">
-        PLAY A LEGENDARY
-        </h1>
-        <div className="flex flex-wrap justify-around mt-6 mb-6">
-          <p className="max-w-[800px] text-[25px] mt-[100px]">
-          36 holes of world-class golf weave their way through stunning terrain and breathtaking vistas, with every lie, every shot and every hole designed to perfectly complement our coastal Malieian landscape.
-          </p>
-          <img
-            src="https://images.unsplash.com/photo-1519682271141-57c25ad60410?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGFyZWFsJTIwZ29sZiUyMGNvdXJzZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-            alt="Pink Socks"
-            className="border-solid border-[rgba(207,181,59)] border-4 rounded max-w-[700px]"
-          />
-        </div>
-      </section> */}
     </div>
   );
 };
