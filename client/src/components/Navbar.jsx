@@ -34,7 +34,15 @@ const Navbar = () => {
             Golf Course
           </Link>
         </li>
-
+        <li>
+          <Link
+            className={` cursor-pointer text-[20px] text-[rgba(207,181,59)]  mr-10`}
+            aria-current="page"
+            to="/food"
+          >
+            Fine Dining
+          </Link>
+        </li>
         <li>
           <Link
             className={` cursor-pointer text-[20px] text-[rgba(207,181,59)]  mr-10`}
