@@ -22,7 +22,7 @@ const RoomSchema = new Schema(
         },
         reservations:[{
             type: Schema.Types.ObjectId,
-            ref: "Reservations",
+            ref: "Reservation",
         }]
     },
     { timestamps: true }

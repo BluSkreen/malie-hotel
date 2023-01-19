@@ -21,81 +21,53 @@ const resolvers = {
         queryEndDate = queryEndDate.valueOf();
 
         let roomFilter = {};
-
         // if (hotelId != null) { roomFilter["hotelId"] = hotelId };
         // if (title != null) { roomFilter["title"] = title };
         // if (price != null) { roomFilter["price"] = price };
-
         roomFilter = await Room.find(roomFilter).populate("reservations");
-        // rooms have reservations --> Room.reservations[]
-        // find all rooms where reservation.startDate < startDate && reservation.endDate < endDate
-        // OR
-        // reservation.startDate > queryStartDate
 
-        // could stringify an object to relay room type
         let roomTypes = {
-            "choiceKing": false,
-            "choiceQueen": false,
-            "deluxKing": false,
-            "deluxQueen": false,
-            "exclusiveKing": false,
-            "exclusiveQueen": false
+            choiceKing: false,
+            choiceQueen: false,
+            deluxKing: false,
+            deluxQueen: false,
+            exclusiveKing: false,
+            exclusiveQueen: false
         }    
+
+        // TODO: use room list for multi room search
+        let roomList = [];
         
-        console.log(roomTypes);
-        // the front end needs the TYPE of rooms available for a time frame
-        await roomFilter.forEach((room, roomIndex) => {
-            for(resIndex = 0; resIndex < roomFilter[roomIndex].reservations.length - 1; resIndex++) {
-                // date are stored as stringified array --> "[yyyy,mm,dd]"
-                let resStart = room.reservations[resIndex].startDate;
+        for await (let room of roomFilter) {
+            let available = true;
+            for await (let reservation of room.reservations) {
+                // use the epoch to check difference in time
+                let resStart = reservation.startDate;
                 resStart = new Date(resStart);
                 resStart = resStart.valueOf();
-                let resEnd = room.reservations[resIndex].endDate;
+                let resEnd = reservation.endDate;
                 resEnd = new Date(resEnd);
                 resEnd = resEnd.valueOf();
-
-                // The reservation must be before or after the query date
+                
+                 // The reservation must be before or after the query date
                 if(resStart < queryStartDate && !(resEnd <= queryEndDate)) {
+                    available = false;
+                    console.log("bad");
                     break;
-                } else if(!(resStart > queryEndDate)) {
+                } else if(!resStart > queryEndDate) {
+                    available = false;
+                    console.log("bad");
                     break;
-                } else if(resIndex == roomFilter[roomIndex].reservations.length - 1) {
-                    // If the last reservations is reached without conflict
-                    // Then make the roomType true
-                    // returnRooms.push(roomFilter[roomIndex]);
-                    roomTypes[roomFilter[roomIndex].title] = true;
-                }
+                } 
             }
-        });
-        for(let roomIndex = 0; roomIndex < roomFilter.length - 1; roomIndex++) {
-            for(resIndex = 0; resIndex < roomFilter[roomIndex].reservations.length - 1; resIndex++) {
-                // date are stored as stringified array --> "[yyyy,mm,dd]"
-                let resStart = roomFilter[roomIndex].reservations[resIndex].startDate;
-                resStart = new Date(resStart);
-                resStart = resStart.valueOf();
-                let resEnd = roomFilter[roomIndex].reservations[resIndex].endDate;
-                resEnd = new Date(resEnd);
-                resEnd = resEnd.valueOf();
-
-                // The reservation must be before or after the query date
-                if(resStart < queryStartDate && !(resEnd <= queryEndDate)) {
-                    break;
-                } else if(!(resStart > queryEndDate)) {
-                    break;
-                } else if(resIndex == roomFilter[roomIndex].reservations.length - 1) {
-                    // If the last reservations is reached without conflict
-                    // Then make the roomType true
-                    // returnRooms.push(roomFilter[roomIndex]);
-                    roomTypes[roomFilter[roomIndex].title] = true;
-                }
+            if(available === true) {
+                let roomType = room.title;
+                roomList.push(room);
+                roomTypes[roomType] = true;
             }
-        }
-        console.log(roomTypes);
+        } // for loop
 
-        return { ...roomTypes };
-
-        // let availableRooms = [];
-        // for each room, check if 
+        return roomTypes;
     },
     singleReservation: async (parent, { _id, email }) => {
         try {
@@ -115,24 +87,6 @@ const resolvers = {
     room: async () => {
       return Room.find({});
     },
-    filterRooms: async () => {
-      // ToDo: turnary or switch that adds filter options to query
-
-      return Room.find({});
-    },
-    // singleReservation: async (parent, { _id, email }) => {
-    //   try {
-    //     // either id or email will work
-    //     return _id
-    //       ? await Reservation.find({ _id: _id })
-    //       : await Reservation.find({ email: email });
-    //   } catch (err) {
-    //     return JSON.stringify(err);
-    //   }
-    // },
-    // allReservations: async () => {
-    //   return Reservation.find({});
-    // },
   },
   Mutation: {
     addUser: async (parent, args) => {

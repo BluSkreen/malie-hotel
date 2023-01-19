@@ -42,12 +42,12 @@ const typeDefs = gql`
     }
 
     type roomTypes {
-        choiceKing: Boolean
-        choiceQueen: Boolean
-        deluxKing: Boolean
-        deluxQueen: Boolean
-        exclusiveKing: Boolean
-        exclusiveQueen: Boolean
+        choiceKing: Boolean!
+        choiceQueen: Boolean!
+        deluxKing: Boolean!
+        deluxQueen: Boolean!
+        exclusiveKing: Boolean!
+        exclusiveQueen: Boolean!
     }
 
     type Auth {
