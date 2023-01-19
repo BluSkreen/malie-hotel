@@ -204,7 +204,7 @@ const Home = () => {
       </section>
 
       <section className=" bg-black text-[30px]">
-        <h1 className=" text-[48px] p-4 mt-10 text-[rgba(207,181,59)] font-amita font-bold pl-10">
+        <h1 className=" text-[48px] p-4 pt-10 text-[rgba(207,181,59)] font-amita font-bold pl-10">
           Activities & Events
         </h1>
         {/* 
