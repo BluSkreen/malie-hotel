@@ -13,7 +13,7 @@ const resolvers = {
     },
 
     // TODO: Add numberOfRooms paramater
-    filterRooms: async (parent, { startDate, endDate, hotelId, title, price }) => {
+    filterRooms: async (parent, { startDate, endDate, roomNum, hotelId, title, price }) => {
         // date format is a stringified array --> "[yyyy,mm,dd]"
         let queryStartDate = new Date(startDate);
         queryStartDate = queryStartDate.valueOf();

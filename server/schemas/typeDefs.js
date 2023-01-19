@@ -61,7 +61,7 @@ const typeDefs = gql`
         user(username: String): User
         hotel(_id: ID): Hotel
         room(_id: ID): Room
-        filterRooms(startDate: [Int]!, endDate: [Int]!, hotelId: ID, title: String, price: Int): roomTypes
+        filterRooms(startDate: [Int]!, endDate: [Int]!, roomNum: Int, hotelId: ID, title: String, price: Int): roomTypes
         allReservations(roomNumber: Int): [Reservation]
         singleReservation(_id: ID, email: String): Reservation
     }
