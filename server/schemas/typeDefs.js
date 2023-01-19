@@ -18,11 +18,7 @@ const typeDefs = gql`
         roomNumber: Int!
         title: String
         price: Int
-        smoking: Boolean
-        maxPeople: Int
-        numberOfBeds: Int
         desc: String
-        photos: String
         hotelId: Hotel
         reservations: [Reservation]
     }
@@ -38,11 +34,20 @@ const typeDefs = gql`
 
     type Reservation {
         roomNumbers: [Int]
-        startDate: String!
-        endDate: String!
+        startDate: [Int]!
+        endDate: [Int]!
         cost: Int
         accomodations: [String]
         email: String
+    }
+
+    type roomTypes {
+        choiceKing: Boolean
+        choiceQueen: Boolean
+        deluxKing: Boolean
+        deluxQueen: Boolean
+        exclusiveKing: Boolean
+        exclusiveQueen: Boolean
     }
 
     type Auth {
@@ -50,43 +55,12 @@ const typeDefs = gql`
         user: User
     }
 
-    input UserInput {
-        _id: ID!
-        username: String!
-        email: String!
-        address: String
-        Credit_card_number: String
-        Credit_card_expiration: Int
-        Credit_card_cvv: Int
-        password: String!
-        isAdmin: Boolean
-    }
-    input HotelInput {
-        _id: ID!
-        name: String!
-        address: String
-        title: String
-        desc: String
-    }
-
-    input RoomInput {
-        _id: ID!
-        roomNumber: Int!
-        title: String
-        price: Int
-        smoking: Boolean
-        maxPeople: Int
-        desc: String
-        numberOfBeds: Int
-        photos: String
-    }
-
     type Query {
         users: [User]
         user(username: String): User
         hotel(_id: ID): Hotel
         room(_id: ID): Room
-        filterRooms(startDate: String!, endDate: String!, hotelId: ID, title: String, price: Int, smoking: Boolean, maxPeople: Int, numberOfBeds: Int): [Room]
+        filterRooms(startDate: [Int]!, endDate: [Int]!, hotelId: ID, title: String, price: Int): roomTypes
         allReservations(roomNumber: Int): [Reservation]
         singleReservation(_id: ID, email: String): Reservation
     }
