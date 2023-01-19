@@ -10,9 +10,41 @@ export const useLoginContext = () => useContext(LoginContext);
 export const LoginProvider = ({ children }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
+
+  const onEmailChange = (e) => {
+    const emailInput = e.target.value;
+    // console.log(emailInput);
+    setEmail(emailInput);
+  };
+
+  const onPasswordChange = (e) => {
+    const passwordInput = e.target.value;
+    // console.log(passwordInput);
+    setPassword(passwordInput);
+  };
+
+  const onUsernameChange = (e) => {
+    const usernameInput = e.target.value;
+    // console.log(userNameInput);
+    setUsername(usernameInput);
+  };
+
   // The value prop expects an initial state object
   return (
-    <LoginContext.Provider value={{ email, setEmail, password, setPassword }}>
+    <LoginContext.Provider
+      value={{
+        email,
+        setEmail,
+        onEmailChange,
+        password,
+        onPasswordChange,
+        setPassword,
+        username,
+        onUsernameChange,
+        setUsername,
+      }}
+    >
       {/* We render children in our component so that any descendent can access the value from the provider */}
       {children}
     </LoginContext.Provider>

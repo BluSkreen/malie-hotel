@@ -13,6 +13,7 @@ const typeDefs = gql`
         isAdmin: Boolean
     }
 
+<<<<<<< HEAD
     type Room {
         _id: ID!
         roomNumber: Int!
@@ -75,6 +76,18 @@ const typeDefs = gql`
       Credit_card_expiration: Int
       Credit_card_cvv: Int
     ): Auth
+=======
+  type Auth {
+    token: ID!
+    user: User
+  }
+  type Query {
+    users: [User]
+    user(username: String): User
+  }
+  type Mutation {
+    addUser(username: String!, email: String!, password: String!): Auth
+>>>>>>> main
     login(email: String!, password: String!): Auth
   }
 `;
