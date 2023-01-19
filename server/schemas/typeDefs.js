@@ -13,7 +13,6 @@ const typeDefs = gql`
         isAdmin: Boolean
     }
 
-<<<<<<< HEAD
     type Room {
         _id: ID!
         roomNumber: Int!
@@ -23,6 +22,7 @@ const typeDefs = gql`
         hotelId: Hotel
         reservations: [Reservation]
     }
+
     type Hotel {
         _id: ID!
         name: String!
@@ -67,29 +67,17 @@ const typeDefs = gql`
     }
 
     type Mutation {
-    addUser(
-      username: String!
-      email: String!
-      password: String!
-      address: String
-      Credit_card_number: String
-      Credit_card_expiration: Int
-      Credit_card_cvv: Int
-    ): Auth
-=======
-  type Auth {
-    token: ID!
-    user: User
-  }
-  type Query {
-    users: [User]
-    user(username: String): User
-  }
-  type Mutation {
-    addUser(username: String!, email: String!, password: String!): Auth
->>>>>>> main
-    login(email: String!, password: String!): Auth
-  }
+        addUser(
+            username: String!
+            email: String!
+            password: String!
+            address: String
+            Credit_card_number: String
+            Credit_card_expiration: Int
+            Credit_card_cvv: Int
+        ): Auth
+        login(email: String!, password: String!): Auth
+    }
 `;
 
 module.exports = typeDefs;
