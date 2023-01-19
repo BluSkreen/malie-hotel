@@ -11,7 +11,7 @@ const Navbar = () => {
   // console.log(useLoginContext());
   // alert(useLoginContext);
   return (
-    <nav className="w-fill flex  justify-between items-center navbar z-[5] bg-black py-2  text-[rgba(207,181,59)] font-amita ">
+    <nav className="w-fill flex  justify-between items-center navbar z-[5] bg-grey-900 py-2  text-[rgba(207,181,59)] font-amita ">
       <Modal onClose={handleOnClose} visible={signIn} />
       {/* <LoginProvider value={{ email, setEmail }}> */}
       <Link
