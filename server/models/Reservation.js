@@ -7,23 +7,21 @@ const ReservationSchema = new Schema(
             unique: true,
         },
         startDate: {
-            type: Date,
+            type: [Number],
             required: true,
         },
         endDate: {
-            type: Date,
+            type: [Number],
             required: true,
         },
         cost: {
             type: Number,
-            required: true,
         },
         accomodations:{
             type: [String],
         },
         email: {
             type: String,
-            required: true,
         },
     },
     { timestamps: true }
