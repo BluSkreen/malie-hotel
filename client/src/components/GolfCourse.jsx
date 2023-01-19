@@ -4,8 +4,8 @@ const GolfCourse = () => {
   return (
     <div>
       {/* section for photo carousel */}
-      <section className="bg-[rgba(207,181,59)] text-white mt-5 p-4 pb-10">
-        <h1 className="text-[48px] font-amita font-bold mt-5 pl-10">
+      <section className="bg-[rgba(207,181,59)] text-white pt-5 pb-20">
+        <h1 className="text-[48px] font-amita font-bold pl-10 pb-5">
           Golfing at your Dream Resort
         </h1>
         <div
@@ -66,7 +66,7 @@ const GolfCourse = () => {
             </div>
             <div class="carousel-item float-left w-full">
               <img
-                src={require("../assets/golfCourse3Medium.jpg")}
+                src={require("../assets/golfCourse6Medium.jpg")}
                 class="block w-full object-fit: cover;
               height: 600px;"
                 alt="Exotic Fruits"
@@ -116,7 +116,7 @@ const GolfCourse = () => {
       </section>
 
       {/* section for about */}
-      <section className="p-4 mt-10">
+      <section className="p-4 bg-stone-300">
         <h1 className="text-[48px] font-amita font-bold pl-10">
           THE GOLF TRIP OF A LIFETIME
         </h1>
@@ -153,7 +153,7 @@ const GolfCourse = () => {
                 <img
                   alt="gallery"
                   class="block object-cover object-center w-full h-full rounded-lg"
-                  src="https://images.unsplash.com/photo-1500932334442-8761ee4810a7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Z29sZnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                  src="https://images.unsplash.com/photo-1592919505780-303950717480?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGdvbGYlMjBjb3Vyc2V8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
                 ></img>
               </div>
               <div class="w-full p-1 md:p-2">
@@ -176,20 +176,76 @@ const GolfCourse = () => {
                 <img
                   alt="gallery"
                   class="block object-cover object-center w-full h-full rounded-lg"
-                  src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(75).webp"
+                  src="https://images.unsplash.com/photo-1610916445778-09401a50a2b2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGdvbGYlMjBjb3Vyc2V8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
                 ></img>
               </div>
               <div class="w-1/2 p-1 md:p-2">
                 <img
                   alt="gallery"
                   class="block object-cover object-center w-full h-full rounded-lg"
-                  src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(77).webp"
+                  src="https://images.unsplash.com/photo-1629596545782-775f0792dbc8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjh8fGdvbGYlMjBjb3Vyc2V8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
                 ></img>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      {/* section for text section */}
+      <section className="p-4 bg-stone-300 text-violet-900">
+        {/* <div className="container px-5 py-2 mx-auto lg:pt-24 lg:px-32"> */}
+        {/* <div className="mt-5 p-4 pb-10"> */}
+        <h1 className="text-[48px] font-amita font-bold pl-10">
+          ROYAL GOLFING EXPERIENCE
+        </h1>
+        <div className="flex flex-wrap justify-around mt-6 mb-6">
+          <p className="max-w-[800px] text-[25px] mt-[100px]">
+            36 holes of world-class golf weave their way through stunning
+            terrain and breathtaking vistas, with every lie, every shot and
+            every hole designed to perfectly complement our coastal Malieian
+            landscape.
+            <li className="mt-10">
+              Two renowned courses designed by the most award-winning architect
+              alive.
+            </li>
+            <li>
+              GPS-enabled golf carts and state-of-the-art equipment at the golf
+              academy.
+            </li>
+            <li>
+              Fully appointed Golf Club with luxurious locker rooms and private
+              lounges
+            </li>
+            <li>
+              An eco-friendly water recycling system conserves 50 million
+              gallons of water annually.
+            </li>
+          </p>
+          <img
+            src={require("../assets/royalGolfCourseMedium.jpg")}
+            alt="Golf Course"
+            className="border-solid border-indigo-600 border-4 rounded max-w-[700px]"
+          />
+        </div>
+        {/* </div>
+        </div> */}
+      </section>
+
+      {/* <section className="p-4 mt-10">
+        <h1 className="text-[48px] font-amita font-bold pl-10">
+        PLAY A LEGENDARY
+        </h1>
+        <div className="flex flex-wrap justify-around mt-6 mb-6">
+          <p className="max-w-[800px] text-[25px] mt-[100px]">
+          36 holes of world-class golf weave their way through stunning terrain and breathtaking vistas, with every lie, every shot and every hole designed to perfectly complement our coastal Malieian landscape.
+          </p>
+          <img
+            src="https://images.unsplash.com/photo-1519682271141-57c25ad60410?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGFyZWFsJTIwZ29sZiUyMGNvdXJzZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+            alt="Pink Socks"
+            className="border-solid border-[rgba(207,181,59)] border-4 rounded max-w-[700px]"
+          />
+        </div>
+      </section> */}
     </div>
   );
 };
