@@ -13,7 +13,7 @@ const Navbar = () => {
   return (
     <nav className="w-fill flex  justify-between items-center navbar z-[5] bg-grey-900 py-2  text-[rgba(207,181,59)] font-amita ">
       <Modal onClose={handleOnClose} visible={signIn} />
-      {/* <LoginProvider value={{ email, setEmail }}> */}
+     
       <Link
         className={`font-skranji  cursor-pointer text-[20px] text-white mr-10`}
         aria-current="page"
@@ -21,8 +21,7 @@ const Navbar = () => {
       >
         <img src={logo} alt="hoobank" className="w-[280px] h-[80px] " />
       </Link>
-      {/* </LoginProvider> */}
-      {/* <h1 className="text-white font-rubik text-[40px]">Erich Ebbinghaus</h1> */}
+     
 
       <ul className="list-none sm:flex hidden justify-end items-center flex-1 z-[5]">
         <li>
@@ -58,7 +57,7 @@ const Navbar = () => {
             onClick={() => setSignIn(true)}
             className={` cursor-pointer text-[20px] text-[rgba(207,181,59)]  mr-10`}
             aria-current="page"
-            // to="/portfolio"
+            
           >
             Sign In
           </Link>

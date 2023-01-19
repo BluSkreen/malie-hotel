@@ -1,30 +1,30 @@
 const Payment = () => {
   return (
-    <div className="flex justify-center px-[100px] pt-10 font-poppins">
+    <div className="flex justify-around  px-[100px] pt-[130px] font-poppins min-h-screen ">
       <div className=" ">
-        <h2 className="text-[30px] font-bold">Payment and Guest Details</h2>
+        <h2 className="text-[30px] font-bold mt-4 mb-4 text-[rgba(207,181,59)]">Payment and Guest Details</h2>
         <hr />
-        <div className="flex justify-between pl-6 text-[28px] pt-4">
-            <h3>Total for Stay</h3>
-            <h3>$1000.00</h3>
+        <div className="flex justify-between  text-[28px] pt-4">
+          <h3>Total for Stay</h3>
+          <h3>$1000.00</h3>
         </div>
-        <div className="flex justify-between pl-6 text-[16px]">
-            <h3>Total room Charge</h3>
-            <h3>$800.00</h3>
+        <div className="flex justify-between  text-[16px]">
+          <h3>Total room Charge</h3>
+          <h3>$800.00</h3>
         </div>
-        <div className="flex justify-between pl-6 text-[16px]">
-            <h3>Total fees</h3>
-            <h3>$150.00</h3>
+        <div className="flex justify-between  text-[16px]">
+          <h3>Total fees</h3>
+          <h3>$150.00</h3>
         </div>
-        <div className="flex justify-between pl-6 text-[16px] pb-4">
-            <h3>Total taxes</h3>
-            <h3>$50.00</h3>
+        <div className="flex justify-between  text-[16px] pb-4">
+          <h3>Total taxes</h3>
+          <h3>$50.00</h3>
         </div>
         <hr />
-        
-        <h2 className="text-[24px] font-bold pt-6">Payment</h2>
+
+        <h2 className="text-[24px] font-bold pt-6 text-[rgba(207,181,59)]">Payment</h2>
         <hr />
-        <form action="" className="pt-4 pl-[50px]">
+        <form action="" className="pt-4">
           <div>
             <div>
               <h3 className="font-bold ">Card number</h3>
@@ -91,12 +91,23 @@ const Payment = () => {
               </div>
             </div>
           </div>
+          <div><img className="ml-[-40px] pt-10" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyC0VgO5y5nsfbRa74POzIaB1RstiC2-6tiw&usqp=CAU" alt="credit cards" /></div>
+          <div className="ml-[100px] pt-10">
+            <button
+              className="  bg-[rgba(207,181,59)] hover:bg-gray-400 focus:shadow-outline focus:outline-none text-black font-bold border-black border-2 py-2 px-4 rounded max-w-[180px] mb-4 pt-4"
+              type="button"
+            >
+              Book Reservation
+            </button>
+          </div>
         </form>
+      </div>
+      <div>
         <div>
-          <h2 className="text-[24px] font-bold mt-6">Guest Information</h2>
+          <h2 className="text-[24px] font-bold mt-6 text-[rgba(207,181,59)]">Guest Information</h2>
           <hr />
         </div>
-        <div className="pl-[50px]">
+        <div className="">
           <h3 className="font-bold pt-4">First Name</h3>
           <input
             class="appearance-none min-w-[400px] block text-gray-700 border-2 border-gray-400 py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
@@ -125,49 +136,41 @@ const Payment = () => {
             type="text"
             placeholder=""
           />
-           <h3 className="font-bold pt-1">Address</h3>
+          <h3 className="font-bold pt-1">Address</h3>
           <input
             class="appearance-none min-w-[400px] block text-gray-700 border-2 border-gray-400 py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
             id="grid-first-name"
             type="text"
             placeholder=""
           />
-           <h3 className="font-bold pt-1">Address 2</h3>
+          <h3 className="font-bold pt-1">Address 2</h3>
           <input
             class="appearance-none min-w-[400px] block text-gray-700 border-2 border-gray-400 py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
             id="grid-first-name"
             type="text"
             placeholder="optional"
           />
-           <h3 className="font-bold pt-1">City</h3>
+          <h3 className="font-bold pt-1">City</h3>
           <input
             class="appearance-none min-w-[400px] block text-gray-700 border-2 border-gray-400 py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
             id="grid-first-name"
             type="text"
             placeholder=""
           />
-           <h3 className="font-bold pt-1">State</h3>
+          <h3 className="font-bold pt-1">State</h3>
           <input
             class="appearance-none min-w-[400px] block text-gray-700 border-2 border-gray-400 py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
             id="grid-first-name"
             type="text"
             placeholder=""
           />
-           <h3 className="font-bold pt-1">Zip</h3>
+          <h3 className="font-bold pt-1">Zip</h3>
           <input
             class="appearance-none min-w-[400px] block text-gray-700 border-2 border-gray-400 py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
             id="grid-first-name"
             type="text"
             placeholder=""
           />
-          <div className="ml-[100px] pt-2">
-           <button
-              className="  bg-[rgba(207,181,59)] hover:bg-cyan-400 focus:shadow-outline focus:outline-none text-black font-bold py-2 px-4 rounded max-w-[180px] mb-4 pt-4"
-              type="button"
-            >
-              Book Reservation
-            </button>
-            </div>
           
         </div>
       </div>

@@ -1,26 +1,66 @@
 import { lux } from "../assets";
-import DateRangePicker from "flowbite-datepicker/DateRangePicker";
-
-
+import React, { useState } from "react";
+// import DateRangePicker from "flowbite-datepicker/DateRangePicker";
+import { useMutation, useQuery } from "@apollo/client";
+import {} from "../utils/mutations";
 
 const Home = () => {
+  const [startDate, setStartDate] = useState();
+  const [endDate, setEndDate] = useState();
+  const dateBtn = document.getElementById("dateBtn");
+  const onStartDateChange = (e) => {
+    const startDateInput = e.target.value;
+    // console.log(passwordInput);
+    setStartDate(startDateInput);
+  };
 
-// const dateRangePickerEl = document.getElementById('dateRangePickerId');
-// new DateRangePicker(dateRangePickerEl, {
-//   autohide: true,
-// }); 
+  const onEndDateChange = (e) => {
+    const endDateInput = e.target.value;
+    // console.log(userNameInput);
+    setEndDate(endDateInput);
+  };
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    const startDateControl = document.getElementById("start").value.toString();
+    const endDateControl = document.getElementById("end").value.toString();
+    console.log(startDateControl);
+    const startD = startDateControl.replace(
+      /(\d\d\d\d)-(\d\d)-(\d\d)/,
+      "[$1,$2,$3]"
+    );
+    const endD = endDateControl.replace(
+      /(\d\d\d\d)-(\d\d)-(\d\d)/,
+      "[$1,$2,$3]"
+    );
 
-// const startEl = document.getElementById('start')
+    // console.log(startD);
+    // console.log(typeof startD);
+    var startD2 = JSON.stringify(startD);
+    var endD2 = JSON.stringify(endD);
+    // var startType = JSON.parse(startD2);
+    // console.log(typeof startType);
+    console.log(startD2);
+    console.log(endD2);
+  }
 
-// const endEl = document.getElementById('end')
+  // console.log(startDateControl, +" : " + endDateControl);
 
-// startEl.addEventListener("changeDate", (e) => {
-//   console.log("start", e.detail.date)
-// })
+  // const dateRangePickerEl = document.getElementById('dateRangePickerId');
+  // new DateRangePicker(dateRangePickerEl, {
+  //   autohide: true,
+  // });
 
-// endEl.addEventListener("changeDate", (e) => {
-//   console.log("end", e.detail.date)
-// })
+  // const startEl = document.getElementById('start')
+
+  // const endEl = document.getElementById('end')
+
+  // startEl.addEventListener("changeDate", (e) => {
+  //   console.log("start", e.detail.date)
+  // })
+
+  // endEl.addEventListener("changeDate", (e) => {
+  //   console.log("end", e.detail.date)
+  // })
 
   return (
     <div>
@@ -41,25 +81,36 @@ const Home = () => {
         </video>
       </section>
 
-      <section className="flex justify-center bg-grey-900 w-full pt-4">
-        <form className="w-full max-w-sm mb-10">
+      <section className="flex justify-center bg-black w-full pt-4">
+        <form className="w-full max-w-sm mb-10" onSubmit={handleFormSubmit}>
           <h1 className="text-white">MAKE A RESERVATION</h1>
           <div className="flex items-center border-b border-yellow-500 py-2">
             <div className="inline-block relative w-64 mr-4">
-              <select className="block appearance-none w-full bg-grey-900 text-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-                <option>Number of Rooms</option>
-                <option>1 Room</option>
-                <option>2 Rooms</option>
-                <option>3 Rooms</option>
-              </select>
+              <input
+                type="date"
+                id="start"
+                name="trip-start"
+                onChange={onStartDateChange}
+                value={startDate}
+                // min="2018-01-01"
+                // max="2018-12-31"
+              />
+
+              <input
+                type="date"
+                id="end"
+                name="trip-end"
+                onchange={onEndDateChange}
+                value={endDate}
+                // min="2018-01-01"
+                // max="2018-12-31"
+              />
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"></div>
             </div>
 
-           
-
             <button
               className="flex-shrink-0 bg-gray-400 hover:bg-teal-700 border-[rgba(207,181,59)] hover:border-teal-700 text-sm border-4 text-black py-1 px-2 rounded"
-              type="button"
+              type="submit"
             >
               Check Availability
             </button>
@@ -153,10 +204,10 @@ const Home = () => {
       </section>
 
       <section className=" bg-grey-900 text-[30px]">
-        <h1 className=" text-[48px] p-4 mt-10 text-[rgba(207,181,59)] font-amita font-bold pl-10">
+        <h1 className=" text-[48px] p-4 pt-10 text-[rgba(207,181,59)] font-amita font-bold pl-10">
           Activities & Events
         </h1>
-{/* 
+        {/* 
         <div date-rangepicker className="flex items-center" id="dateRangePickerId">
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
