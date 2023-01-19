@@ -57,7 +57,7 @@ const Rooms = () => {
 
       <div className="mb-2 flex p-1 justify-around items-center flex-wrap">
         {choiceKing ? (
-          <div className=" text-center m-10 z-[5] bg-black p-4  rounded-xl">
+          <div className=" text-center m-10  bg-black p-4  rounded-xl">
             <img
               src={
                 "https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aG90ZWwlMjByb29tfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
@@ -82,7 +82,7 @@ const Rooms = () => {
           <></>
         )}
         {deluxeKing ? (
-          <div className=" text-center m-10 z-[5] bg-black p-4  rounded-xl">
+          <div className=" text-center m-10  bg-black p-4  rounded-xl">
             <img
               src={
                 "https://images.unsplash.com/photo-1612320743558-020669ff20e8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODJ8fGhvdGVsJTIwcm9vbXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
@@ -107,7 +107,7 @@ const Rooms = () => {
           <></>
         )}
         {executiveKing ? (
-          <div className=" text-center m-10 z-[5] bg-black p-4  rounded-xl">
+          <div className=" text-center m-10  bg-black p-4  rounded-xl">
             <img
               src={
                 "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjl8fGhvdGVsJTIwcm9vbXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
@@ -132,7 +132,7 @@ const Rooms = () => {
           <></>
         )}
         {choiceQueen ? (
-          <div className=" text-center m-10 z-[5] bg-black p-4  rounded-xl">
+          <div className=" text-center m-10  bg-black p-4  rounded-xl">
             <img
               src={
                 "https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aG90ZWwlMjByb29tfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
@@ -157,7 +157,7 @@ const Rooms = () => {
           <></>
         )}
         {deluxeQueen ? (
-          <div className=" text-center m-10 z-[5] bg-black p-4  rounded-xl">
+          <div className=" text-center m-10  bg-black p-4  rounded-xl">
             <img
               src={
                 "https://images.unsplash.com/photo-1612320743558-020669ff20e8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODJ8fGhvdGVsJTIwcm9vbXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
@@ -182,7 +182,7 @@ const Rooms = () => {
           <></>
         )}
         {executiveQueen ? (
-          <div className=" text-center m-10 z-[5] bg-black p-4  rounded-xl">
+          <div className=" text-center m-10  bg-black p-4  rounded-xl">
             <img
               src={
                 "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjl8fGhvdGVsJTIwcm9vbXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
