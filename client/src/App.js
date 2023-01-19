@@ -1,4 +1,4 @@
-import { Navbar, Home, Footer, GolfCourse, Rooms } from "./components";
+import { Navbar, Home, Footer, GolfCourse, Rooms, Payment } from "./components";
 
 
 import "./App.css";
@@ -38,6 +38,7 @@ function App() {
               <Route exact path="/" element={<Home />} />
               <Route exact path="/golfCourse" element={<GolfCourse />} />
               <Route exact path="/rooms" element={<Rooms />} />
+              <Route exact path="/payment" element={<Payment />} />
             </Routes>
 
             <Footer />
