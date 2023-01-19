@@ -29,9 +29,9 @@ const Navbar = () => {
           <Link
             className={` cursor-pointer text-[20px] text-[rgba(207,181,59)]  mr-10`}
             aria-current="page"
-            to="/about"
+            to="/golfCourse"
           >
-            Reservations
+            Golf Course
           </Link>
         </li>
 
@@ -48,9 +48,9 @@ const Navbar = () => {
           <Link
             className={` cursor-pointer text-[20px] text-[rgba(207,181,59)]  mr-10`}
             aria-current="page"
-            to="/resume"
+            to="/rooms"
           >
-            Contact Us
+            Rooms
           </Link>
         </li>
         <li>

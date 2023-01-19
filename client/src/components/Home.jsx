@@ -1,4 +1,6 @@
 import { lux } from "../assets";
+import DateRangePicker from "flowbite-datepicker/DateRangePicker";
+
 import React, { useState } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import {} from "../utils/mutations";
@@ -6,49 +8,18 @@ import {} from "../utils/mutations";
 // const endDateControl2 = document.getElementById('input[id="end"]');
 
 const Home = () => {
-  const [startDate, setStartDate] = useState();
-  const [endDate, setEndDate] = useState();
-  const dateBtn = document.getElementById("dateBtn");
-  const onStartDateChange = (e) => {
-    const startDateInput = e.target.value;
-    // console.log(passwordInput);
-    setStartDate(startDateInput);
-  };
-
-  const onEndDateChange = (e) => {
-    const endDateInput = e.target.value;
-    // console.log(userNameInput);
-    setEndDate(endDateInput);
-  };
-  function handleFormSubmit(event) {
-    event.preventDefault();
-    const startDateControl = document.getElementById("start").value.toString();
-    const endDateControl = document.getElementById("end").value.toString();
-    // console.log(startDateControl, +" : " + endDateControl);
-    const startD = startDateControl.replace(
-      /(\d\d\d\d)-(\d\d)-(\d\d)/,
-      "[$1,$2,$3]"
-    );
-    // console.log(startD);
-    // console.log(typeof startD);
-    var startD2 = JSON.stringify(startD);
-    // var startType = JSON.parse(startD2);
-    // console.log(typeof startType);
-    // console.log(startType);
-  }
-  // const endDateControl = document.querySelector('input[type="date"]');
   return (
     <div>
       <section>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta charSet="UTF-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
 
         <video
           className="relative z-[-1] w-auto min-w-full max-w-none"
           muted
-          autoplay="autoplay"
+          autoPlay="autoPlay"
           loop
         >
           <source src={lux} type="video/mp4" />
@@ -61,33 +32,15 @@ const Home = () => {
           <h1 className="text-white">MAKE A RESERVATION</h1>
           <div className="flex items-center border-b border-[rgba(207,181,59)] py-2">
             <div class="inline-block relative w-64 mr-4">
-              {/* <select class="block appearance-none w-full bg-black text-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+              <select class="block appearance-none w-full bg-black text-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
                 <option>Number of Rooms</option>
                 <option>1 Room</option>
                 <option>2 Rooms</option>
                 <option>3 Rooms</option>
-              </select> */}
-              <input
-                type="date"
-                id="start"
-                name="trip-start"
-                onChange={onStartDateChange}
-                value={startDate}
-                // min="2018-01-01"
-                // max="2018-12-31"
-              />
-              <input
-                type="date"
-                id="end"
-                name="trip-end"
-                onchange={onEndDateChange}
-                value={endDate}
-                // min="2018-01-01"
-                // max="2018-12-31"
-              />
-
+              </select>
               <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"></div>
             </div>
+
             <button
               className="flex-shrink-0 bg-gray-400 hover:bg-teal-700 border-[rgba(207,181,59)] hover:border-teal-700 text-sm border-4 text-black py-1 px-2 rounded"
               type="submit"
@@ -188,6 +141,58 @@ const Home = () => {
         <h1 className=" text-[48px] p-4 mt-10 text-[rgba(207,181,59)] font-amita font-bold pl-10">
           Activities & Events
         </h1>
+        {/* 
+        <div date-rangepicker className="flex items-center" id="dateRangePickerId">
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                  <svg
+                    aria-hidden="true"
+                    className="w-5 h-5 text-gray-500 dark:text-gray-400"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                      clipRule="evenodd"
+                    ></path>
+                  </svg>
+                </div>
+                <input
+                  id="start"
+                  name="start"
+                  type="text"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Select date start"
+                />
+              </div>
+              <span className="mx-4 text-gray-500">to</span>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                  <svg
+                    aria-hidden="true"
+                    className="w-5 h-5 text-gray-500 dark:text-gray-400"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                      clipRule="evenodd"
+                    ></path>
+                  </svg>
+                </div>
+                <input
+                  id="end"
+                  name="end"
+                  type="text"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Select date end"
+                />
+              </div>
+            </div> */}
         {/* <div className="flex">
           <div className="   bg-black text-white p-8 border-solid border-4 border-[rgba(207,181,59)]">
             <img
