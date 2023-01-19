@@ -11,7 +11,7 @@ const Navbar = () => {
   // console.log(useLoginContext());
   // alert(useLoginContext);
   return (
-    <nav className="w-fill flex  justify-between items-center navbar z-[5] bg-black py-2  text-[rgba(207,181,59)] font-amita ">
+    <nav className="w-fill flex  justify-between items-center navbar z-[5] bg-grey-900 py-2  text-[rgba(207,181,59)] font-amita ">
       <Modal onClose={handleOnClose} visible={signIn} />
      
       <Link
@@ -26,7 +26,7 @@ const Navbar = () => {
       <ul className="list-none sm:flex hidden justify-end items-center flex-1 z-[5]">
         <li>
           <Link
-            className={` cursor-pointer text-[20px] text-[rgba(207,181,59)]  mr-10`}
+            className={` cursor-pointer text-[20px] text-yellow-300  mr-10`}
             aria-current="page"
             to="/golfCourse"
           >
@@ -36,7 +36,7 @@ const Navbar = () => {
 
         <li>
           <Link
-            className={` cursor-pointer text-[20px] text-[rgba(207,181,59)]  mr-10`}
+            className={` cursor-pointer text-[20px] text-yellow-200  mr-10`}
             aria-current="page"
             to="/contact"
           >
@@ -45,7 +45,7 @@ const Navbar = () => {
         </li>
         <li>
           <Link
-            className={` cursor-pointer text-[20px] text-[rgba(207,181,59)]  mr-10`}
+            className={` cursor-pointer text-[20px] text-yellow-200  mr-10`}
             aria-current="page"
             to="/rooms"
           >
