@@ -44,7 +44,7 @@ const Home = () => {
       <section className="flex justify-center bg-grey-900 w-full pt-4">
         <form className="w-full max-w-sm mb-10">
           <h1 className="text-white">MAKE A RESERVATION</h1>
-          <div className="flex items-center border-b border-[rgba(207,181,59)] py-2">
+          <div className="flex items-center border-b border-yellow-500 py-2">
             <div className="inline-block relative w-64 mr-4">
               <select className="block appearance-none w-full bg-grey-900 text-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
                 <option>Number of Rooms</option>

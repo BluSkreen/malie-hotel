@@ -1,12 +1,20 @@
 import { useState, useEffect } from "react";
+import { useQuery } from "@apollo/client";
+import { QUERY_ROOMS } from "../utils/queries";
 
 const Rooms = () => {
   const [choiceKing, setChoiceKing] = useState(true);
   const [choiceQueen, setChoiceQueen] = useState(true);
   const [deluxeKing, setDeluxeKing] = useState(true);
   const [deluxeQueen, setDeluxeQueen] = useState(true);
-  const [executiveKing, setExecutiveKing] = useState(false);
+  const [executiveKing, setExecutiveKing] = useState(true);
   const [executiveQueen, setExecutiveQueen] = useState(true);
+
+    // if local storage has values for the query 
+        // then useQuery(the dates)
+        // change useState for each type of Rooms
+        // 
+    const 
 
   return (
     <div>
