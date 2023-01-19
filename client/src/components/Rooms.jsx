@@ -14,7 +14,7 @@ const Rooms = () => {
         // then useQuery(the dates)
         // change useState for each type of Rooms
         // 
-    const 
+    // const 
 
   return (
     <div className="bg-[rgba(207,181,59)] w-full overflow-hidden">
