@@ -48,11 +48,11 @@ const Footer = () => {
           </li>
           <li>
             <Link
-              // onClick={() => setSignIn(true)}
+              to="/food"
               className={` cursor-pointer text-[18px] text-[rgba(207,181,59)]  mr-10`}
               aria-current="page"
             >
-              Sign In
+              Eat
             </Link>
           </li>
         </ul>
@@ -107,7 +107,10 @@ const Footer = () => {
               </p>
               <p>
                 {" "}
-                <a href="https://github.com/NicoletteBoggs"> Nicolette's GitHub </a>
+                <a href="https://github.com/NicoletteBoggs">
+                  {" "}
+                  Nicolette's GitHub{" "}
+                </a>
               </p>
               <p>
                 {" "}

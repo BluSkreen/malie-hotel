@@ -1,7 +1,11 @@
 import React from "react";
+import { useEffect } from "react";
 // import localImage from "../assets/oceanBanner";
 
 const Food = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   return (
     <div>
       {/* intro photo */}
