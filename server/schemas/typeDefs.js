@@ -11,6 +11,7 @@ const typeDefs = gql`
     Credit_card_expiration: Int
     Credit_card_cvv: Int
     isAdmin: Boolean
+    orders: [Order]
   }
 
   type Room {
@@ -79,6 +80,12 @@ const typeDefs = gql`
     singleReservation(_id: ID, email: String): Reservation
     checkout(reservation: [ID]!): Checkout
     order(_id: ID!): Order
+    checkoutCard(
+      Credit_card_number: Int!
+      Credit_card_month: Int!
+      Credit_card_year: Int!
+      Credit_card_cvv: Int!
+    ): User
   }
 
   type Mutation {
@@ -92,7 +99,7 @@ const typeDefs = gql`
       Credit_card_cvv: Int
     ): Auth
     login(email: String!, password: String!): Auth
-    addOrder(reservation: [ID]): Order
+    addOrder(reservation: ID): Order
   }
 `;
 

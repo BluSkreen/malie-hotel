@@ -13,6 +13,19 @@ const resolvers = {
     users: async () => {
       return User.find();
     },
+    // checkoutCard: async (parent, { cardInfo }, context) => {
+    //   if (context.user) {
+    //     return User.findOneAndUpdate(context.user._id, {
+    //       $push: {
+    //         Credit_card_number: Credit_card_number,
+    //         Credit_card_month: Credit_card_month,
+    //         Credit_card_year: Credit_card_year,
+    //         Credit_card_cvv: Credit_card_cvv,
+    //       },
+    //     });
+    //     // return userData;
+    //   }
+    // },
 
     // TODO: Add numberOfRooms paramater
     filterRooms: async (
@@ -74,38 +87,48 @@ const resolvers = {
 
       return roomTypes;
     },
-    order: async (parent, { _id }, context) => {
-      if (context.user) {
-        const user = await User.findById(context.user._id).populate({
-          path: "orders.reservation",
-          // populate: "category",
-        });
+    // order: async (parent, { _id }, context) => {
+    //   if (context.user) {
+    //     const user = await User.findById(context.user._id).populate({
+    //       path: "orders.reservation",
+    //       // populate: "category",
+    //     });
 
-        return user.orders.id(_id);
-      }
+    //     return user.orders.id(_id);
+    //   }
 
-      throw new AuthenticationError("Not logged in");
-    },
+    //   throw new AuthenticationError("Not logged in");
+    // },
     checkout: async (parent, args, context) => {
-      const url = new URL(context.headers.referer).origin;
+      console.log(context.headers.referer);
+      const header = "localhost:3001";
+      // const url = new URL(context.headers.referer).origin;
+      const url = new URL(header).origin;
       const order = new Order({ reservation: args.reservation });
       const line_items = [];
 
-      const { reservation } = await order.populate("Reservation");
+      const { reservation } = await order.populate("reservation");
 
       // for (let i = 0; i < reservation.length; i++) {
-      const reservations = await stripe.product.create({
-        name: reservations[i].name,
-        cost: reservations[i].cost,
+      const reservations = await stripe.products.create({
+        // name: reservation.name,
+        name: "reservation",
+        // price: reservation.cost,
+
         // images: [`${url}/images/${reservations[i].image}`],
       });
+      // Find user based off the the context
+      // write the credit info into model
 
       const price = await stripe.prices.create({
-        reservations: reservations.id,
-        cost: reservations[i].cost,
+        // product: reservations.id,
+        product: args.reservation._id,
+        unit_amount: 100,
+        // cost: reservation.cost,
+        // unit_amount: reservations.price * 100,
         currency: "usd",
       });
-
+      console.log(price);
       line_items.push({
         price: price.id,
         quantity: 1,
@@ -165,21 +188,20 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-  },
+    // addOrder: async (parent, { user }, context) => {
+    //   console.log(args);
+    //   // if (context.user) {
+    //   const order = new Order(args.reservation);
+    //   const userID = "63c702f4bd5534f73956af44";
+    //   await User.findByIdAndUpdate(context.userID, {
+    //     $push: { orders: order },
+    //   });
+    //   console.log(order);
+    //   return order;
+    //   // }
 
-  addOrder: async (parent, args, context) => {
-    console.log(args);
-    if (context.user) {
-      // const order = new Order(args.reservation);
-      const userID = "63c702f4bd5534f73956af44";
-      await User.findByIdAndUpdate(userID, {
-        $push: { orders: order },
-      });
-      console.log(order);
-      // return order;
-    }
-
-    throw new AuthenticationError("Not logged in");
+    //   // throw new AuthenticationError("Not logged in");
+    // },
   },
 };
 
