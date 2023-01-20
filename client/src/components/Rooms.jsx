@@ -10,14 +10,14 @@ const Rooms = () => {
   const [executiveKing, setExecutiveKing] = useState(true);
   const [executiveQueen, setExecutiveQueen] = useState(true);
 
-    // if local storage has values for the query 
-        // then useQuery(the dates)
-        // change useState for each type of Rooms
-        // 
-    // const 
+  // if local storage has values for the query
+  // then useQuery(the dates)
+  // change useState for each type of Rooms
+  //
+  // const
 
   return (
-    <div className="bg-[rgba(207,181,59)] w-full overflow-hidden">
+    <div className="bg-white w-full overflow-hidden">
       <form className=" bg-black p-4 m-4 rounded-xl shadow-lg shadow-black">
         <div className="flex justify-around pt-4">
           <div className="inline-block relative w-64 ">

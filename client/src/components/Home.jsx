@@ -109,7 +109,7 @@ const Home = () => {
             </div>
 
             <button
-              className="flex-shrink-0 bg-gray-400 hover:bg-teal-700 border-[rgba(207,181,59)] hover:border-teal-700 text-sm border-4 text-black py-1 px-2 rounded"
+              className="flex-shrink-0 bg-[#d2b947] hover:bg-[#dcc970] border-[rgba(207,181,59)]  text-sm border-4 text-black py-1 px-2 rounded"
               type="submit"
             >
               Check Availability
@@ -119,53 +119,37 @@ const Home = () => {
       </section>
 
       <section className="p-4 mt-10">
-        <h1 className="text-[48px] font-amita font-bold pl-10">
+        <h1 className="text-[48px] font-amita font-bold pl-10 drop-shadow-[2px_2px_.5px_#d2b947]">
           Come Stay with Us
         </h1>
         <div className="flex flex-wrap justify-around mt-6 mb-6">
-          <p className="max-w-[680px] text-[18px] mt-[70px]">
-            Inspired by both the beauty of the landscape and the energy of the
-            city, The Ritz-Carlton, Denver welcomes guests with its own
-            interpretation of modern luxury. Here, guests can retreat to some of
-            Denver’s most spacious accommodations while enjoying views of the
-            skyline or Rocky Mountains. Other amenities are equally rooted in
-            the region, including luxury spa rituals, elevated steakhouse dining
-            at ELWAY'S Downtown and 13,000 sq ft of event space. Inspired by
-            both the beauty of the landscape and the energy of the city, The
-            Ritz-Carlton, Denver welcomes guests with its own interpretation of
-            modern luxury. Here, guests can retreat to some of Denver’s most
-            spacious accommodations while enjoying views of the skyline or Rocky
-            Mountains. Other amenities are equally rooted in the region,
-            including luxury spa rituals, elevated steakhouse dining at ELWAY'S
-            Downtown and 13,000 sq ft of event space.
+          <p className="max-w-[680px] text-[18px] mt-[70px] font-poppins">
+          Enjoy a desirable location next to Ala Moana Center, the world's largest open-air shopping mall. Stay just steps from Hawaii's most prestigious shopping venue showcasing fashion brands, premier department stores, and specialty retailers that include Louis Vuitton, Nordstrom and Williams-Sonoma. TripAdvisor reviewers rate the Melie among the top 20 hotels in Hawaii for travelers. Guests have access to complimentary Wi-Fi, a 24/7 business center, and extensive meeting and banquet facilities. The hotel's deluxe accommodations and superb location, just a 5-minute walk from the Hawaii Convention Center, are preferred by conference attendees. The Malie is 1.5 miles from Waikiki Beach, 2.5 miles from downtown Honolulu's financial center and government offices, and a quick 8 miles from Honolulu International Airport.
           </p>
           <img
             src="https://images.unsplash.com/reserve/8T8J12VQxyqCiQFGa2ct_bahamas-atlantis.jpg?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTR8fHRyb3BpY2FsJTIwaG90ZWx8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"
             alt="hotel"
-            className="border-solid border-[rgba(207,181,59)] border-4 rounded max-w-[700px] "
+            className="border-solid border-[rgba(207,181,59)] border-4 rounded max-w-[700px] drop-shadow-[4px_4px_10px_rgba(0,0,0)]"
           />
         </div>
       </section>
 
       <section className="bg-[rgba(207,181,59)] text-white mt-10 p-4 pb-10">
-        <h1 className="text-[48px] font-amita font-bold mt-10 pl-10">
+        <h1 className="text-[48px] font-amita font-bold mt-10 pl-10 drop-shadow-[2px_2px_.5px_black]">
           About Our Rooms
         </h1>
-        <div className="flex flex-wrap justify-around mt-10 rounded">
+        <div className="flex flex-wrap justify-around mt-10 rounded drop-shadow-[4px_4px_10px_rgba(0,0,0)] font-poppins">
           <div>
             <img
               src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aG90ZWwlMjByb29tfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
               alt="hotel room"
               className="max-w-[450px] border-solid border-4 border-white mb-4"
             />
-            <h2 className="text-[24px] text-center underline">
+            <h2 className="text-[24px] text-center underline py-4 font-bold">
               Choice Guest Room
             </h2>
             <p className="max-w-[450px]">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
-              esse eos eius quod maxime, repellat facere quos reiciendis
-              consequatur est cum voluptatibus quidem. At nobis nostrum ipsum,
-              quisquam non officiis.
+            Suitable for short or longer stays, the Choice Guest Rooms are perfect for couples wanting a comfortable base to explore Hawaii. All rooms come with the choice of a king bed, or two queen beds. All rooms also include air conditioning, coffee maker, daily housekeeping, microwave oven and LCD TV with cable channels. And just in case you need to check in with the office or family, there's also complimentary WiFi access so you can stay connected.
             </p>
           </div>
           <div>
@@ -174,14 +158,11 @@ const Home = () => {
               alt="hotel room"
               className="max-w-[450px] border-solid border-4 border-white mb-4"
             />
-            <h2 className="text-[24px] text-center underline">
+            <h2 className="text-[24px] text-center underline py-4 font-bold">
               Deluxe Guest Room
             </h2>
             <p className="max-w-[450px]">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
-              esse eos eius quod maxime, repellat facere quos reiciendis
-              consequatur est cum voluptatibus quidem. At nobis nostrum ipsum,
-              quisquam non officiis.
+            Open spacious contemporary studio-style suite offering either a King bed or two Queen beds, with a kitchenette, dining table and a lanai (balcony) that provides  sweeping views of either the Yacht Harbor and Pacific Ocean or colorful city, majestic mountains and Pacific Ocean. All rooms also include air conditioning, coffee maker, daily housekeeping, microwave oven and LCD TV with cable channels. And just in case you need to check in with the office or family, there's also complimentary WiFi access so you can stay connected.
             </p>
           </div>
           <div>
@@ -190,21 +171,18 @@ const Home = () => {
               alt="hotel room"
               className="max-w-[450px] border-solid border-4 border-white mb-4"
             />
-            <h2 className="text-[24px] text-center underline">
+            <h2 className="text-[24px] text-center underline py-4 font-bold">
               Executive Guest Room
             </h2>
-            <p className="max-w-[450px]">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
-              esse eos eius quod maxime, repellat facere quos reiciendis
-              consequatur est cum voluptatibus quidem. At nobis nostrum ipsum,
-              quisquam non officiis.
+            <p className="max-w-[450px] pb-10">
+            These rooms are highly sought after, offering sweeping views of the wide blue Pacific, a balcony that offers the perfect vantage point to drink them all in, and spacious surrounds that can easily accommodate up to four people, complete with a luxurious king bed or two queen beds. All rooms feature a bar fridge and tea/coffee making facilities and complimentary in-room entertainment options provided by either WiFi or cable television.
             </p>
           </div>
         </div>
       </section>
 
       <section className=" bg-grey-900 text-[30px]">
-        <h1 className=" text-[48px] p-4 pt-10 text-[rgba(207,181,59)] font-amita font-bold pl-10">
+        <h1 className=" text-[48px] p-4 pt-10 text-[rgba(207,181,59)] font-amita font-bold pl-10 drop-shadow-[2px_2px_.5px_white]">
           Activities & Events
         </h1>
         {/* 
