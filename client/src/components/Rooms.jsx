@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useDateContext } from "../utils/DateContext";
 
 const Rooms = () => {
   const [choiceKing, setChoiceKing] = useState(true);
@@ -8,6 +9,16 @@ const Rooms = () => {
   const [executiveKing, setExecutiveKing] = useState(true);
   const [executiveQueen, setExecutiveQueen] = useState(true);
 
+  const {
+    startDate,
+    setStartDate,
+    endDate,
+    setEndDate,
+    onStartDateChange,
+    onEndDateChange,
+    handleFormSubmit,
+  } = useDateContext();
+  console.log(endDate, startDate);
   return (
     <div className="bg-[rgba(207,181,59)] w-full overflow-hidden">
       <form className=" bg-black p-4 m-4 rounded-xl shadow-lg shadow-black">

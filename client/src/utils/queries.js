@@ -31,3 +31,10 @@ export const GET_USERS = gql`
     }
   }
 `;
+export const QUERY_CHECKOUT = gql`
+  query getCheckout($room: [ID]!) {
+    checkout(room: $room, description: $description, price: $price) {
+      session
+    }
+  }
+`;

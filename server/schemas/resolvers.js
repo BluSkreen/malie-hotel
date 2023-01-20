@@ -99,21 +99,36 @@ const resolvers = {
 
     //   throw new AuthenticationError("Not logged in");
     // },
-    checkout: async (parent, args, context) => {
+    checkout: async (parent, { room, cost, description }, context) => {
       // console.log(context.headers.referer);
       const header = "https://localhost:3001";
       // const url = new URL(context.headers.referer).origin;
       const url = new URL(header).origin;
       const order = new Order({ reservation: args.reservation });
       const line_items = [];
+      console.log("helpME: " + order);
 
-      const { reservation } = await order.populate("reservation");
-      console.log("sod");
+      // const { reservation } = await order.populate("reservation");
+      // const updateReservation = await Reservation.create(args.reservation);
+      // console.log("updateReservation: " + updateReservation);
+      // console.log("sod");
+      // const resData = {
+      //   roomNumbers: [202],
+      //   startDate: [2023, 4, 24],
+      //   endDate: [2023, 4, 25],
+      //   cost: 100,
+      //   accomodations: ["TV", "hotub"],
+      //   email: "jason@gg.gg",
+      // };
+      // const updateReservation = await Reservation.create({ resData });
+      // console.log(updateReservation);
 
       // for (let i = 0; i < reservation.length; i++) {
       const reservations = await stripe.products.create({
         // name: reservation.name,
-        name: "reservation",
+        name: "reservation" + " : " + room,
+        unit_price: cost,
+        description: description,
         // price: reservation.cost,
 
         // images: [`${url}/images/${reservations[i].image}`],
@@ -130,6 +145,7 @@ const resolvers = {
         // unit_amount: reservations.price * 100,
         currency: "usd",
       });
+
       console.log("hello");
       console.log(price);
 
