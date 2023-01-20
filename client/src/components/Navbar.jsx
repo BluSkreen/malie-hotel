@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { close, logo, menu } from "../assets";
 import { Modal } from "../components";
+import Auth from "../utils/auth";
 // import { useLoginContext } from "../utils/LoginContext";
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
@@ -60,13 +61,23 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link
-            onClick={() => setSignIn(true)}
-            className={` cursor-pointer text-[20px] text-[#d2b947] drop-shadow-[1px_1px_.5px_white] mr-10 hover:text-[#faf7ab] focus:text-[#faf7ab]`}
-            aria-current="page"
-          >
-            Sign In
-          </Link>
+          {Auth.loggedIn() ? (
+            <Link
+              onClick={Auth.logout}
+              className={` cursor-pointer text-[20px] text-[#d2b947] drop-shadow-[1px_1px_.5px_white] mr-10 hover:text-[#faf7ab] focus:text-[#faf7ab]`}
+              aria-current="page"
+            >
+              Logout
+            </Link>
+          ) : (
+            <Link
+              onClick={() => setSignIn(true)}
+              className={` cursor-pointer text-[20px] text-[#d2b947] drop-shadow-[1px_1px_.5px_white] mr-10 hover:text-[#faf7ab] focus:text-[#faf7ab]`}
+              aria-current="page"
+            >
+              Sign In
+            </Link>
+          )}
         </li>
       </ul>
 
