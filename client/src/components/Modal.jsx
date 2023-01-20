@@ -28,16 +28,19 @@ const Modal = ({ visible, onClose }) => {
     event.preventDefault();
     try {
       // console.log("email " + email + "password: " + password);
-
-      const { data } = modalSignIn
-        ? await login({
-            variables: { email, password },
-          })
-        : await addUser({
-            variables: { email, password, username },
-          });
-
-      Auth.login(data.login.token);
+      if (modalSignIn) {
+        let { data } = await login({
+          variables: { email, password },
+        });
+        // localStorage.setItem("data", JSON.stringify(data));
+        Auth.login(data.login.token);
+      } else {
+        let { data } = await addUser({
+          variables: { email, password, username },
+        });
+        // localStorage.setItem("data", JSON.stringify(data));
+        Auth.login(data.addUser.token);
+      }
     } catch (err) {
       console.error(err);
     }
@@ -66,9 +69,15 @@ const Modal = ({ visible, onClose }) => {
               src={logo}
               alt="Your Company"
             />
-            <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-white">
-              Sign in to your account
-            </h2>
+            {modalSignIn ? (
+              <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-white">
+                Sign in to your account
+              </h2>
+            ) : (
+              <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-white">
+                Create your account
+              </h2>
+            )}
             <p className="mt-2 text-center text-sm text-gray-600"></p>
           </div>
           <form
@@ -229,6 +238,23 @@ const Modal = ({ visible, onClose }) => {
               <>
                 <div>
                   <button
+                    type="submit"
+                    className="group relative flex w-full justify-center rounded-md border border-transparent bg-[rgba(207,181,59)] py-2 px-4 text-sm font-medium text-black hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  >
+                    <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+                      {/* <LockClosedIcon className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" aria-hidden="true" /> */}
+                    </span>
+                    Create Account
+                  </button>
+                </div>
+                <p
+                  className="text-center
+                "
+                >
+                  Already a Member?
+                </p>
+                <div>
+                  <button
                     type="button"
                     className="group relative flex w-full justify-center rounded-md border border-transparent bg-[rgba(207,181,59)] py-2 px-4 text-sm font-medium text-black hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                     onClick={() => setModalSignIn(true)}
@@ -236,24 +262,7 @@ const Modal = ({ visible, onClose }) => {
                     <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                       {/* <LockClosedIcon className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" aria-hidden="true" /> */}
                     </span>
-                    Sign in
-                  </button>
-                </div>
-                <p
-                  className="text-center
-                "
-                >
-                  Not a member?
-                </p>
-                <div>
-                  <button
-                    type="submit"
-                    className="group relative flex w-full justify-center rounded-md border border-transparent bg-[rgba(207,181,59)] py-2 px-4 text-sm font-medium text-black hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                  >
-                    <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-                      {/* <LockClosedIcon className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" aria-hidden="true" /> */}
-                    </span>
-                    Create an Account!
+                    Login!
                   </button>
                 </div>
               </>
