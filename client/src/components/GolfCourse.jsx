@@ -5,7 +5,7 @@ const GolfCourse = () => {
     <div>
       {/* section for carousel */}
       <section className="bg-[rgba(207,181,59)] text-white pt-5 pb-20">
-        <h1 className="text-[48px] font-amita font-bold pl-10 pb-5">
+        <h1 className="text-[48px] font-amita font-bold pl-10 pb-5 drop-shadow-[2px_2px_.5px_black]">
           Golfing at your Dream Resort
         </h1>
         <div
@@ -117,11 +117,11 @@ const GolfCourse = () => {
 
       {/* section for about */}
       <section className="p-4 bg-stone-300">
-        <h1 className="text-[48px] font-amita font-bold pl-10">
-          THE GOLF TRIP OF A LIFETIME
+        <h1 className="text-[48px] font-amita font-bold pt-4 pl-10 drop-shadow-[2px_2px_.5px_#d2b947]">
+          The Golf Trip of a Lifetime
         </h1>
         <div className="flex flex-wrap justify-around mt-6 mb-6">
-          <p className="max-w-[800px] text-[25px] mt-[100px]">
+          <p className="max-w-[800px] text-[25px] mt-[100px] font-poppins">
             Malie Golf Club is a world-class experience that you have to play to
             believe. Perched above the World's most magnificent beaches, The
             Resort at Malie enjoys nearly 300 days of sun each year, making it
@@ -195,11 +195,11 @@ const GolfCourse = () => {
       <section className="p-4 bg-stone-300">
         {/* <div className="container px-5 py-2 mx-auto lg:pt-24 lg:px-32"> */}
         {/* <div className="mt-5 p-4 pb-10"> */}
-        <h1 className="text-[48px] font-amita font-bold pl-10">
-          ROYAL GOLFING EXPERIENCE
+        <h1 className="text-[48px] font-amita font-bold pt-10 pl-10 drop-shadow-[2px_2px_.5px_#d2b947]">
+          Royal Golfing Experience
         </h1>
         <div className="flex flex-wrap justify-around mt-6 mb-6">
-          <p className="max-w-[800px] text-[25px] mt-[100px]">
+          <p className="max-w-[800px] text-[23px] mt-[100px] font-poppins">
             36 holes of world-class golf weave their way through stunning
             terrain and breathtaking vistas, with every lie, every shot and
             every hole designed to perfectly complement our coastal Malieian

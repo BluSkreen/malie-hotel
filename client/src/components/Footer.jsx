@@ -6,7 +6,7 @@ const Footer = () => {
     <div className="bg-black text-white font-poppins pt-10 ">
       <div className="flex flex-col items-center justify-center">
         <div>
-          <p className="font-poppins text-[28px] pb-2">
+          <p className="font-poppins text-[28px] pb-2 text-[rgba(207,181,59)] ">
             222 Malie Way | Maui, HI 96729 | 808.123.9876
           </p>
         </div>
@@ -58,7 +58,7 @@ const Footer = () => {
         </ul>
       </div>
       <div>
-        <div className="flex justify-around py-10 text-center">
+        <div className="flex justify-around py-10 text-center text-[rgba(207,181,59)]">
           <div className="">
             <p className="underline">CAREERS</p>
             <div className="text-[12px]">
