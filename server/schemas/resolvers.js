@@ -100,14 +100,15 @@ const resolvers = {
     //   throw new AuthenticationError("Not logged in");
     // },
     checkout: async (parent, args, context) => {
-      console.log(context.headers.referer);
-      const header = "localhost:3001";
+      // console.log(context.headers.referer);
+      const header = "https://localhost:3001";
       // const url = new URL(context.headers.referer).origin;
       const url = new URL(header).origin;
       const order = new Order({ reservation: args.reservation });
       const line_items = [];
 
       const { reservation } = await order.populate("reservation");
+      console.log("sod");
 
       // for (let i = 0; i < reservation.length; i++) {
       const reservations = await stripe.products.create({
@@ -119,16 +120,19 @@ const resolvers = {
       });
       // Find user based off the the context
       // write the credit info into model
-
+      // console.log("sid", args.reservation._id);
+      console.log(reservations);
       const price = await stripe.prices.create({
         // product: reservations.id,
-        product: args.reservation._id,
+        product: reservations.id,
         unit_amount: 100,
         // cost: reservation.cost,
         // unit_amount: reservations.price * 100,
         currency: "usd",
       });
+      console.log("hello");
       console.log(price);
+
       line_items.push({
         price: price.id,
         quantity: 1,
