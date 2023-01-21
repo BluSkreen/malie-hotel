@@ -3,6 +3,9 @@ import { useQuery } from "@apollo/client";
 import { QUERY_ROOMS } from "../utils/queries";
 
 const Rooms = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   const [choiceKing, setChoiceKing] = useState(true);
   const [choiceQueen, setChoiceQueen] = useState(true);
   const [deluxeKing, setDeluxeKing] = useState(true);
