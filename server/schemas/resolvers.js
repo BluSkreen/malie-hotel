@@ -34,9 +34,17 @@ const resolvers = {
     ) => {
       // date format is a stringified array --> "[yyyy,mm,dd]"
       let queryStartDate = new Date(startDate);
+            //console.log(startDate);
+            console.log(queryStartDate);
+            console.log("----");
       queryStartDate = queryStartDate.valueOf();
       let queryEndDate = new Date(endDate);
+            //console.log(endDate);
+            console.log(queryEndDate);
+            console.log("----");
       queryEndDate = queryEndDate.valueOf();
+        //console.log(queryStartDate);
+        //console.log(queryEndDate);
 
       let roomFilter = {};
       // if (hotelId != null) { roomFilter["hotelId"] = hotelId };
@@ -49,41 +57,68 @@ const resolvers = {
         choiceQueen: false,
         deluxKing: false,
         deluxQueen: false,
-        exclusiveKing: false,
-        exclusiveQueen: false,
+        executiveKing: false,
+        executiveQueen: false,
+        availableRooms: [],
       };
+
+      //if(startDate.length == 0 || endDate.length == 0){
+      //    console.log("why");
+      //    return roomTypes;
+      //}
 
       // TODO: use room list for multi room search
       let roomList = [];
 
       for await (let room of roomFilter) {
+        if(roomTypes.choiceKing ===  true
+            && roomTypes.choiceQueen ===  true
+            && roomTypes.deluxKing ===  true
+            && roomTypes.deluxQueen ===  true
+            && roomTypes.executiveKing ===  true
+            && roomTypes.executiveQueen === true) {
+            // break;
+        }
         let available = true;
         for await (let reservation of room.reservations) {
           // use the epoch to check difference in time
           let resStart = reservation.startDate;
           resStart = new Date(resStart);
+            // console.log("'-----");
+            // console.log(resStart);
           resStart = resStart.valueOf();
           let resEnd = reservation.endDate;
           resEnd = new Date(resEnd);
+            // console.log(resEnd);
+            // console.log("----");
           resEnd = resEnd.valueOf();
+          // console.log(resStart, resEnd);
+          // console.log(reservation);
 
           // The reservation must be before or after the query date
-          if (resStart < queryStartDate && !(resEnd <= queryEndDate)) {
-            available = false;
-            console.log("bad");
-            break;
-          } else if (!resStart > queryEndDate) {
-            available = false;
-            console.log("bad");
-            break;
+          if (resStart < queryStartDate && resEnd <= queryStartDate){
+              // console.log("good");
+              // console.log(reservation)
+          } else if (resStart >= queryEndDate) {
+              // console.log("good");
+              // console.log(reservation)
+          } else {
+              // console.log(room)
+              // console.log("bad");
+              // console.log(reservation)
+              available = false;
           }
         }
-        if (available === true) {
-          let roomType = room.title;
+        let roomType = room.title;
+          // console.log(room);
+        if (available === true && roomTypes[roomType] !== true) {
           roomList.push(room);
-          roomTypes[roomType] = true;
+          roomTypes[`${roomType}`] = true;
+          roomTypes.availableRooms.push(room);
+// && roomTypes[roomType] !== true
         }
       } // for loop
+      // console.log(roomTypes);
 
       return roomTypes;
     },

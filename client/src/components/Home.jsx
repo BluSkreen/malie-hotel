@@ -3,21 +3,25 @@ import React, { useState } from "react";
 import { useDateContext } from "../utils/DateContext";
 import { useMutation, useQuery } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
+import { checkDEV } from "@apollo/client/utilities/globals";
 
 const Home = () => {
   const navigate = useNavigate();
-  const {
-    startDate,
-    setStartDate,
-    endDate,
-    setEndDate,
+  const {startDateStr,
+      setStartDateStr, 
+      endDateStr,
+      setEndDateStr,
+      startDateArr,
+      setStartDateArr,
+      endDateArr,
+      setEndDateArr,
     onStartDateChange,
     onEndDateChange,
     // handleFormSubmit,
   } = useDateContext();
 
   function checkDates() {
-    if (startDate !== "" && endDate !== "") {
+    if (startDateStr !== "" && endDateStr !== "") {
       //   <Navigate to="/rooms" replace={true} />;
       navigate("/rooms");
     } else {
@@ -27,28 +31,25 @@ const Home = () => {
   }
   function handleFormSubmit(event) {
     event.preventDefault();
-    const startDateControl = document.getElementById("start").value.toString();
-    const endDateControl = document.getElementById("end").value.toString();
+    const startDateControl = document.getElementById("start").value
+    const endDateControl = document.getElementById("end").value
 
-    const startD = startDateControl.replace(
-      /(\d\d\d\d)-(\d\d)-(\d\d)/,
-      "[$1,$2,$3]"
-    );
-    const endD = endDateControl.replace(
-      /(\d\d\d\d)-(\d\d)-(\d\d)/,
-      "[$1,$2,$3]"
-    );
+      setStartDateStr(startDateControl);
+      setEndDateStr(endDateControl);
+        setStartDateArr([
+            parseInt(startDateControl.split("-")[0]),
+            parseInt(startDateControl.split("-")[1]),
+            parseInt(startDateControl.split("-")[2])
+        ])
+        setEndDateArr([
+            parseInt(endDateControl.split("-")[0]),
+            parseInt(endDateControl.split("-")[1]),
+            parseInt(endDateControl.split("-")[2])
+        ])
+      checkDates();
+      // console.log(startDateArr);
+      // console.log(endDateArr);
 
-    const obj = {
-      endDate: startD,
-      startDate: endD,
-    };
-
-    localStorage.setItem("saveDates", JSON.stringify(obj));
-    console.log(localStorage.getItem("saveDates"));
-    checkDates();
-    setEndDate("");
-    setStartDate("");
   }
   return (
     <div>
@@ -79,7 +80,7 @@ const Home = () => {
                 id="start"
                 name="trip-start"
                 onChange={onStartDateChange}
-                value={startDate}
+                value={startDateStr}
                 // min="2018-01-01"
                 // max="2018-12-31"
               />
@@ -89,7 +90,7 @@ const Home = () => {
                 id="end"
                 name="trip-end"
                 onChange={onEndDateChange}
-                value={endDate}
+                value={endDateStr}
                 // min="2018-01-01"
                 // max="2018-12-31"
               />

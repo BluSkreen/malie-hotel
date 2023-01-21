@@ -13,21 +13,37 @@ export const useDateContext = () => useContext(DateContext);
 // import { Rooms } from "../components/Rooms";
 // The provider is responsible for creating our state, updating the state, and persisting values to the children
 export const DateProvider = ({ children }) => {
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const [startDateStr, setStartDateStr] = useState([]);
+  const [endDateStr, setEndDateStr] = useState([]);
+  const [startDateArr, setStartDateArr] = useState([]);
+  const [endDateArr, setEndDateArr] = useState([]);
 
   //   const [username, setUsername] = useState("");
 
   const onStartDateChange = (e) => {
     const startDateInput = e.target.value;
+      // console.log(startDateInput);
 
-    setStartDate(startDateInput);
+      setStartDateStr(startDateInput);
+        //setStartDateArr([
+        //    parseInt(startDateInput.split("-")[0]),
+        //    parseInt(startDateInput.split("-")[1]),
+        //    parseInt(startDateInput.split("-")[2])
+        //])
+        //console.log(startDateArr);
   };
 
   const onEndDateChange = (e) => {
     const endDateInput = e.target.value;
+      // console.log(endDateInput);
+      setEndDateStr(endDateInput);
+        //setEndDateArr([
+        //    parseInt(endDateInput.split("-")[0]),
+        //    parseInt(endDateInput.split("-")[1]),
+        //    parseInt(endDateInput.split("-")[2])
+        //])
+        //console.log(endDateArr);
 
-    setEndDate(endDateInput);
   };
   //   function checkDates() {
   //     if (startDate !== "" && endDate !== "") {
@@ -42,11 +58,14 @@ export const DateProvider = ({ children }) => {
   return (
     <>
       <DateContext.Provider
-        value={{
-          startDate,
-          setStartDate,
-          endDate,
-          setEndDate,
+        value={{startDateStr,
+      setStartDateStr, 
+      endDateStr,
+      setEndDateStr,
+      startDateArr,
+      setStartDateArr,
+      endDateArr,
+      setEndDateArr,
           onStartDateChange,
           onEndDateChange,
           //   handleFormSubmit,
