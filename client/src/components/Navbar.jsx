@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { close, logo, menu } from "../assets";
 import { Modal } from "../components";
+import Auth from "../utils/auth";
 // import { useLoginContext } from "../utils/LoginContext";
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
@@ -13,7 +14,7 @@ const Navbar = () => {
   return (
     <nav className="w-fill flex  justify-between items-center navbar z-[5] bg-black py-2  text-[rgba(207,181,59)] font-amita ">
       <Modal onClose={handleOnClose} visible={signIn} />
-      {/* <LoginProvider value={{ email, setEmail }}> */}
+
       <Link
         className={`font-skranji  cursor-pointer text-[20px] text-white mr-10`}
         aria-current="page"
@@ -21,23 +22,29 @@ const Navbar = () => {
       >
         <img src={logo} alt="hoobank" className="w-[280px] h-[80px] " />
       </Link>
-      {/* </LoginProvider> */}
-      {/* <h1 className="text-white font-rubik text-[40px]">Erich Ebbinghaus</h1> */}
 
       <ul className="list-none sm:flex hidden justify-end items-center flex-1 z-[5]">
         <li>
           <Link
-            className={` cursor-pointer text-[20px] text-[rgba(207,181,59)]  mr-10`}
+            className={` cursor-pointer text-[20px] text-[#d2b947] drop-shadow-[1px_1px_.5px_white] mr-10 hover:text-[#faf7ab] focus:text-[#faf7ab]`}
             aria-current="page"
             to="/golfCourse"
           >
             Golf Course
           </Link>
         </li>
-
         <li>
           <Link
-            className={` cursor-pointer text-[20px] text-[rgba(207,181,59)]  mr-10`}
+            className={` cursor-pointer text-[20px] text-[#d2b947] drop-shadow-[1px_1px_.5px_white] mr-10 hover:text-[#faf7ab] focus:text-[#faf7ab] `}
+            aria-current="page"
+            to="/food"
+          >
+            Fine Dining
+          </Link>
+        </li>
+        <li>
+          <Link
+            className={` cursor-pointer text-[20px] text-[#d2b947] drop-shadow-[1px_1px_.5px_white]  mr-10 hover:text-[#faf7ab] focus:text-[#faf7ab]`}
             aria-current="page"
             to="/contact"
           >
@@ -46,7 +53,7 @@ const Navbar = () => {
         </li>
         <li>
           <Link
-            className={` cursor-pointer text-[20px] text-[rgba(207,181,59)]  mr-10`}
+            className={` cursor-pointer text-[20px] text-[#d2b947] drop-shadow-[1px_1px_.5px_white] mr-10 hover:text-[#faf7ab] focus:text-[#faf7ab]`}
             aria-current="page"
             to="/rooms"
           >
@@ -54,14 +61,23 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link
-            onClick={() => setSignIn(true)}
-            className={` cursor-pointer text-[20px] text-[rgba(207,181,59)]  mr-10`}
-            aria-current="page"
-            // to="/portfolio"
-          >
-            Sign In
-          </Link>
+          {Auth.loggedIn() ? (
+            <Link
+              onClick={Auth.logout}
+              className={` cursor-pointer text-[20px] text-[#d2b947] drop-shadow-[1px_1px_.5px_white] mr-10 hover:text-[#faf7ab] focus:text-[#faf7ab]`}
+              aria-current="page"
+            >
+              Logout
+            </Link>
+          ) : (
+            <Link
+              onClick={() => setSignIn(true)}
+              className={` cursor-pointer text-[20px] text-[#d2b947] drop-shadow-[1px_1px_.5px_white] mr-10 hover:text-[#faf7ab] focus:text-[#faf7ab]`}
+              aria-current="page"
+            >
+              Sign In
+            </Link>
+          )}
         </li>
       </ul>
 

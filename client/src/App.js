@@ -1,4 +1,13 @@
-import { Navbar, Home, Footer, GolfCourse, Rooms, Payment } from "./components";
+import {
+  Navbar,
+  Home,
+  Footer,
+  GolfCourse,
+  Rooms,
+  Payment,
+  Food,
+  Admin,
+} from "./components";
 
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -47,6 +56,8 @@ function App() {
                 <Route exact path="/golfCourse" element={<GolfCourse />} />
                 <Route exact path="/rooms" element={<Rooms />} />
                 <Route exact path="/payment" element={<Payment />} />
+                <Route exact path="/food" element={<Food />} />
+                <Route exact path="/admin" element={<Admin />} />
               </Routes>
 
               <Footer />

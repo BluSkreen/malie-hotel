@@ -100,13 +100,15 @@ const resolvers = {
     //   throw new AuthenticationError("Not logged in");
     // },
     checkout: async (parent, { room, cost, description }, context) => {
+      console.log("Hi Sid: " + room, cost, description);
+      console.log(context.headers.referer);
+      // const header = "https://localhost:3001";
+      const url = new URL(context.headers.referer).origin;
       // console.log(context.headers.referer);
-      const header = "https://localhost:3001";
-      // const url = new URL(context.headers.referer).origin;
-      const url = new URL(header).origin;
-      const order = new Order({ reservation: args.reservation });
+      // const url = new URL(header).origin;
+      // const order = new Order({ reservation: args.reservation });
       const line_items = [];
-      console.log("helpME: " + order);
+      // console.log("helpME: " + order);
 
       // const { reservation } = await order.populate("reservation");
       // const updateReservation = await Reservation.create(args.reservation);
@@ -127,7 +129,7 @@ const resolvers = {
       const reservations = await stripe.products.create({
         // name: reservation.name,
         name: "reservation" + " : " + room,
-        unit_price: cost,
+        // default_price_data: cost,
         description: description,
         // price: reservation.cost,
 
@@ -140,14 +142,14 @@ const resolvers = {
       const price = await stripe.prices.create({
         // product: reservations.id,
         product: reservations.id,
-        unit_amount: 100,
+        unit_amount: 100 * 100,
         // cost: reservation.cost,
         // unit_amount: reservations.price * 100,
         currency: "usd",
       });
 
-      console.log("hello");
-      console.log(price);
+      // console.log("hello");
+      // console.log(price);
 
       line_items.push({
         price: price.id,
@@ -159,9 +161,27 @@ const resolvers = {
         payment_method_types: ["card"],
         line_items,
         mode: "payment",
+
         success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${url}/`,
       });
+      // if (session.success_url == "complete") {
+      //   console.log("success");
+      // }
+      if (session) {
+        await Reservation.create({
+          roomNumbers: room,
+
+          startDate: [2021, 11, 23],
+          endDate: [2021, 11, 24],
+          cost: cost,
+          accomodations: ["Tv"],
+          email: context.user.email,
+        });
+        console.log("/////////////////////////////");
+        console.log(session);
+        console.log("/////////////////////////////");
+      }
 
       return { session: session.id };
     },
@@ -199,7 +219,7 @@ const resolvers = {
       }
 
       const correctPw = await user.isCorrectPassword(password);
-      console.log("Hi + " + email, password);
+      // console.log("Hi + " + email, password);
 
       if (!correctPw) {
         throw new AuthenticationError("Incorrect password!");

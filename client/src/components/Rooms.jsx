@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
-import { useDateContext } from "../utils/DateContext";
+
+import { useQuery } from "@apollo/client";
+import { QUERY_ROOMS } from "../utils/queries";
 
 const Rooms = () => {
   const [choiceKing, setChoiceKing] = useState(true);
@@ -9,18 +11,14 @@ const Rooms = () => {
   const [executiveKing, setExecutiveKing] = useState(true);
   const [executiveQueen, setExecutiveQueen] = useState(true);
 
-  const {
-    startDate,
-    setStartDate,
-    endDate,
-    setEndDate,
-    onStartDateChange,
-    onEndDateChange,
-    handleFormSubmit,
-  } = useDateContext();
-  console.log(endDate, startDate);
+  // if local storage has values for the query
+  // then useQuery(the dates)
+  // change useState for each type of Rooms
+  //
+  // const
+
   return (
-    <div className="bg-[rgba(207,181,59)] w-full overflow-hidden">
+    <div className="bg-white w-full overflow-hidden">
       <form className=" bg-black p-4 m-4 rounded-xl shadow-lg shadow-black">
         <div className="flex justify-around pt-4">
           <div className="inline-block relative w-64 ">

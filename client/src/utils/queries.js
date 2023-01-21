@@ -32,9 +32,21 @@ export const GET_USERS = gql`
   }
 `;
 export const QUERY_CHECKOUT = gql`
-  query getCheckout($room: [ID]!) {
-    checkout(room: $room, description: $description, price: $price) {
+  query getCheckout($room: Int, $description: String, $cost: Int) {
+    checkout(room: $room, description: $description, cost: $cost) {
       session
+    }
+  }
+`;
+export const QUERY_ROOMS = gql`
+  query filterRooms($startDate: [Int]!, $endDate: [Int]!) {
+    filterRooms(startDate: $startDate, endDate: $endDate) {
+      choiceKing
+      choiceQueen
+      deluxKing
+      deluxQueen
+      exclusiveKing
+      exclusiveQueen
     }
   }
 `;
