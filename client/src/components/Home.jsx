@@ -1,29 +1,35 @@
 import { lux } from "../assets";
 import React, { useState } from "react";
-// import DateRangePicker from "flowbite-datepicker/DateRangePicker";
+import { useDateContext } from "../utils/DateContext";
 import { useMutation, useQuery } from "@apollo/client";
-import {} from "../utils/mutations";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  const [startDate, setStartDate] = useState();
-  const [endDate, setEndDate] = useState();
-  const dateBtn = document.getElementById("dateBtn");
-  const onStartDateChange = (e) => {
-    const startDateInput = e.target.value;
-    // console.log(passwordInput);
-    setStartDate(startDateInput);
-  };
+  const navigate = useNavigate();
+  const {
+    startDate,
+    setStartDate,
+    endDate,
+    setEndDate,
+    onStartDateChange,
+    onEndDateChange,
+    // handleFormSubmit,
+  } = useDateContext();
 
-  const onEndDateChange = (e) => {
-    const endDateInput = e.target.value;
-    // console.log(userNameInput);
-    setEndDate(endDateInput);
-  };
+  function checkDates() {
+    if (startDate !== "" && endDate !== "") {
+      //   <Navigate to="/rooms" replace={true} />;
+      navigate("/rooms");
+    } else {
+      alert("please check dates input");
+      return false;
+    }
+  }
   function handleFormSubmit(event) {
     event.preventDefault();
     const startDateControl = document.getElementById("start").value.toString();
     const endDateControl = document.getElementById("end").value.toString();
-    console.log(startDateControl);
+
     const startD = startDateControl.replace(
       /(\d\d\d\d)-(\d\d)-(\d\d)/,
       "[$1,$2,$3]"
@@ -33,35 +39,17 @@ const Home = () => {
       "[$1,$2,$3]"
     );
 
-    // console.log(startD);
-    // console.log(typeof startD);
-    var startD2 = JSON.stringify(startD);
-    var endD2 = JSON.stringify(endD);
-    // var startType = JSON.parse(startD2);
-    // console.log(typeof startType);
-    console.log(startD2);
-    console.log(endD2);
+    const obj = {
+      endDate: startD,
+      startDate: endD,
+    };
+
+    localStorage.setItem("saveDates", JSON.stringify(obj));
+    console.log(localStorage.getItem("saveDates"));
+    checkDates();
+    setEndDate("");
+    setStartDate("");
   }
-
-  // console.log(startDateControl, +" : " + endDateControl);
-
-  // const dateRangePickerEl = document.getElementById('dateRangePickerId');
-  // new DateRangePicker(dateRangePickerEl, {
-  //   autohide: true,
-  // });
-
-  // const startEl = document.getElementById('start')
-
-  // const endEl = document.getElementById('end')
-
-  // startEl.addEventListener("changeDate", (e) => {
-  //   console.log("start", e.detail.date)
-  // })
-
-  // endEl.addEventListener("changeDate", (e) => {
-  //   console.log("end", e.detail.date)
-  // })
-
   return (
     <div>
       <section>
@@ -100,7 +88,7 @@ const Home = () => {
                 type="date"
                 id="end"
                 name="trip-end"
-                onchange={onEndDateChange}
+                onChange={onEndDateChange}
                 value={endDate}
                 // min="2018-01-01"
                 // max="2018-12-31"

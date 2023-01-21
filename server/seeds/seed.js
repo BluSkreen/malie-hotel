@@ -1,5 +1,5 @@
 const db = require("../config/connection");
-const { User, Hotel, Room, Reservation } = require("../models");
+const { User, Hotel, Room, Reservation, Order } = require("../models");
 
 const roomData = require("./room.json");
 const hotelData = require("./hotel.json");

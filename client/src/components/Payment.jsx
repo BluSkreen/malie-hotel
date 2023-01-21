@@ -1,8 +1,85 @@
+import { loadStripe } from "@stripe/stripe-js";
+import React, { useState, useEffect } from "react";
+import { useLazyQuery } from "@apollo/client";
+import { QUERY_CHECKOUT } from "../utils/queries";
+import { useMutation, useQuery } from "@apollo/client";
+// import Auth from "../../utils/auth";
 const Payment = () => {
+  // const [cardNum, setCardNum] = useState("");
+  // const [month, setMonth] = useState("");
+  // const [year, setYear] = useState("");
+  // const cvv = 777;
+  const room = 203;
+  const description = "delux";
+  const cost = 3000;
+
+  // const onCardChange = (e) => {
+  //   const cardInput = e.target.value;
+
+  //   setCardNum(cardInput);
+  // };
+
+  // const onYearChange = (e) => {
+  //   const yearInput = e.target.value;
+
+  //   setYear(yearInput);
+  // };
+  // const onMonthChange = (e) => {
+  //   const monthInput = e.target.value;
+
+  //   setMonth(monthInput);
+  // };
+  const stripePromise = loadStripe(
+    "pk_test_51MS6bZCzq6l4n83nCqy7oVDR7LifHKUuEYQRG4Ja0gUiIU0KthzJeD7nr090nmAgHs9hkhAK0Dkks06gI4TC00rs00nuv84CYX"
+  );
+  console.log(stripePromise);
+  const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
+
+  useEffect(() => {
+    console.log("----------------");
+    console.log(data);
+    console.log("----------------");
+    if (data) {
+      console.log(data);
+      stripePromise.then((res) => {
+        res.redirectToCheckout({ sessionId: data.checkout.session });
+      });
+    }
+  }, [data]);
+  console.log("data");
+  function submitCheckout(e) {
+    // const roomId = [];
+    console.log("----------------");
+    console.log(data);
+    console.log("----------------");
+    console.log("ss");
+    // e.preventDefault();
+    e.preventDefault();
+    console.log("dddd");
+    getCheckout({
+      variables: { room: room, cost: cost, description: description },
+    });
+    console.log({ data });
+    console.log("!!!!!!!!!!!!");
+    console.log(data);
+    console.log(getCheckout);
+  }
+  // useEffect(() => {
+  //   async function getCart() {
+  //     const cart = await idbPromise("cart", "get");
+  //     dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cart] });
+  //   }
+
+  //   if (!state.cart.length) {
+  //     getCart();
+  //   }
+  // }, [state.cart.length, dispatch]);
   return (
     <div className="flex justify-around  px-[100px] pt-[130px] font-poppins min-h-screen ">
       <div className=" ">
-        <h2 className="text-[30px] font-bold mt-4 mb-4 text-[rgba(207,181,59)]">Payment and Guest Details</h2>
+        <h2 className="text-[30px] font-bold mt-4 mb-4 text-[rgba(207,181,59)]">
+          Payment and Guest Details
+        </h2>
         <hr />
         <div className="flex justify-between  text-[28px] pt-4">
           <h3>Total for Stay</h3>
@@ -22,7 +99,9 @@ const Payment = () => {
         </div>
         <hr />
 
-        <h2 className="text-[24px] font-bold pt-6 text-[rgba(207,181,59)]">Payment</h2>
+        <h2 className="text-[24px] font-bold pt-6 text-[rgba(207,181,59)]">
+          Payment
+        </h2>
         <hr />
         <form action="" className="pt-4">
           <div>
@@ -33,12 +112,18 @@ const Payment = () => {
                 id="grid-first-name"
                 type="text"
                 placeholder=""
+                // value={cardNum}
+                // onChange={onCardChange}
               />
             </div>
             <div>
               <div className="inline-block relative  ">
                 <h3 className="font-bold">Month</h3>
-                <select className="block appearance-none min-w-[200px] bg-white border border-gray-500 hover:border-gray-500 px-2 py-2 pr-2  shadow leading-tight focus:outline-none focus:shadow-outline">
+                <select
+                  // value={month}
+                  // onChange={onMonthChange}
+                  className="block appearance-none min-w-[200px] bg-white border border-gray-500 hover:border-gray-500 px-2 py-2 pr-2  shadow leading-tight focus:outline-none focus:shadow-outline"
+                >
                   <option></option>
                   <option>01 Jan</option>
                   <option>02 Feb</option>
@@ -66,7 +151,11 @@ const Payment = () => {
 
               <div className="inline-block relative w-64 ">
                 <h3 className="font-bold">Year</h3>
-                <select className="block appearance-none min-w-[200px] bg-white border border-gray-500 hover:border-gray-500 px-4 py-2 pr-8  shadow leading-tight focus:outline-none focus:shadow-outline">
+                <select
+                  // value={year}
+                  // onChange={onYearChange}
+                  className="block appearance-none min-w-[200px] bg-white border border-gray-500 hover:border-gray-500 px-4 py-2 pr-8  shadow leading-tight focus:outline-none focus:shadow-outline"
+                >
                   <option></option>
                   <option>2023</option>
                   <option>2024</option>
@@ -91,11 +180,18 @@ const Payment = () => {
               </div>
             </div>
           </div>
-          <div><img className="ml-[-40px] pt-10" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyC0VgO5y5nsfbRa74POzIaB1RstiC2-6tiw&usqp=CAU" alt="credit cards" /></div>
+          <div>
+            <img
+              className="ml-[-40px] pt-10"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyC0VgO5y5nsfbRa74POzIaB1RstiC2-6tiw&usqp=CAU"
+              alt="credit cards"
+            />
+          </div>
           <div className="ml-[100px] pt-10">
             <button
               className="  bg-[rgba(207,181,59)] hover:bg-gray-400 focus:shadow-outline focus:outline-none text-black font-bold border-black border-2 py-2 px-4 rounded max-w-[180px] mb-4 pt-4"
               type="button"
+              onClick={submitCheckout}
             >
               Book Reservation
             </button>
@@ -104,7 +200,9 @@ const Payment = () => {
       </div>
       <div>
         <div>
-          <h2 className="text-[24px] font-bold mt-6 text-[rgba(207,181,59)]">Guest Information</h2>
+          <h2 className="text-[24px] font-bold mt-6 text-[rgba(207,181,59)]">
+            Guest Information
+          </h2>
           <hr />
         </div>
         <div className="">
@@ -171,7 +269,6 @@ const Payment = () => {
             type="text"
             placeholder=""
           />
-          
         </div>
       </div>
     </div>
