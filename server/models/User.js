@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
-
+const Order = require("./Order");
 const userSchema = new Schema(
   {
     username: {
@@ -26,7 +26,11 @@ const userSchema = new Schema(
       type: Number,
       required: false,
     },
-    Credit_card_expiration: {
+    Credit_card_month: {
+      type: Number,
+      required: false,
+    },
+    Credit_card_year: {
       type: Number,
       required: false,
     },
@@ -43,6 +47,13 @@ const userSchema = new Schema(
       type: Boolean,
       default: false,
     },
+
+    orders: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Order",
+      },
+    ],
   },
   { timestamps: true }
 );

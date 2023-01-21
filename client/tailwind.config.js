@@ -89,6 +89,7 @@ module.exports = {
         amita: ["Amita", "cursive"],
         darker: ["Darker Grotesque", "sans-serif"],
         poppins: ["Poppins", "sans-serif"],
+        economica: ["Economica", "sans-serif"]
       },
     },
   },
