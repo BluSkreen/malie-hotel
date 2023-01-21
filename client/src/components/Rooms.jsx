@@ -53,6 +53,9 @@ const Rooms = () => {
             </div>
           </div>
         </div>
+
+
+        
         <div className="flex justify-center pt-10">
           <button
             className="   bg-[rgba(207,181,59)] hover:bg-cyan-400 focus:shadow-outline focus:outline-none text-black font-bold py-2 px-4 rounded max-w-[180px] mb-4"
