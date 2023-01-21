@@ -101,7 +101,7 @@ const Modal = ({ visible, onClose }) => {
                     autoComplete="email"
                     onChange={onEmailChange}
                     required
-                    className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                    className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-[rgba(207,181,59)] focus:outline-none focus:ring-[rgba(207,181,59)] sm:text-sm"
                     placeholder="Email address"
                   />
                 </div>
@@ -117,7 +117,7 @@ const Modal = ({ visible, onClose }) => {
                     onChange={onPasswordChange}
                     autoComplete="current-password"
                     required
-                    className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                    className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-[rgba(207,181,59)] focus:outline-none focus:ring-[rgba(207,181,59)] sm:text-sm"
                     placeholder="Password"
                   />
                 </div>
@@ -136,7 +136,7 @@ const Modal = ({ visible, onClose }) => {
                     // autoComplete="text"
                     onChange={onUsernameChange}
                     required
-                    className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                    className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-[rgba(207,181,59)] focus:outline-none focus:ring-[rgba(207,181,59)] sm:text-sm"
                     placeholder="username"
                   />
                 </div>
@@ -152,7 +152,7 @@ const Modal = ({ visible, onClose }) => {
                     value={email}
                     autoComplete="email"
                     required
-                    className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                    className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-[rgba(207,181,59)] focus:outline-none focus:ring-[rgba(207,181,59)] sm:text-sm"
                     placeholder="Email address"
                   />
                 </div>
@@ -168,7 +168,7 @@ const Modal = ({ visible, onClose }) => {
                     type="password"
                     autoComplete="current-password"
                     required
-                    className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                    className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-[rgba(207,181,59)] focus:outline-none focus:ring-[rgba(207,181,59)] sm:text-sm"
                     placeholder="Password"
                   />
                 </div>
@@ -195,7 +195,7 @@ const Modal = ({ visible, onClose }) => {
               <div className="text-sm">
                 <a
                   href="#"
-                  className="font-medium text-indigo-600 hover:text-indigo-500"
+                  className="font-medium text-indigo-600 hover:text-[rgba(207,181,59)]"
                 >
                   {/* Forgot your password? */}
                 </a>
@@ -207,7 +207,7 @@ const Modal = ({ visible, onClose }) => {
                 <div>
                   <button
                     type="submit"
-                    className="group relative flex w-full justify-center rounded-md border border-transparent bg-[rgba(207,181,59)] py-2 px-4 text-sm font-medium text-black hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    className="group relative flex w-full justify-center rounded-md border border-transparent bg-[rgba(207,181,59)] py-2 px-4 text-sm font-medium text-black hover:bg-[rgba(207,181,59)] focus:outline-none focus:ring-2 focus:ring-[rgba(207,181,59)] focus:ring-offset-2"
                   >
                     <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                       {/* <LockClosedIcon className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" aria-hidden="true" /> */}
@@ -224,7 +224,7 @@ const Modal = ({ visible, onClose }) => {
                 <div>
                   <button
                     type="button"
-                    className="group relative flex w-full justify-center rounded-md border border-transparent bg-[rgba(207,181,59)] py-2 px-4 text-sm font-medium text-black hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    className="group relative flex w-full justify-center rounded-md border border-transparent bg-[rgba(207,181,59)] py-2 px-4 text-sm font-medium text-black hover:bg-[rgba(207,181,59)] focus:outline-none focus:ring-2 focus:ring-[rgba(207,181,59)] focus:ring-offset-2"
                     onClick={() => setModalSignIn(false)}
                   >
                     <span className="absolute inset-y-0 left-0 flex items-center pl-3">
@@ -239,7 +239,7 @@ const Modal = ({ visible, onClose }) => {
                 <div>
                   <button
                     type="submit"
-                    className="group relative flex w-full justify-center rounded-md border border-transparent bg-[rgba(207,181,59)] py-2 px-4 text-sm font-medium text-black hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    className="group relative flex w-full justify-center rounded-md border border-transparent bg-[rgba(207,181,59)] py-2 px-4 text-sm font-medium text-black hover:bg-[#dcc970] focus:outline-none focus:ring-2 focus:ring-[rgba(207,181,59)] focus:ring-offset-2"
                   >
                     <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                       {/* <LockClosedIcon className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" aria-hidden="true" /> */}
@@ -256,7 +256,7 @@ const Modal = ({ visible, onClose }) => {
                 <div>
                   <button
                     type="button"
-                    className="group relative flex w-full justify-center rounded-md border border-transparent bg-[rgba(207,181,59)] py-2 px-4 text-sm font-medium text-black hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    className="group relative flex w-full justify-center rounded-md border border-transparent bg-[rgba(207,181,59)] py-2 px-4 text-sm font-medium text-black hover:bg-[#dcc970] focus:outline-none focus:ring-2 focus:ring-[rgba(207,181,59)] focus:ring-offset-2"
                     onClick={() => setModalSignIn(true)}
                   >
                     <span className="absolute inset-y-0 left-0 flex items-center pl-3">
