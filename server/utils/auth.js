@@ -16,16 +16,19 @@ module.exports = {
       return req;
     }
 
-
     try {
-        if (req.body.isAdmin(true)){
-            const { data:dataAdmin } = jwt.verify(token, adminSecret, { maxAge: expiration });
-            // console.log(dataAdmin);
-            req.user = dataAdmin;
-        } else {
-            const { data:dataUser } = jwt.verify(token, secret, { maxAge: expiration });
-            req.user = dataUser;
-        }
+      if (req.body.isAdmin(true)) {
+        const { data: dataAdmin } = jwt.verify(token, adminSecret, {
+          maxAge: expiration,
+        });
+        // console.log(dataAdmin);
+        req.user = dataAdmin;
+      } else {
+        const { data: dataUser } = jwt.verify(token, secret, {
+          maxAge: expiration,
+        });
+        req.user = dataUser;
+      }
     } catch {
       console.log("Invalid token");
     }
@@ -33,7 +36,7 @@ module.exports = {
     return req;
   },
   signAdmin: function ({ email, username, _id, isAdmin }) {
-    const payload = { email, username, _id, isAdmin};
+    const payload = { email, username, _id, isAdmin };
     return jwt.sign({ data: payload }, adminSecret, { expiresIn: expiration });
   },
 
