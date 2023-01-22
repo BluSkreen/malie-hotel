@@ -2,22 +2,21 @@
 
 ## Description:
 
-Eu aliquip nisi veniam quis nisi sint amet commodo pariatur proident anim ea. Consequat id veniam adipisicing laboris excepteur deserunt aliquip anim laboris minim dolor in. Laboris qui proident non ut aliqua pariatur in nostrud amet do ad quis sunt ea. Fugiat voluptate eiusmod est dolor id eiusmod duis minim incididunt ullamco commodo cupidatat quis reprehenderit. Quis adipisicing dolor sit occaecat ullamco incididunt officia. Est ad duis laboris Lorem.
+For our final group project a single page MERN stack application was created for "The Malie" hotel. This application presents the user with a homepage for a luxury hotel providing details on the rooms, activities, dining and highlights of the hotel. The user is able to create an account or login to an existing account, at which point they are able to search by date for available rooms and create a hotel reservation.
 
 - [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Table of Contents
 
-1. [ Description. ](#description)
-2. [ Installation. ](#installation)
-3. [ Usage. ](#usage)
-4. [ License. ](#license)
-5. [ Tests. ](#tests)
-6. [ Questions. ](#questions)
-7. [ Screenshots. ](#screenshots)
-8. [ Contributors. ](#contributors)
-9. [ Resources. ](#resources)
-10. [ Links. ](#links)
+1. [ Description ](#description)
+2. [ Installation ](#installation)
+3. [ Usage ](#usage)
+4. [ License ](#license)
+5. [ Tests ](#tests)
+6. [ Questions ](#questions)
+7. [ Screenshots ](#screenshots)
+8. [ Github ](#github)
+9. [ Links ](#links)
 
 ## Installation
 
@@ -28,42 +27,33 @@ git clone git@github.com:BluSkreen/project-3.git
 ```
 
 - Ensure you are in the current working directory
-- Ensure all dependencies are installed as shown below installation instructions are below:
+- Ensure all dependencies are installed using an npm install:
 
 ```
-  "dependencies": {
-Ex ea nulla tempor duis adipisicing sunt.
-  }
-
+npm i
 ```
 
-```
-Ex ea nulla tempor duis adipisicing sunt.
-```
+- Seed the database using the seed script:
 
 ```
-Ex ea nulla tempor duis adipisicing sunt.
+npm run seed
 ```
 
-```
-Ex ea nulla tempor duis adipisicing sunt.
-```
+- Build the react page:
 
 ```
-Ex ea nulla tempor duis adipisicing sunt.
+npm run build
+```
+
+- Launch the application for development use:
+
+```
+npm run develop
 ```
 
 ## Usage:
 
-Ex ea nulla tempor duis adipisicing sunt.
-
-```
-Ex ea nulla tempor duis adipisicing sunt.
-```
-
-```
-Ex ea nulla tempor duis adipisicing sunt.
-```
+This application features an example hotel webpage using mongoDb, Express server, React and Node. This app can be used as an example of a single page application featuring authorized login features, tailwind CSS and the Stripe API for collecting customer payment info. All of the npm libraries used for this app can be found within the dependencies on the package.json in the client/server folders.
 
 ## License
 
@@ -93,15 +83,18 @@ SOFTWARE.
 
 ## Tests
 
-N/A
+As a group we tested different aspects of the page and found bugs such as login authentication, and pages not loading at the top of the page. By working in a collaborative environment we were able to fix these bugs to provide a better user experience when visiting "The Malie" application.
 
 ## Screenshots
 
-The following animations shows the application's functionality
+The following screenshot shows the wireframe for our application created using excalidraw when developing the layout of the page at the beginning of the project:
 
-![Gif Needed”.](.)
-![Gif Needed”.](.)
-![Gif Needed”.](.)
+![Excalidraw Application Framework](./screenshots/excalidraw.PNG)
+
+The following screenshot show the homepage, login screen and reservation page for the application
+![Hotel homepage](./screenshots/homepage.PNG)
+![Hotel login](./screenshots/login.PNG)
+![Hotel Reservation](./screenshots/reservation.PNG)
 
 ## Contributors:
 
@@ -109,10 +102,10 @@ The following animations shows the application's functionality
 - Erich Ebbinghaus [eebbinghaus@gmail.com]
 - Jason Duran [jasonduran303@gmail.com]
 - Darin Palombo [dplb1027@gmail.com]
-- Ryan Larson [@gmail.com]
+- Ryan Larson [rylarson17@gmail.com]
 - Nicolette Boggs [nrb1628@gmail.com]
 
-# Questions:
+## Github:
 
 Want to see more of my work?
 
@@ -123,17 +116,8 @@ Want to see more of my work?
 - [larsonrj](https://github.com/larsonrj)
 - [NicoletteBoggs](https://github.com/NicoletteBoggs)
   <br/>
-  Want to learn more please contact us at weDontWantYourEmails@notAnEmailAccount.com
-
-## Contact Us:
-
-weDontWantYourEmails@notAnEmailAccount.com
 
 ## Links
 
 - [Github Link](https://github.com/BluSkreen/project-3)
 - [Deployed Link]()
-
-## Resources
-
-- https://www.
