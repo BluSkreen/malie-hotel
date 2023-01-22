@@ -48,8 +48,9 @@ const typeDefs = gql`
     choiceQueen: Boolean!
     deluxKing: Boolean!
     deluxQueen: Boolean!
-    exclusiveKing: Boolean!
-    exclusiveQueen: Boolean!
+    executiveKing: Boolean!
+    executiveQueen: Boolean!
+    availableRooms: [Room]
   }
   type Order {
     _id: ID
@@ -69,8 +70,8 @@ const typeDefs = gql`
     hotel(_id: ID): Hotel
     room(_id: ID): Room
     filterRooms(
-      startDate: [Int]!
-      endDate: [Int]!
+      startDate: [Int]
+      endDate: [Int]
       roomNum: Int
       hotelId: ID
       title: String

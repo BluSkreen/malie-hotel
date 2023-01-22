@@ -1,6 +1,6 @@
 const { User, Hotel, Room, Reservation, Order } = require("../models");
 
-const { signToken } = require("../utils/auth");
+const { signToken, signAdmin } = require("../utils/auth");
 const { AuthenticationError } = require("apollo-server-express");
 const stripe = require("stripe")(
   "sk_test_51MS6bZCzq6l4n83nFjK2P29D5fUKZj5wh4SWqYeoW1EV8ihcN8hlLmtZSmtHKcOVATT527RtTqawBVsFy8juFQp100wKgBAuNz"
@@ -34,9 +34,17 @@ const resolvers = {
     ) => {
       // date format is a stringified array --> "[yyyy,mm,dd]"
       let queryStartDate = new Date(startDate);
+            //console.log(startDate);
+            console.log(queryStartDate);
+            console.log("----");
       queryStartDate = queryStartDate.valueOf();
       let queryEndDate = new Date(endDate);
+            //console.log(endDate);
+            console.log(queryEndDate);
+            console.log("----");
       queryEndDate = queryEndDate.valueOf();
+        //console.log(queryStartDate);
+        //console.log(queryEndDate);
 
       let roomFilter = {};
       // if (hotelId != null) { roomFilter["hotelId"] = hotelId };
@@ -49,41 +57,68 @@ const resolvers = {
         choiceQueen: false,
         deluxKing: false,
         deluxQueen: false,
-        exclusiveKing: false,
-        exclusiveQueen: false,
+        executiveKing: false,
+        executiveQueen: false,
+        availableRooms: [],
       };
+
+      //if(startDate.length == 0 || endDate.length == 0){
+      //    console.log("why");
+      //    return roomTypes;
+      //}
 
       // TODO: use room list for multi room search
       let roomList = [];
 
       for await (let room of roomFilter) {
+        if(roomTypes.choiceKing ===  true
+            && roomTypes.choiceQueen ===  true
+            && roomTypes.deluxKing ===  true
+            && roomTypes.deluxQueen ===  true
+            && roomTypes.executiveKing ===  true
+            && roomTypes.executiveQueen === true) {
+            // break;
+        }
         let available = true;
         for await (let reservation of room.reservations) {
           // use the epoch to check difference in time
           let resStart = reservation.startDate;
           resStart = new Date(resStart);
+            // console.log("'-----");
+            // console.log(resStart);
           resStart = resStart.valueOf();
           let resEnd = reservation.endDate;
           resEnd = new Date(resEnd);
+            // console.log(resEnd);
+            // console.log("----");
           resEnd = resEnd.valueOf();
+          // console.log(resStart, resEnd);
+          // console.log(reservation);
 
           // The reservation must be before or after the query date
-          if (resStart < queryStartDate && !(resEnd <= queryEndDate)) {
-            available = false;
-            console.log("bad");
-            break;
-          } else if (!resStart > queryEndDate) {
-            available = false;
-            console.log("bad");
-            break;
+          if (resStart < queryStartDate && resEnd <= queryStartDate){
+              // console.log("good");
+              // console.log(reservation)
+          } else if (resStart >= queryEndDate) {
+              // console.log("good");
+              // console.log(reservation)
+          } else {
+              // console.log(room)
+              // console.log("bad");
+              // console.log(reservation)
+              available = false;
           }
         }
-        if (available === true) {
-          let roomType = room.title;
+        let roomType = room.title;
+          // console.log(room);
+        if (available === true && roomTypes[roomType] !== true) {
           roomList.push(room);
-          roomTypes[roomType] = true;
+          roomTypes[`${roomType}`] = true;
+          roomTypes.availableRooms.push(room);
+// && roomTypes[roomType] !== true
         }
       } // for loop
+      // console.log(roomTypes);
 
       return roomTypes;
     },
@@ -168,20 +203,20 @@ const resolvers = {
       // if (session.success_url == "complete") {
       //   console.log("success");
       // }
-      // if (session) {
-      //   await Reservation.create({
-      //     roomNumbers: room,
+      //if (session) {
+        //await Reservation.create({
+        //  roomNumbers: room,
 
-      //     startDate: [2021, 11, 23],
-      //     endDate: [2021, 11, 24],
-      //     cost: cost,
-      //     accomodations: ["Tv"],
-      //     email: context.user.email,
-      //   });
-      //   console.log("/////////////////////////////");
-      //   console.log(session);
-      //   console.log("/////////////////////////////");
-      // }
+        //  startDate: [2021, 11, 23],
+        //  endDate: [2021, 11, 24],
+        //  cost: cost,
+        //  accomodations: ["Tv"],
+        //  email: context.user.email,
+        //});
+        console.log("/////////////////////////////");
+        console.log(session);
+        console.log("/////////////////////////////");
+      //}
 
       return { session: session.id };
     },
@@ -224,10 +259,19 @@ const resolvers = {
       if (!correctPw) {
         throw new AuthenticationError("Incorrect password!");
       }
-
-      const token = signToken(user);
+      let token;
+      if (user.isAdmin) {
+          // signAdmin
+           token = signAdmin(user);
+      } else {
+          token = signToken(user);
+      }
       return { token, user };
     },
+
+    //admin: async (parent, { email, password }) => {
+                        
+    //}
     // addOrder: async (parent, { user }, context) => {
     //   console.log(args);
     //   // if (context.user) {

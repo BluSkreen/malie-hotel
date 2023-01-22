@@ -3,73 +3,61 @@ import React, { useState } from "react";
 import { useDateContext } from "../utils/DateContext";
 import { useMutation, useQuery } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
-
-
-
-
+import { checkDEV } from "@apollo/client/utilities/globals";
 
 const Home = () => {
-    const navigate = useNavigate();
-    const {
-        startDate,
-        setStartDate,
-        endDate,
-        setEndDate,
-        onStartDateChange,
-        onEndDateChange,
-        // handleFormSubmit,
-    } = useDateContext();
+  const navigate = useNavigate();
+  const {startDateStr,
+      setStartDateStr, 
+      endDateStr,
+      setEndDateStr,
+      startDateArr,
+      setStartDateArr,
+      endDateArr,
+      setEndDateArr,
+    onStartDateChange,
+    onEndDateChange,
+    // handleFormSubmit,
+  } = useDateContext();
 
-    function checkDates() {
-        if (startDate !== "" && endDate !== "") {
-            //   <Navigate to="/rooms" replace={true} />;
-            navigate("/rooms");
-        } else {
-            alert("please check dates input");
-            return false;
-        }
+  function checkDates() {
+    if (startDateStr !== "" && endDateStr !== "") {
+      //   <Navigate to="/rooms" replace={true} />;
+      navigate("/rooms");
+    } else {
+      alert("please check dates input");
+      return false;
     }
-    function handleFormSubmit(event) {
-        event.preventDefault();
-        const startDateControl = document
-            .getElementById("start")
-            .value.toString();
-        const endDateControl = document.getElementById("end").value.toString();
+  }
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    const startDateControl = document.getElementById("start").value
+    const endDateControl = document.getElementById("end").value
 
-        const startD = startDateControl.replace(
-            /(\d\d\d\d)-(\d\d)-(\d\d)/,
-            "[$1,$2,$3]"
-        );
-        const endD = endDateControl.replace(
-            /(\d\d\d\d)-(\d\d)-(\d\d)/,
-            "[$1,$2,$3]"
-        );
+      setStartDateStr(startDateControl);
+      setEndDateStr(endDateControl);
+        setStartDateArr([
+            parseInt(startDateControl.split("-")[0]),
+            parseInt(startDateControl.split("-")[1]),
+            parseInt(startDateControl.split("-")[2])
+        ])
+        setEndDateArr([
+            parseInt(endDateControl.split("-")[0]),
+            parseInt(endDateControl.split("-")[1]),
+            parseInt(endDateControl.split("-")[2])
+        ])
+      checkDates();
+      // console.log(startDateArr);
+      // console.log(endDateArr);
 
-        const obj = {
-            endDate: startD,
-            startDate: endD,
-        };
-
-        localStorage.setItem("saveDates", JSON.stringify(obj));
-        console.log(localStorage.getItem("saveDates"));
-        checkDates();
-        setEndDate("");
-        setStartDate("");
-
-       
-    }
-    
-   
-    return (
-        <div>
-            <section>
-                <meta charSet="UTF-8" />
-                <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1.0"
-                />
-                <title>Document</title>
+  }
+  return (
+    <div>
+      <section>
+        <meta charSet="UTF-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
 
                 <video
                     className="relative z-[-1] w-auto min-w-full max-w-none"
@@ -96,7 +84,7 @@ const Home = () => {
                                 id="start"
                                 name="trip-start"
                                 onChange={onStartDateChange}
-                                value={startDate}
+                                value={startDateStr}
                                 // min="2018-01-01"
                                 // max="2018-12-31"
                             />
@@ -107,7 +95,7 @@ const Home = () => {
                                 id="end"
                                 name="trip-end"
                                 onChange={onEndDateChange}
-                                value={endDate}
+                                value={endDateStr}
                                 // min="2018-01-01"
                                 // max="2018-12-31"
                             />
