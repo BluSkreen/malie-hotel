@@ -34,17 +34,17 @@ const resolvers = {
     ) => {
       // date format is a stringified array --> "[yyyy,mm,dd]"
       let queryStartDate = new Date(startDate);
-            //console.log(startDate);
-            console.log(queryStartDate);
-            console.log("----");
+      //console.log(startDate);
+      console.log(queryStartDate);
+      console.log("----");
       queryStartDate = queryStartDate.valueOf();
       let queryEndDate = new Date(endDate);
-            //console.log(endDate);
-            console.log(queryEndDate);
-            console.log("----");
+      //console.log(endDate);
+      console.log(queryEndDate);
+      console.log("----");
       queryEndDate = queryEndDate.valueOf();
-        //console.log(queryStartDate);
-        //console.log(queryEndDate);
+      //console.log(queryStartDate);
+      //console.log(queryEndDate);
 
       let roomFilter = {};
       // if (hotelId != null) { roomFilter["hotelId"] = hotelId };
@@ -71,51 +71,53 @@ const resolvers = {
       let roomList = [];
 
       for await (let room of roomFilter) {
-        if(roomTypes.choiceKing ===  true
-            && roomTypes.choiceQueen ===  true
-            && roomTypes.deluxKing ===  true
-            && roomTypes.deluxQueen ===  true
-            && roomTypes.executiveKing ===  true
-            && roomTypes.executiveQueen === true) {
-            // break;
+        if (
+          roomTypes.choiceKing === true &&
+          roomTypes.choiceQueen === true &&
+          roomTypes.deluxKing === true &&
+          roomTypes.deluxQueen === true &&
+          roomTypes.executiveKing === true &&
+          roomTypes.executiveQueen === true
+        ) {
+          // break;
         }
         let available = true;
         for await (let reservation of room.reservations) {
           // use the epoch to check difference in time
           let resStart = reservation.startDate;
           resStart = new Date(resStart);
-            // console.log("'-----");
-            // console.log(resStart);
+          // console.log("'-----");
+          // console.log(resStart);
           resStart = resStart.valueOf();
           let resEnd = reservation.endDate;
           resEnd = new Date(resEnd);
-            // console.log(resEnd);
-            // console.log("----");
+          // console.log(resEnd);
+          // console.log("----");
           resEnd = resEnd.valueOf();
           // console.log(resStart, resEnd);
           // console.log(reservation);
 
           // The reservation must be before or after the query date
-          if (resStart < queryStartDate && resEnd <= queryStartDate){
-              // console.log("good");
-              // console.log(reservation)
+          if (resStart < queryStartDate && resEnd <= queryStartDate) {
+            // console.log("good");
+            // console.log(reservation)
           } else if (resStart >= queryEndDate) {
-              // console.log("good");
-              // console.log(reservation)
+            // console.log("good");
+            // console.log(reservation)
           } else {
-              // console.log(room)
-              // console.log("bad");
-              // console.log(reservation)
-              available = false;
+            // console.log(room)
+            // console.log("bad");
+            // console.log(reservation)
+            available = false;
           }
         }
         let roomType = room.title;
-          // console.log(room);
+        // console.log(room);
         if (available === true && roomTypes[roomType] !== true) {
           roomList.push(room);
           roomTypes[`${roomType}`] = true;
           roomTypes.availableRooms.push(room);
-// && roomTypes[roomType] !== true
+          // && roomTypes[roomType] !== true
         }
       } // for loop
       // console.log(roomTypes);
@@ -135,8 +137,8 @@ const resolvers = {
     //   throw new AuthenticationError("Not logged in");
     // },
     checkout: async (parent, { room, cost, description }, context) => {
-      console.log("Hi Sid: " + room, cost, description);
-      console.log(context.headers.referer);
+      // console.log("Hi Sid: " + room, cost, description);
+      // console.log(context.headers.referer);
       // const header = "https://localhost:3001";
       const url = new URL(context.headers.referer).origin;
       // console.log(context.headers.referer);
@@ -189,6 +191,7 @@ const resolvers = {
       line_items.push({
         price: price.id,
         quantity: 1,
+        tax_rates: ["txr_1MSro2Czq6l4n83ndLKLmb8o"],
       });
       // }
 
@@ -197,29 +200,50 @@ const resolvers = {
         line_items,
         mode: "payment",
 
+        // automatic_tax: {
+        //   enabled: true,
+        // },
         success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${url}/`,
       });
-      // if (session.success_url == "complete") {
-      //   console.log("success");
+      // .then(() => {
+      //   console.log("dd43");
+      // const sessionId = stripe.checkout.sessions.retrieve(
+      //   "cs_test_a1u8xJmEkIHXJFuK3OhyttKPKs9pc81ZEcIM777TUV9gtHPHPgq4wFVqOC"
+      // );
+      console.log("sessionId");
+      console.log(session);
+      // console.log(sessionId);
+      // });
+      // console.log("fdfd");
+      // if (session.success_url.length > 0) {
+      //   console.log("dd43");
+      //   const sessionId = await stripe.checkout.sessions.retrieve(session.id);
+      //   console.log("sessionId");
+      //   console.log(sessionId);
       // }
       //if (session) {
-        //await Reservation.create({
-        //  roomNumbers: room,
+      //await Reservation.create({
+      //  roomNumbers: room,
 
-        //  startDate: [2021, 11, 23],
-        //  endDate: [2021, 11, 24],
-        //  cost: cost,
-        //  accomodations: ["Tv"],
-        //  email: context.user.email,
-        //});
-        console.log("/////////////////////////////");
-        console.log(session);
-        console.log("/////////////////////////////");
+      //  startDate: [2021, 11, 23],
+      //  endDate: [2021, 11, 24],
+      //  cost: cost,
+      //  accomodations: ["Tv"],
+      //  email: context.user.email,
+      //});
+      console.log("/////////////////////////////");
+      console.log(session);
+      console.log("/////////////////////////////");
       //}
 
       return { session: session.id };
     },
+
+    // wehook: async (parent, args, context) => {
+    //   const event = args;
+    //   switch(event.type){}
+    // }
     singleReservation: async (parent, { _id, email }) => {
       try {
         // either id or email will work
@@ -261,16 +285,16 @@ const resolvers = {
       }
       let token;
       if (user.isAdmin) {
-          // signAdmin
-           token = signAdmin(user);
+        // signAdmin
+        token = signAdmin(user);
       } else {
-          token = signToken(user);
+        token = signToken(user);
       }
       return { token, user };
     },
 
     //admin: async (parent, { email, password }) => {
-                        
+
     //}
     // addOrder: async (parent, { user }, context) => {
     //   console.log(args);

@@ -7,14 +7,15 @@ import { checkDEV } from "@apollo/client/utilities/globals";
 
 const Home = () => {
   const navigate = useNavigate();
-  const {startDateStr,
-      setStartDateStr, 
-      endDateStr,
-      setEndDateStr,
-      startDateArr,
-      setStartDateArr,
-      endDateArr,
-      setEndDateArr,
+  const {
+    startDateStr,
+    setStartDateStr,
+    endDateStr,
+    setEndDateStr,
+    startDateArr,
+    setStartDateArr,
+    endDateArr,
+    setEndDateArr,
     onStartDateChange,
     onEndDateChange,
     // handleFormSubmit,
@@ -31,25 +32,24 @@ const Home = () => {
   }
   function handleFormSubmit(event) {
     event.preventDefault();
-    const startDateControl = document.getElementById("start").value
-    const endDateControl = document.getElementById("end").value
+    const startDateControl = document.getElementById("start").value;
+    const endDateControl = document.getElementById("end").value;
 
-      setStartDateStr(startDateControl);
-      setEndDateStr(endDateControl);
-        setStartDateArr([
-            parseInt(startDateControl.split("-")[0]),
-            parseInt(startDateControl.split("-")[1]),
-            parseInt(startDateControl.split("-")[2])
-        ])
-        setEndDateArr([
-            parseInt(endDateControl.split("-")[0]),
-            parseInt(endDateControl.split("-")[1]),
-            parseInt(endDateControl.split("-")[2])
-        ])
-      checkDates();
-      // console.log(startDateArr);
-      // console.log(endDateArr);
-
+    setStartDateStr(startDateControl);
+    setEndDateStr(endDateControl);
+    setStartDateArr([
+      parseInt(startDateControl.split("-")[0]),
+      parseInt(startDateControl.split("-")[1]),
+      parseInt(startDateControl.split("-")[2]),
+    ]);
+    setEndDateArr([
+      parseInt(endDateControl.split("-")[0]),
+      parseInt(endDateControl.split("-")[1]),
+      parseInt(endDateControl.split("-")[2]),
+    ]);
+    checkDates();
+    // console.log(startDateArr);
+    // console.log(endDateArr);
   }
   return (
     <div>
@@ -59,58 +59,55 @@ const Home = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
 
-                <video
-                    className="relative z-[-1] w-auto min-w-full max-w-none"
-                    muted
-                    autoPlay="autoPlay"
-                    loop
-                >
-                    <source src={lux} type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video>
-            </section>
+        <video
+          className="relative z-[-1] w-auto min-w-full max-w-none"
+          muted
+          autoPlay="autoPlay"
+          loop
+        >
+          <source src={lux} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </section>
 
-            <section className="flex justify-center bg-black w-full pt-4 border-t-2 border-[#d2b947]">
-                <form
-                    className="w-full max-w-sm mb-10"
-                    onSubmit={handleFormSubmit}
-                >
-                    <h1 className="text-white">MAKE A RESERVATION</h1>
-                    <div className="flex items-center border-[rgba(207,181,59)] border-y py-2">
-                        <div className="inline-block relative w-64 mr-4">
-                            <input
-                                className="border-[rgba(207,181,59)]"
-                                type="date"
-                                id="start"
-                                name="trip-start"
-                                onChange={onStartDateChange}
-                                value={startDateStr}
-                                // min="2018-01-01"
-                                // max="2018-12-31"
-                            />
+      <section className="flex justify-center bg-black w-full pt-4 border-t-2 border-[#d2b947]">
+        <form className="w-full max-w-sm mb-10" onSubmit={handleFormSubmit}>
+          <h1 className="text-white">MAKE A RESERVATION</h1>
+          <div className="flex items-center border-[rgba(207,181,59)] border-y py-2">
+            <div className="inline-block relative w-64 mr-4">
+              <input
+                className="border-[rgba(207,181,59)]"
+                type="date"
+                id="start"
+                name="trip-start"
+                onChange={onStartDateChange}
+                value={startDateStr}
+                // min="2018-01-01"
+                // max="2018-12-31"
+              />
 
-                            <input
-                                className="border-[rgba(207,181,59)]"
-                                type="date"
-                                id="end"
-                                name="trip-end"
-                                onChange={onEndDateChange}
-                                value={endDateStr}
-                                // min="2018-01-01"
-                                // max="2018-12-31"
-                            />
-                            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"></div>
-                        </div>
+              <input
+                className="border-[rgba(207,181,59)]"
+                type="date"
+                id="end"
+                name="trip-end"
+                onChange={onEndDateChange}
+                value={endDateStr}
+                // min="2018-01-01"
+                // max="2018-12-31"
+              />
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"></div>
+            </div>
 
-                        <button
-                            className="flex-shrink-0 bg-[#d2b947] hover:bg-[#dcc970] border-[rgba(207,181,59)]  text-sm border-4 text-black py-1 px-2 rounded hover:transition ease-in-out delay-150  duration-300"
-                            type="submit"
-                        >
-                            Check Availability
-                        </button>
-                    </div>
-                </form>
-            </section>
+            <button
+              className="flex-shrink-0 bg-[#d2b947] hover:bg-[#dcc970] border-[rgba(207,181,59)]  text-sm border-4 text-black py-1 px-2 rounded hover:transition ease-in-out delay-150  duration-300"
+              type="submit"
+            >
+              Check Availability
+            </button>
+          </div>
+        </form>
+      </section>
 
             <section className=" bg-[#faf7eb] border-8 border-[#d2b947] flex flex-wrap justify-between ">
                 <div className=" mb-10 w-1/2 ">
@@ -118,32 +115,30 @@ const Home = () => {
                         Come Stay with Us
                     </h1>
 
-                    <p className=" text-[20px] font-economica font-bold bg-[#faf7eb] max-w-[700px] mx-auto text-center">
-                        Enjoy a desirable location next to Ala Moana Center, the
-                        world's largest open-air shopping mall. Stay just steps
-                        from Hawaii's most prestigious shopping venue showcasing
-                        fashion brands, premier department stores, and specialty
-                        retailers that include Louis Vuitton, Nordstrom and
-                        Williams-Sonoma. TripAdvisor reviewers rate the Melie
-                        among the top 20 hotels in Hawaii for travelers. Guests
-                        have access to complimentary Wi-Fi, a 24/7 business
-                        center, and extensive meeting and banquet facilities.
-                        The hotel's deluxe accommodations and superb location,
-                        just a 5-minute walk from the Hawaii Convention Center,
-                        are preferred by conference attendees. The Malie is 1.5
-                        miles from Waikiki Beach, 2.5 miles from downtown
-                        Honolulu's financial center and government offices, and
-                        a quick 8 miles from Honolulu International Airport.
-                    </p>
-                </div>
-                <div className=" ">
-                    <img
-                        src="https://images.unsplash.com/reserve/8T8J12VQxyqCiQFGa2ct_bahamas-atlantis.jpg?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTR8fHRyb3BpY2FsJTIwaG90ZWx8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"
-                        alt="hotel"
-                        className="  "
-                    />
-                </div>
-            </section>
+          <p className=" text-[20px] font-economica font-bold bg-[#faf7eb] max-w-[700px] mx-auto text-center">
+            Enjoy a desirable location next to Ala Moana Center, the world's
+            largest open-air shopping mall. Stay just steps from Hawaii's most
+            prestigious shopping venue showcasing fashion brands, premier
+            department stores, and specialty retailers that include Louis
+            Vuitton, Nordstrom and Williams-Sonoma. TripAdvisor reviewers rate
+            the Melie among the top 20 hotels in Hawaii for travelers. Guests
+            have access to complimentary Wi-Fi, a 24/7 business center, and
+            extensive meeting and banquet facilities. The hotel's deluxe
+            accommodations and superb location, just a 5-minute walk from the
+            Hawaii Convention Center, are preferred by conference attendees. The
+            Malie is 1.5 miles from Waikiki Beach, 2.5 miles from downtown
+            Honolulu's financial center and government offices, and a quick 8
+            miles from Honolulu International Airport.
+          </p>
+        </div>
+        <div className=" ">
+          <img
+            src="https://images.unsplash.com/reserve/8T8J12VQxyqCiQFGa2ct_bahamas-atlantis.jpg?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTR8fHRyb3BpY2FsJTIwaG90ZWx8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"
+            alt="hotel"
+            className="  "
+          />
+        </div>
+      </section>
 
             <section className="bg-[url('https://images.unsplash.com/photo-1641598471501-61a78df0edec?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzJ8fGJsYWNrJTIwZ29sZCUyMHBhdHRlcm58ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60')] text-[#d2b947] p-10 border-b-4 border-[#d2b947]">
                 <h1 className="text-[48px] font-economica font-bold mt-10  text-[#d2b947]">
