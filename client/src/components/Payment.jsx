@@ -10,12 +10,9 @@ const Payment = () => {
   // const [month, setMonth] = useState("");
   // const [year, setYear] = useState("");
   // const cvv = 777;
-  const room = 203;
+  const room = 209;
   const description = "delux";
   const cost = 3000;
-  const startDate = "";
-  const endDate = "";
-  const stripeId = "";
 
   // const onCardChange = (e) => {
   //   const cardInput = e.target.value;
@@ -37,54 +34,37 @@ const Payment = () => {
     "pk_test_51MS6bZCzq6l4n83nCqy7oVDR7LifHKUuEYQRG4Ja0gUiIU0KthzJeD7nr090nmAgHs9hkhAK0Dkks06gI4TC00rs00nuv84CYX"
   );
   console.log(stripePromise);
-  const [getCheckout, { called, loading, data }] = useLazyQuery(QUERY_CHECKOUT);
+  const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
   useEffect(() => {
+    console.log("----------------");
+    console.log(data);
+    console.log("----------------");
     if (data) {
       console.log(data);
       stripePromise.then((res) => {
         res.redirectToCheckout({ sessionId: data.checkout.session });
-        console.log("----------------");
-
-        console.log(data.checkout.session);
-        console.log("----------------");
-
-        // console.log("paymentIntent");
-        // console.log(paymentIntent);
-        // stripePromise
-        //   .confirmCardPayment(data.checkout.session)
-        //   .then(function (result) {
-        //     if (result.error) {
-        //       console.log("Darth");
-        //       // Handle error
-        //     } else {
-        //       // The payment has been confirmed
-        //       if (result.paymentIntent.status === "succeeded") {
-        //         console.log("Vader");
-        //         // The payment has been completed successfully
-        //       }
-        //     }
-        //   });
       });
     }
   }, [data]);
-
-  async function submitCheckout(e) {
+  console.log("data");
+  function submitCheckout(e) {
+    // const roomId = [];
+    console.log("----------------");
+    console.log(data);
+    console.log("----------------");
+    console.log("ss");
     // e.preventDefault();
     e.preventDefault();
-
+    console.log("dddd");
     getCheckout({
       variables: { room: room, cost: cost, description: description },
     });
-    // if (!called) {
-    //   console.log("hello");
-    // } else if (called && loading) {
-    //   console.log("sip");
-    // } else {
-    //   console.log("adsfnjk");
-    // }
+    console.log({ data });
+    console.log("!!!!!!!!!!!!");
+    console.log(data);
+    console.log(getCheckout);
   }
-
   // useEffect(() => {
   //   async function getCart() {
   //     const cart = await idbPromise("cart", "get");

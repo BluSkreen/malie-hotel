@@ -39,14 +39,22 @@ export const QUERY_CHECKOUT = gql`
   }
 `;
 export const QUERY_ROOMS = gql`
-  query filterRooms($startDate: [Int]!, $endDate: [Int]!) {
-    filterRooms(startDate: $startDate, endDate: $endDate) {
-      choiceKing
-      choiceQueen
-      deluxKing
-      deluxQueen
-      exclusiveKing
-      exclusiveQueen
+query filterRooms($startDate: [Int], $endDate: [Int]) {
+  filterRooms(startDate: $startDate, endDate: $endDate) {
+    choiceKing
+    choiceQueen
+    deluxKing
+    deluxQueen
+    executiveKing
+    executiveQueen
+    availableRooms {
+      _id
+      desc
+      price
+      roomNumber
+      title
     }
   }
-`;
+}`;
+
+

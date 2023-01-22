@@ -1,6 +1,10 @@
 import React from "react";
+import { useEffect } from "react";
 
 const GolfCourse = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   return (
     <div>
       {/* section for carousel */}
@@ -230,7 +234,6 @@ const GolfCourse = () => {
         {/* </div>
         </div> */}
       </section>
-
     </div>
   );
 };

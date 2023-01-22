@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 
 const secret = "hoteltransylvania";
-
+const adminSecret = "stuff";
 const expiration = "2h";
 
 module.exports = {
@@ -17,15 +17,27 @@ module.exports = {
     }
 
     try {
-      const { data } = jwt.verify(token, secret, { maxAge: expiration });
-      console.log("lllfdff");
-      console.log("SID:" + data);
-      req.user = data;
+      if (req.body.isAdmin(true)) {
+        const { data: dataAdmin } = jwt.verify(token, adminSecret, {
+          maxAge: expiration,
+        });
+        // console.log(dataAdmin);
+        req.user = dataAdmin;
+      } else {
+        const { data: dataUser } = jwt.verify(token, secret, {
+          maxAge: expiration,
+        });
+        req.user = dataUser;
+      }
     } catch {
       console.log("Invalid token");
     }
 
     return req;
+  },
+  signAdmin: function ({ email, username, _id, isAdmin }) {
+    const payload = { email, username, _id, isAdmin };
+    return jwt.sign({ data: payload }, adminSecret, { expiresIn: expiration });
   },
 
   signToken: function ({ email, username, _id }) {
