@@ -109,11 +109,11 @@ const Home = () => {
         </form>
       </section>
 
-      <section className=" bg-[#faf7eb] border-y-8 border-[#d2b947] flex flex-wrap justify-between ">
-        <div className=" mb-10 w-1/2 ">
-          <h1 className="text-[48px] font-economica font-bold  drop-shadow-[2px_2px_.5px_#d2b947] p-10">
-            Come Stay with Us
-          </h1>
+            <section className=" bg-[#faf7eb] border-8 border-[#d2b947] flex flex-wrap justify-between ">
+                <div className=" mb-10 w-1/2 ">
+                    <h1 className="text-[48px] font-economica font-bold  drop-shadow-[2px_2px_.5px_#d2b947] p-10">
+                        Come Stay with Us
+                    </h1>
 
           <p className=" text-[20px] font-economica font-bold bg-[#faf7eb] max-w-[700px] mx-auto text-center">
             Enjoy a desirable location next to Ala Moana Center, the world's
@@ -140,162 +140,93 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="bg-[url('https://images.unsplash.com/photo-1641598471501-61a78df0edec?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzJ8fGJsYWNrJTIwZ29sZCUyMHBhdHRlcm58ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60')] text-[#d2b947] p-10 border-b-4 border-[#d2b947]">
-        <h1 className="text-[48px] font-economica font-bold mt-10  text-[#d2b947]">
-          About Our Rooms
-        </h1>
-        <div className="flex flex-wrap justify-around p-10 rounded drop-shadow-[4px_4px_10px_rgba(0,0,0)] font-economica font-bold">
-          <div className="pt-10 bg-black p-10 border-[#665919] border-2">
-            <img
-              src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzb3J0JTIwcm9vbXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
-              alt="hotel room"
-              className="max-w-[450px] border-solid border-2 border-[#665919] mb-4"
-            />
+            <section className="bg-[url('https://images.unsplash.com/photo-1641598471501-61a78df0edec?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzJ8fGJsYWNrJTIwZ29sZCUyMHBhdHRlcm58ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60')] text-[#d2b947] p-10 border-b-4 border-[#d2b947]">
+                <h1 className="text-[48px] font-economica font-bold mt-10  text-[#d2b947]">
+                    About Our Rooms
+                </h1>
+                <div className="flex flex-wrap justify-around p-10 rounded drop-shadow-[4px_4px_10px_rgba(0,0,0)] font-economica font-bold">
+                    <div className="pt-10 bg-black p-10 border-[#665919] border-2">
+                        <img
+                            src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzb3J0JTIwcm9vbXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
+                            alt="hotel room"
+                            className="max-w-[450px] border-solid border-2 border-[#665919] mb-4"
+                        />
 
-            <h2 className="text-[34px] text-center underline py-4 font-bold ">
-              Choice Guest Room
-            </h2>
-            <p className="max-w-[450px] text-[20px] text-center">
-              Suitable for short or longer stays, the Choice Guest Rooms are
-              perfect for couples wanting a comfortable base to explore Hawaii.
-              All rooms come with the choice of a king bed, or two queen beds.
-              All rooms also include air conditioning, coffee maker, daily
-              housekeeping, microwave oven and LCD TV with cable channels. And
-              just in case you need to check in with the office or family,
-              there's also complimentary WiFi access so you can stay connected.
-            </p>
-          </div>
-          <div className="pt-10 bg-black p-10 border border-[#665919] border-2">
-            <img
-              src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aG90ZWwlMjByb29tfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
-              alt="hotel room"
-              className="max-w-[450px] border-solid border-2 border-[#665919] mb-4"
-            />
-            <h2 className="text-[34px] text-center underline py-4 font-bold">
-              Deluxe Guest Room
-            </h2>
-            <p className="max-w-[450px] text-[20px] text-center">
-              Open spacious contemporary studio-style suite offering either a
-              King bed or two Queen beds, with a kitchenette, dining table and a
-              lanai (balcony) that provides sweeping views of either the Yacht
-              Harbor and Pacific Ocean or colorful city, majestic mountains and
-              Pacific Ocean. All rooms also include air conditioning, coffee
-              maker, daily housekeeping, microwave oven and LCD TV with cable
-              channels. And just in case you need to check in with the office or
-              family, there's also complimentary WiFi access so you can stay
-              connected.
-            </p>
-          </div>
-          <div className="pt-10 bg-black p-10 border border-[#665919] border-2">
-            <img
-              src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjl8fGhvdGVsJTIwcm9vbXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
-              alt="hotel room"
-              className="max-w-[450px] border-solid border-2 border-[#665919] mb-4"
-            />
-            <h2 className="text-[34px] text-center underline py-4 font-bold">
-              Executive Guest Room
-            </h2>
-            <p className="max-w-[450px] pb-10 text-[20px] text-center">
-              These rooms are highly sought after, offering sweeping views of
-              the wide blue Pacific, a balcony that offers the perfect vantage
-              point to drink them all in, and spacious surrounds that can easily
-              accommodate up to four people, complete with a luxurious king bed
-              or two queen beds. All rooms feature a bar fridge and tea/coffee
-              making facilities and complimentary in-room entertainment options
-              provided by either WiFi or cable television.
-            </p>
-          </div>
+                        <h2 className="text-[34px] text-center underline py-4 font-bold ">
+                            Choice Guest Room
+                        </h2>
+                        <p className="max-w-[450px] text-[20px] text-center">
+                            Suitable for short or longer stays, the Choice Guest
+                            Rooms are perfect for couples wanting a comfortable
+                            base to explore Hawaii. All rooms come with the
+                            choice of a king bed, or two queen beds. All rooms
+                            also include air conditioning, coffee maker, daily
+                            housekeeping, microwave oven and LCD TV with cable
+                            channels. And just in case you need to check in with
+                            the office or family, there's also complimentary
+                            WiFi access so you can stay connected.
+                        </p>
+                    </div>
+                    <div className="pt-10 bg-black p-10 border border-[#665919] border-2">
+                        <img
+                            src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aG90ZWwlMjByb29tfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
+                            alt="hotel room"
+                            className="max-w-[450px] border-solid border-2 border-[#665919] mb-4"
+                        />
+                        <h2 className="text-[34px] text-center underline py-4 font-bold">
+                            Deluxe Guest Room
+                        </h2>
+                        <p className="max-w-[450px] text-[20px] text-center">
+                            Open spacious contemporary studio-style suite
+                            offering either a King bed or two Queen beds, with a
+                            kitchenette, dining table and a lanai (balcony) that
+                            provides sweeping views of either the Yacht Harbor
+                            and Pacific Ocean or colorful city, majestic
+                            mountains and Pacific Ocean. All rooms also include
+                            air conditioning, coffee maker, daily housekeeping,
+                            microwave oven and LCD TV with cable channels. And
+                            just in case you need to check in with the office or
+                            family, there's also complimentary WiFi access so
+                            you can stay connected.
+                        </p>
+                    </div>
+                    <div className="pt-10 bg-black p-10 border border-[#665919] border-2">
+                        <img
+                            src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjl8fGhvdGVsJTIwcm9vbXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
+                            alt="hotel room"
+                            className="max-w-[450px] border-solid border-2 border-[#665919] mb-4"
+                        />
+                        <h2 className="text-[34px] text-center underline py-4 font-bold">
+                            Executive Guest Room
+                        </h2>
+                        <p className="max-w-[450px] pb-10 text-[20px] text-center">
+                            These rooms are highly sought after, offering
+                            sweeping views of the wide blue Pacific, a balcony
+                            that offers the perfect vantage point to drink them
+                            all in, and spacious surrounds that can easily
+                            accommodate up to four people, complete with a
+                            luxurious king bed or two queen beds. All rooms
+                            feature a bar fridge and tea/coffee making
+                            facilities and complimentary in-room entertainment
+                            options provided by either WiFi or cable television.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section className=" bg-black text-[30px]">
+                <h1 className=" text-[48px] p-4 pt-10 text-[rgba(207,181,59)] font-economica font-bold pl-10 drop-shadow-[2px_2px_.5px_white]">
+                    Activities & Events
+                </h1>
+            </section>
+
+            <section className="border-y-8 border-[#d2b947]">
+            <iframe width="100%" height="712" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" id="gmap_canvas" src="https://maps.google.com/maps?width=1201&amp;height=712&amp;hl=en&amp;q=%20kihei+(The%20Malie%20Hotel)&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href='https://maps-generator.com/'></a>
+
+
+            </section>
         </div>
-      </section>
-
-      <section className=" bg-black text-[30px]">
-        <h1 className=" text-[48px] p-4 pt-10 text-[rgba(207,181,59)] font-economica font-bold pl-10 drop-shadow-[2px_2px_.5px_white]">
-          Activities & Events
-        </h1>
-
-        {/* 
-        <div date-rangepicker className="flex items-center" id="dateRangePickerId">
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                  <svg
-                    aria-hidden="true"
-                    className="w-5 h-5 text-gray-500 dark:text-gray-400"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                      clipRule="evenodd"
-                    ></path>
-                  </svg>
-                </div>
-                <input
-                  id="start"
-                  name="start"
-                  type="text"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Select date start"
-                />
-              </div>
-              <span className="mx-4 text-gray-500">to</span>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                  <svg
-                    aria-hidden="true"
-                    className="w-5 h-5 text-gray-500 dark:text-gray-400"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                      clipRule="evenodd"
-                    ></path>
-                  </svg>
-                </div>
-                <input
-                  id="end"
-                  name="end"
-                  type="text"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Select date end"
-                />
-              </div>
-            </div> */}
-        {/* <div className="flex">
-          <div className="   bg-grey-900 text-white p-8 border-solid border-4 border-[rgba(207,181,59)]">
-            <img
-              src="https://images.unsplash.com/photo-1662515049537-5c4442e107d6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDV8fGJlYWNoJTIwZ29sZnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
-              alt="golf"
-              className=" max-w-[500px]  border-solid border-[rgba(207,181,59)] border-4 rounded"
-            />
-            <p className="pt-6 font-amita">18 Hole Professional Course</p>
-          </div>
-          <div className="   bg-grey-900 text-white p-8 border-solid border-4 border-[rgba(207,181,59)]">
-            <img
-              src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8c3BhfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
-              alt=""
-              className=" max-w-[500px]  border-solid border-[rgba(207,181,59)] border-4 rounded"
-            />
-            <p className="pt-6 font-amita">World Class Spa Experience</p>
-          </div>
-          <div className="   bg-grey-900 text-white p-8 border-solid border-4 border-[rgba(207,181,59)]">
-            <img
-              src="https://images.unsplash.com/photo-1638693940422-b676efe57668?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fHRyb3BpY2FsJTIwd2VkZGluZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
-              alt=""
-              className=" max-w-[500px]  border-solid border-[rgba(207,181,59)] border-4 rounded"
-            />
-            <p className="pt-6 font-amita">
-              Breathtaking Wedding Accomodations
-            </p>
-          </div>
-        </div> */}
-      </section>
-    </div>
-  );
+    );
 };
 
 export default Home;
