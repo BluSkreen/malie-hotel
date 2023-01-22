@@ -100,8 +100,8 @@ const resolvers = {
     //   throw new AuthenticationError("Not logged in");
     // },
     checkout: async (parent, { room, cost, description }, context) => {
-      console.log("Hi Sid: " + room, cost, description);
-      console.log(context.headers.referer);
+      // console.log("Hi Sid: " + room, cost, description);
+      // console.log(context.headers.referer);
       // const header = "https://localhost:3001";
       const url = new URL(context.headers.referer).origin;
       // console.log(context.headers.referer);
@@ -154,6 +154,7 @@ const resolvers = {
       line_items.push({
         price: price.id,
         quantity: 1,
+        tax_rates: ["txr_1MSro2Czq6l4n83ndLKLmb8o"],
       });
       // }
 
@@ -162,29 +163,72 @@ const resolvers = {
         line_items,
         mode: "payment",
 
+        // automatic_tax: {
+        //   enabled: true,
+        // },
         success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${url}/`,
       });
-      // if (session.success_url == "complete") {
-      //   console.log("success");
+      // .then(() => {
+      //   console.log("dd43");
+      // const sessionId = stripe.checkout.sessions.retrieve(
+      //   "cs_test_a1u8xJmEkIHXJFuK3OhyttKPKs9pc81ZEcIM777TUV9gtHPHPgq4wFVqOC"
+      // );
+      console.log("sessionId");
+      console.log(session);
+      // console.log(sessionId);
+      // });
+      // console.log("fdfd");
+      // if (session.success_url.length > 0) {
+      //   console.log("dd43");
+      //   const sessionId = await stripe.checkout.sessions.retrieve(session.id);
+      //   console.log("sessionId");
+      //   console.log(sessionId);
       // }
-      if (session) {
-        await Reservation.create({
-          roomNumbers: room,
+      // console.log("4323");
 
-          startDate: [2021, 11, 23],
-          endDate: [2021, 11, 24],
-          cost: cost,
-          accomodations: ["Tv"],
-          email: context.user.email,
-        });
-        console.log("/////////////////////////////");
-        console.log(session);
-        console.log("/////////////////////////////");
+      // const session_id = session._id;
+      // console.log("/////////////////////////");
+      // console.log(session_id);
+      // console.log("/////////////////////////");
+      // const userSession = await stripe.checkout.sessions.retrieve(session._id);
+      // console.log("++++++++++++++++++++++++");
+      // console.log(userSession);
+      // console.log("++++++++++++++++++++++++");
+
+      // if (success_url == null) {
+      //   console.log();
+      // }
+      if (session.success_url !== " " || session.success_url !== null) {
+        console.log("success");
       }
+      // if (session) {
+      //   await Reservation.create({
+      //     roomNumbers: room,
+
+      //     startDate: [2021, 11, 23],
+      //     endDate: [2021, 11, 24],
+      //     cost: cost,
+      //     accomodations: ["Tv"],
+      //     email: context.user.email,
+      //   });
+      console.log("/////////////////////////////");
+      // console.log(session);
+      console.log("/////////////////////////////");
+      // }
+      // const paymentIntent = await stripe.paymentIntent.create();
+      // console.log("client");
+      // console.log(paymentIntent.client_secert);
+      // console.log("paymentIntent");
+      // console.log(paymentIntent);
 
       return { session: session.id };
     },
+
+    // wehook: async (parent, args, context) => {
+    //   const event = args;
+    //   switch(event.type){}
+    // }
     singleReservation: async (parent, { _id, email }) => {
       try {
         // either id or email will work
@@ -226,6 +270,7 @@ const resolvers = {
       }
 
       const token = signToken(user);
+      console.log(token);
       return { token, user };
     },
     // addOrder: async (parent, { user }, context) => {

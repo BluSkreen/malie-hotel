@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 
 const secret = "hoteltransylvania";
+
 const expiration = "2h";
 
 module.exports = {
@@ -17,6 +18,8 @@ module.exports = {
 
     try {
       const { data } = jwt.verify(token, secret, { maxAge: expiration });
+      console.log("lllfdff");
+      console.log("SID:" + data);
       req.user = data;
     } catch {
       console.log("Invalid token");

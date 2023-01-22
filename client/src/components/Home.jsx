@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useDateContext } from "../utils/DateContext";
 import { useMutation, useQuery } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
+import GoogleMapReact from "google-map-react";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -112,7 +113,19 @@ const Home = () => {
         </h1>
         <div className="flex flex-wrap justify-around mt-6 mb-6">
           <p className="max-w-[680px] text-[18px] mt-[70px] font-poppins">
-          Enjoy a desirable location next to Ala Moana Center, the world's largest open-air shopping mall. Stay just steps from Hawaii's most prestigious shopping venue showcasing fashion brands, premier department stores, and specialty retailers that include Louis Vuitton, Nordstrom and Williams-Sonoma. TripAdvisor reviewers rate the Melie among the top 20 hotels in Hawaii for travelers. Guests have access to complimentary Wi-Fi, a 24/7 business center, and extensive meeting and banquet facilities. The hotel's deluxe accommodations and superb location, just a 5-minute walk from the Hawaii Convention Center, are preferred by conference attendees. The Malie is 1.5 miles from Waikiki Beach, 2.5 miles from downtown Honolulu's financial center and government offices, and a quick 8 miles from Honolulu International Airport.
+            Enjoy a desirable location next to Ala Moana Center, the world's
+            largest open-air shopping mall. Stay just steps from Hawaii's most
+            prestigious shopping venue showcasing fashion brands, premier
+            department stores, and specialty retailers that include Louis
+            Vuitton, Nordstrom and Williams-Sonoma. TripAdvisor reviewers rate
+            the Melie among the top 20 hotels in Hawaii for travelers. Guests
+            have access to complimentary Wi-Fi, a 24/7 business center, and
+            extensive meeting and banquet facilities. The hotel's deluxe
+            accommodations and superb location, just a 5-minute walk from the
+            Hawaii Convention Center, are preferred by conference attendees. The
+            Malie is 1.5 miles from Waikiki Beach, 2.5 miles from downtown
+            Honolulu's financial center and government offices, and a quick 8
+            miles from Honolulu International Airport.
           </p>
           <img
             src="https://images.unsplash.com/reserve/8T8J12VQxyqCiQFGa2ct_bahamas-atlantis.jpg?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTR8fHRyb3BpY2FsJTIwaG90ZWx8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"
@@ -137,7 +150,13 @@ const Home = () => {
               Choice Guest Room
             </h2>
             <p className="max-w-[450px]">
-            Suitable for short or longer stays, the Choice Guest Rooms are perfect for couples wanting a comfortable base to explore Hawaii. All rooms come with the choice of a king bed, or two queen beds. All rooms also include air conditioning, coffee maker, daily housekeeping, microwave oven and LCD TV with cable channels. And just in case you need to check in with the office or family, there's also complimentary WiFi access so you can stay connected.
+              Suitable for short or longer stays, the Choice Guest Rooms are
+              perfect for couples wanting a comfortable base to explore Hawaii.
+              All rooms come with the choice of a king bed, or two queen beds.
+              All rooms also include air conditioning, coffee maker, daily
+              housekeeping, microwave oven and LCD TV with cable channels. And
+              just in case you need to check in with the office or family,
+              there's also complimentary WiFi access so you can stay connected.
             </p>
           </div>
           <div>
@@ -150,7 +169,15 @@ const Home = () => {
               Deluxe Guest Room
             </h2>
             <p className="max-w-[450px]">
-            Open spacious contemporary studio-style suite offering either a King bed or two Queen beds, with a kitchenette, dining table and a lanai (balcony) that provides  sweeping views of either the Yacht Harbor and Pacific Ocean or colorful city, majestic mountains and Pacific Ocean. All rooms also include air conditioning, coffee maker, daily housekeeping, microwave oven and LCD TV with cable channels. And just in case you need to check in with the office or family, there's also complimentary WiFi access so you can stay connected.
+              Open spacious contemporary studio-style suite offering either a
+              King bed or two Queen beds, with a kitchenette, dining table and a
+              lanai (balcony) that provides sweeping views of either the Yacht
+              Harbor and Pacific Ocean or colorful city, majestic mountains and
+              Pacific Ocean. All rooms also include air conditioning, coffee
+              maker, daily housekeeping, microwave oven and LCD TV with cable
+              channels. And just in case you need to check in with the office or
+              family, there's also complimentary WiFi access so you can stay
+              connected.
             </p>
           </div>
           <div>
@@ -163,7 +190,13 @@ const Home = () => {
               Executive Guest Room
             </h2>
             <p className="max-w-[450px] pb-10">
-            These rooms are highly sought after, offering sweeping views of the wide blue Pacific, a balcony that offers the perfect vantage point to drink them all in, and spacious surrounds that can easily accommodate up to four people, complete with a luxurious king bed or two queen beds. All rooms feature a bar fridge and tea/coffee making facilities and complimentary in-room entertainment options provided by either WiFi or cable television.
+              These rooms are highly sought after, offering sweeping views of
+              the wide blue Pacific, a balcony that offers the perfect vantage
+              point to drink them all in, and spacious surrounds that can easily
+              accommodate up to four people, complete with a luxurious king bed
+              or two queen beds. All rooms feature a bar fridge and tea/coffee
+              making facilities and complimentary in-room entertainment options
+              provided by either WiFi or cable television.
             </p>
           </div>
         </div>
