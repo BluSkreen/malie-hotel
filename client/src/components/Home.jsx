@@ -59,122 +59,172 @@ const Home = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
 
-        <video
-          className="relative z-[-1] w-auto min-w-full max-w-none"
-          muted
-          autoPlay="autoPlay"
-          loop
-        >
-          <source src={lux} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </section>
+                <video
+                    className="relative z-[-1] w-auto min-w-full max-w-none"
+                    muted
+                    autoPlay="autoPlay"
+                    loop
+                >
+                    <source src={lux} type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+            </section>
 
-      <section className="flex justify-center bg-black w-full pt-4">
-        <form className="w-full max-w-sm mb-10" onSubmit={handleFormSubmit}>
-          <h1 className="text-white">MAKE A RESERVATION</h1>
-          <div className="flex items-center border-b border-yellow-500 py-2">
-            <div className="inline-block relative w-64 mr-4">
-              <input
-                type="date"
-                id="start"
-                name="trip-start"
-                onChange={onStartDateChange}
-                value={startDateStr}
-                // min="2018-01-01"
-                // max="2018-12-31"
-              />
+            <section className="flex justify-center bg-black w-full pt-4 border-t-2 border-[#d2b947]">
+                <form
+                    className="w-full max-w-sm mb-10"
+                    onSubmit={handleFormSubmit}
+                >
+                    <h1 className="text-white">MAKE A RESERVATION</h1>
+                    <div className="flex items-center border-[rgba(207,181,59)] border-y py-2">
+                        <div className="inline-block relative w-64 mr-4">
+                            <input
+                                className="border-[rgba(207,181,59)]"
+                                type="date"
+                                id="start"
+                                name="trip-start"
+                                onChange={onStartDateChange}
+                                value={startDateStr}
+                                // min="2018-01-01"
+                                // max="2018-12-31"
+                            />
 
-              <input
-                type="date"
-                id="end"
-                name="trip-end"
-                onChange={onEndDateChange}
-                value={endDateStr}
-                // min="2018-01-01"
-                // max="2018-12-31"
-              />
-              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"></div>
-            </div>
+                            <input
+                                className="border-[rgba(207,181,59)]"
+                                type="date"
+                                id="end"
+                                name="trip-end"
+                                onChange={onEndDateChange}
+                                value={endDateStr}
+                                // min="2018-01-01"
+                                // max="2018-12-31"
+                            />
+                            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"></div>
+                        </div>
 
-            <button
-              className="flex-shrink-0 bg-[#d2b947] hover:bg-[#dcc970] border-[rgba(207,181,59)]  text-sm border-4 text-black py-1 px-2 rounded"
-              type="submit"
-            >
-              Check Availability
-            </button>
-          </div>
-        </form>
-      </section>
+                        <button
+                            className="flex-shrink-0 bg-[#d2b947] hover:bg-[#dcc970] border-[rgba(207,181,59)]  text-sm border-4 text-black py-1 px-2 rounded hover:transition ease-in-out delay-150  duration-300"
+                            type="submit"
+                        >
+                            Check Availability
+                        </button>
+                    </div>
+                </form>
+            </section>
 
-      <section className="p-4 mt-10">
-        <h1 className="text-[48px] font-amita font-bold pl-10 drop-shadow-[2px_2px_.5px_#d2b947]">
-          Come Stay with Us
-        </h1>
-        <div className="flex flex-wrap justify-around mt-6 mb-6">
-          <p className="max-w-[680px] text-[18px] mt-[70px] font-poppins">
-          Enjoy a desirable location next to Ala Moana Center, the world's largest open-air shopping mall. Stay just steps from Hawaii's most prestigious shopping venue showcasing fashion brands, premier department stores, and specialty retailers that include Louis Vuitton, Nordstrom and Williams-Sonoma. TripAdvisor reviewers rate the Melie among the top 20 hotels in Hawaii for travelers. Guests have access to complimentary Wi-Fi, a 24/7 business center, and extensive meeting and banquet facilities. The hotel's deluxe accommodations and superb location, just a 5-minute walk from the Hawaii Convention Center, are preferred by conference attendees. The Malie is 1.5 miles from Waikiki Beach, 2.5 miles from downtown Honolulu's financial center and government offices, and a quick 8 miles from Honolulu International Airport.
-          </p>
-          <img
-            src="https://images.unsplash.com/reserve/8T8J12VQxyqCiQFGa2ct_bahamas-atlantis.jpg?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTR8fHRyb3BpY2FsJTIwaG90ZWx8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"
-            alt="hotel"
-            className="border-solid border-[rgba(207,181,59)] border-4 rounded max-w-[700px] drop-shadow-[4px_4px_10px_rgba(0,0,0)]"
-          />
-        </div>
-      </section>
+            <section className=" bg-[#faf7eb] border-y-8 border-[#d2b947] flex flex-wrap justify-between ">
+                <div className=" mb-10 w-1/2 ">
+                    <h1 className="text-[48px] font-economica font-bold  drop-shadow-[2px_2px_.5px_#d2b947] p-10">
+                        Come Stay with Us
+                    </h1>
 
-      <section className="bg-[rgba(207,181,59)] text-white mt-10 p-4 pb-10">
-        <h1 className="text-[48px] font-amita font-bold mt-10 pl-10 drop-shadow-[2px_2px_.5px_black]">
-          About Our Rooms
-        </h1>
-        <div className="flex flex-wrap justify-around mt-10 rounded drop-shadow-[4px_4px_10px_rgba(0,0,0)] font-poppins">
-          <div>
-            <img
-              src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aG90ZWwlMjByb29tfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
-              alt="hotel room"
-              className="max-w-[450px] border-solid border-4 border-white mb-4"
-            />
-            <h2 className="text-[24px] text-center underline py-4 font-bold">
-              Choice Guest Room
-            </h2>
-            <p className="max-w-[450px]">
-            Suitable for short or longer stays, the Choice Guest Rooms are perfect for couples wanting a comfortable base to explore Hawaii. All rooms come with the choice of a king bed, or two queen beds. All rooms also include air conditioning, coffee maker, daily housekeeping, microwave oven and LCD TV with cable channels. And just in case you need to check in with the office or family, there's also complimentary WiFi access so you can stay connected.
-            </p>
-          </div>
-          <div>
-            <img
-              src="https://images.unsplash.com/photo-1612320743558-020669ff20e8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODJ8fGhvdGVsJTIwcm9vbXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
-              alt="hotel room"
-              className="max-w-[450px] border-solid border-4 border-white mb-4"
-            />
-            <h2 className="text-[24px] text-center underline py-4 font-bold">
-              Deluxe Guest Room
-            </h2>
-            <p className="max-w-[450px]">
-            Open spacious contemporary studio-style suite offering either a King bed or two Queen beds, with a kitchenette, dining table and a lanai (balcony) that provides  sweeping views of either the Yacht Harbor and Pacific Ocean or colorful city, majestic mountains and Pacific Ocean. All rooms also include air conditioning, coffee maker, daily housekeeping, microwave oven and LCD TV with cable channels. And just in case you need to check in with the office or family, there's also complimentary WiFi access so you can stay connected.
-            </p>
-          </div>
-          <div>
-            <img
-              src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjl8fGhvdGVsJTIwcm9vbXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
-              alt="hotel room"
-              className="max-w-[450px] border-solid border-4 border-white mb-4"
-            />
-            <h2 className="text-[24px] text-center underline py-4 font-bold">
-              Executive Guest Room
-            </h2>
-            <p className="max-w-[450px] pb-10">
-            These rooms are highly sought after, offering sweeping views of the wide blue Pacific, a balcony that offers the perfect vantage point to drink them all in, and spacious surrounds that can easily accommodate up to four people, complete with a luxurious king bed or two queen beds. All rooms feature a bar fridge and tea/coffee making facilities and complimentary in-room entertainment options provided by either WiFi or cable television.
-            </p>
-          </div>
-        </div>
-      </section>
+                    <p className=" text-[20px] font-economica font-bold bg-[#faf7eb] max-w-[700px] mx-auto text-center">
+                        Enjoy a desirable location next to Ala Moana Center, the
+                        world's largest open-air shopping mall. Stay just steps
+                        from Hawaii's most prestigious shopping venue showcasing
+                        fashion brands, premier department stores, and specialty
+                        retailers that include Louis Vuitton, Nordstrom and
+                        Williams-Sonoma. TripAdvisor reviewers rate the Melie
+                        among the top 20 hotels in Hawaii for travelers. Guests
+                        have access to complimentary Wi-Fi, a 24/7 business
+                        center, and extensive meeting and banquet facilities.
+                        The hotel's deluxe accommodations and superb location,
+                        just a 5-minute walk from the Hawaii Convention Center,
+                        are preferred by conference attendees. The Malie is 1.5
+                        miles from Waikiki Beach, 2.5 miles from downtown
+                        Honolulu's financial center and government offices, and
+                        a quick 8 miles from Honolulu International Airport.
+                    </p>
+                </div>
+                <div className=" ">
+                    <img
+                        src="https://images.unsplash.com/reserve/8T8J12VQxyqCiQFGa2ct_bahamas-atlantis.jpg?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTR8fHRyb3BpY2FsJTIwaG90ZWx8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"
+                        alt="hotel"
+                        className="  "
+                    />
+                </div>
+            </section>
 
-      <section className=" bg-grey-900 text-[30px]">
-        <h1 className=" text-[48px] p-4 pt-10 text-[rgba(207,181,59)] font-amita font-bold pl-10 drop-shadow-[2px_2px_.5px_white]">
-          Activities & Events
-        </h1>
-        {/* 
+            <section className="bg-[url('https://images.unsplash.com/photo-1641598471501-61a78df0edec?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzJ8fGJsYWNrJTIwZ29sZCUyMHBhdHRlcm58ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60')] text-[#d2b947] p-10 border-b-4 border-[#d2b947]">
+                <h1 className="text-[48px] font-economica font-bold mt-10  text-[#d2b947]">
+                    About Our Rooms
+                </h1>
+                <div className="flex flex-wrap justify-around p-10 rounded drop-shadow-[4px_4px_10px_rgba(0,0,0)] font-economica font-bold">
+                    <div className="pt-10 bg-black p-10 border-[#665919] border-2">
+                        <img
+                            src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzb3J0JTIwcm9vbXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
+                            alt="hotel room"
+                            className="max-w-[450px] border-solid border-2 border-[#665919] mb-4"
+                        />
+                        
+                        <h2 className="text-[34px] text-center underline py-4 font-bold ">
+                            Choice Guest Room
+                        </h2>
+                        <p className="max-w-[450px] text-[20px] text-center">
+                            Suitable for short or longer stays, the Choice Guest
+                            Rooms are perfect for couples wanting a comfortable
+                            base to explore Hawaii. All rooms come with the
+                            choice of a king bed, or two queen beds. All rooms
+                            also include air conditioning, coffee maker, daily
+                            housekeeping, microwave oven and LCD TV with cable
+                            channels. And just in case you need to check in with
+                            the office or family, there's also complimentary
+                            WiFi access so you can stay connected.
+                        </p>
+                    </div>
+                    <div className="pt-10 bg-black p-10 border border-[#665919] border-2">
+                        <img
+                            src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aG90ZWwlMjByb29tfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
+                            alt="hotel room"
+                            className="max-w-[450px] border-solid border-2 border-[#665919] mb-4"
+                        />
+                        <h2 className="text-[34px] text-center underline py-4 font-bold">
+                            Deluxe Guest Room
+                        </h2>
+                        <p className="max-w-[450px] text-[20px] text-center">
+                            Open spacious contemporary studio-style suite
+                            offering either a King bed or two Queen beds, with a
+                            kitchenette, dining table and a lanai (balcony) that
+                            provides sweeping views of either the Yacht Harbor
+                            and Pacific Ocean or colorful city, majestic
+                            mountains and Pacific Ocean. All rooms also include
+                            air conditioning, coffee maker, daily housekeeping,
+                            microwave oven and LCD TV with cable channels. And
+                            just in case you need to check in with the office or
+                            family, there's also complimentary WiFi access so
+                            you can stay connected.
+                        </p>
+                    </div>
+                    <div className="pt-10 bg-black p-10 border border-[#665919] border-2">
+                        <img
+                            src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjl8fGhvdGVsJTIwcm9vbXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
+                            alt="hotel room"
+                            className="max-w-[450px] border-solid border-2 border-[#665919] mb-4"
+                        />
+                        <h2 className="text-[34px] text-center underline py-4 font-bold">
+                            Executive Guest Room
+                        </h2>
+                        <p className="max-w-[450px] pb-10 text-[20px] text-center">
+                            These rooms are highly sought after, offering
+                            sweeping views of the wide blue Pacific, a balcony
+                            that offers the perfect vantage point to drink them
+                            all in, and spacious surrounds that can easily
+                            accommodate up to four people, complete with a
+                            luxurious king bed or two queen beds. All rooms
+                            feature a bar fridge and tea/coffee making
+                            facilities and complimentary in-room entertainment
+                            options provided by either WiFi or cable television.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section className=" bg-black text-[30px]">
+                <h1 className=" text-[48px] p-4 pt-10 text-[rgba(207,181,59)] font-economica font-bold pl-10 drop-shadow-[2px_2px_.5px_white]">
+                    Activities & Events
+                </h1>
+
+                {/* 
         <div date-rangepicker className="flex items-center" id="dateRangePickerId">
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -226,7 +276,7 @@ const Home = () => {
                 />
               </div>
             </div> */}
-        {/* <div className="flex">
+                {/* <div className="flex">
           <div className="   bg-grey-900 text-white p-8 border-solid border-4 border-[rgba(207,181,59)]">
             <img
               src="https://images.unsplash.com/photo-1662515049537-5c4442e107d6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDV8fGJlYWNoJTIwZ29sZnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
@@ -254,9 +304,9 @@ const Home = () => {
             </p>
           </div>
         </div> */}
-      </section>
-    </div>
-  );
+            </section>
+        </div>
+    );
 };
 
 export default Home;

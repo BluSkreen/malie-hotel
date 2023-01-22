@@ -2,35 +2,37 @@ import { logo } from "../assets";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
-  return (
-    <div className="bg-black text-white font-poppins pt-10 ">
-      <div className="flex flex-col items-center justify-center">
-        <div>
-          <p className="font-poppins text-[28px] pb-2 text-[rgba(207,181,59)] ">
-            222 Malie Way | Maui, HI 96729 | 808.123.9876
-          </p>
-        </div>
-        <div>
-          <img
-            src={logo}
-            alt="logo"
-            className="max-w-[200px] items-center pb-2"
-          />
-        </div>
-        <ul className="list-none sm:flex hidden justify-end items-center flex-1 z-[5]">
-          <li>
-            <Link
-              className={` cursor-pointer text-[18px] text-[rgba(207,181,59)]  mr-10 `}
-              aria-current="page"
-              to="/golfCourse"
-            >
-              Golf
-            </Link>
-          </li>
+    return (
+        <div className="bg-black text-white font-poppins pt-10 ">
+            <div className="flex flex-col items-center justify-center">
+                <div>
+                    <p className="font-economica text-[32px] pb-2 text-[rgba(207,181,59)] ">
+                        222 Malie Way | Maui, HI 96729 | 808.123.9876
+                    </p>
+                </div>
+                <div>
+                    <img
+                        src={logo}
+                        alt="logo"
+                        className="max-w-[200px] items-center pb-2"
+                    />
+                </div>
+                <ul className="list-none sm:flex hidden justify-end items-center flex-1 z-[5]">
+                    <li>
+                        <Link
+                            className={` cursor-pointer text-[18px] text-[rgba(207,181,59)] mr-10 hover:text-[#faf7ab] focus:text-[#faf7ab] 
+                            hover:transition ease-in-out delay-150  duration-300`}
+                            aria-current="page"
+                            to="/golfCourse"
+                        >
+                            Golf
+                        </Link>
+                    </li>
 
           <li>
             <Link
-              className={` cursor-pointer text-[18px] text-[rgba(207,181,59)]  mr-10`}
+              className={` cursor-pointer text-[18px] text-[rgba(207,181,59)]  mr-10 hover:text-[#faf7ab] focus:text-[#faf7ab] 
+              hover:transition ease-in-out delay-150  duration-300`}
               aria-current="page"
               to="/contact"
             >
@@ -39,7 +41,8 @@ const Footer = () => {
           </li>
           <li>
             <Link
-              className={` cursor-pointer text-[18px] text-[rgba(207,181,59)]  mr-10`}
+              className={` cursor-pointer text-[18px] text-[rgba(207,181,59)]  mr-10 hover:text-[#faf7ab] focus:text-[#faf7ab] 
+              hover:transition ease-in-out delay-150  duration-300`}
               aria-current="page"
               to="/rooms"
             >
@@ -49,7 +52,8 @@ const Footer = () => {
           <li>
             <Link
               to="/food"
-              className={` cursor-pointer text-[18px] text-[rgba(207,181,59)]  mr-10`}
+              className={` cursor-pointer text-[18px] text-[rgba(207,181,59)]  mr-10 hover:text-[#faf7ab] focus:text-[#faf7ab] 
+              hover:transition ease-in-out delay-150  duration-300`}
               aria-current="page"
             >
               Eat
