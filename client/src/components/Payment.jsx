@@ -40,6 +40,7 @@ const Payment = () => {
     console.log(data);
     console.log("----------------");
     if (data) {
+        console.log("if data");
       console.log(data);
       stripePromise.then((res) => {
         res.redirectToCheckout({ sessionId: data.checkout.session });

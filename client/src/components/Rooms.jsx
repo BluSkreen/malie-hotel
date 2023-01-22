@@ -1,12 +1,15 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import { useNavigate } from "react-router-dom";
 import { useDateContext } from "../utils/DateContext";
-import { useLazyQuery, useQuery } from "@apollo/client";
-import { QUERY_ROOMS } from "../utils/queries";
+import { useLazyQuery, useQuery, useMutation } from "@apollo/client";
+import { QUERY_ROOMS, QUERY_CHECKOUT } from "../utils/queries";
+import { loadStripe } from "@stripe/stripe-js";
 
 const Rooms = () => {
 
+    // make useState true on load 
+    // allow checkout 
     const navigate = useNavigate();
   const {startDateStr,
       setStartDateStr, 
@@ -28,20 +31,22 @@ const Rooms = () => {
     const [executiveKing, setExecutiveKing] = useState(true);
     const [executiveQueen, setExecutiveQueen] = useState(true);
 
-    const { loading, error, data, refetch } = useQuery(QUERY_ROOMS,
+    const { loading: loadingRooms, error: errorRooms, data: dataRooms, refetch } = useQuery(QUERY_ROOMS,
         {
             variables: { startDate:startDateArr, endDate:endDateArr }
         }
     );
 
+    
+
     // console.log(data);
 
-    const handleFormSubmit = async (event) => {
+    function handleFormSubmit(event) {
         event.preventDefault();
-        const startDateControl = await document
+        const startDateControl = document
             .getElementById("start")
             .value.toString();
-        const endDateControl = await document.getElementById("end").value.toString();
+        const endDateControl = document.getElementById("end").value.toString();
 
         setStartDateStr(startDateControl);
         setStartDateArr([
@@ -58,25 +63,75 @@ const Rooms = () => {
         // console.log(startDateArr);
         // console.log(endDateArr);
 
-        await refetch({ startDate:startDateArr, endDate:endDateArr });
-        console.log(data);
-        setChoiceKing(data.filterRooms.choiceKing);
-        setChoiceQueen(data.filterRooms.choiceQueen);
-        setDeluxeKing(data.filterRooms.deluxeKing);
-        setDeluxeQueen(data.filterRooms.deluxeQueen);
-        setExecutiveKing(data.filterRooms.executiveKing);
-        setExecutiveQueen(data.filterRooms.executiveQueen);
+        refetch({ startDate:startDateArr, endDate:endDateArr });
+        console.log(dataRooms);
     }
 
     useEffect(() => {
+        setChoiceKing(dataRooms?.filterRooms.choiceKing);
+        setChoiceQueen(dataRooms?.filterRooms.choiceQueen);
+        setDeluxeKing(dataRooms?.filterRooms.deluxeKing);
+        setDeluxeQueen(dataRooms?.filterRooms.deluxeQueen);
+        setExecutiveKing(dataRooms?.filterRooms.executiveKing);
+        setExecutiveQueen(dataRooms?.filterRooms.executiveQueen);
         // console.log(data)
-      }, [data])
+      }, [dataRooms])
     // if local storage has values for the query
     // then useQuery(the dates)
     // change useState for each type of Rooms
     //
     // const
 
+  const room = 203;
+  const description = "delux";
+  const cost = 3000;
+  const stripePromise = loadStripe(
+    "pk_test_51MS6bZCzq6l4n83nCqy7oVDR7LifHKUuEYQRG4Ja0gUiIU0KthzJeD7nr090nmAgHs9hkhAK0Dkks06gI4TC00rs00nuv84CYX"
+  );
+  // console.log(stripePromise);
+  const [getCheckout, { data: checkoutData }] = useLazyQuery(QUERY_CHECKOUT);
+
+  useEffect(() => {
+    console.log("----------------");
+    console.log(checkoutData);
+    console.log("----------------");
+    if (checkoutData) {
+        console.log("if data");
+      console.log(checkoutData);
+      stripePromise.then((res) => {
+        res.redirectToCheckout({ sessionId: checkoutData.checkout.session });
+      });
+    }
+  }, [checkoutData]);
+  // console.log("data");
+  function submitCheckout(e) {
+    // const roomId = [];
+    console.log("----------------");
+    console.log(checkoutData);
+    console.log("----------------");
+    console.log("ss");
+    // e.preventDefault();
+    console.log(e);
+    e.preventDefault();
+    console.log(e.target.value);
+    // if variable are good then get checkout 
+    console.log("dddd");
+    const targetRoom = dataRooms.filterRooms.availableRooms.filter((item) => {
+        return item.title == e.target.value;
+    })
+      console.log(targetRoom);
+
+
+      // AUTHENTICATE USER BEFORE SENDING TO CHECKOUT -----------------------TODO
+    // console.log(dataRooms.filterRooms.availableRooms[e.target.value]);
+    //getCheckout({
+      //variables: { room: targetRoom[0].roomNumber, cost: targetRoom[0].cost, description: target[0].desc },
+    //});
+    console.log({ checkoutData });
+    console.log("!!!!!!!!!!!!");
+    console.log(checkoutData);
+    console.log(getCheckout);
+  }
     return (
         <div className="bg-white w-full overflow-hidden">
             <form
@@ -167,8 +222,11 @@ const Rooms = () => {
                         <button
                             className=" content-center bg-[rgba(207,181,59)] hover:bg-cyan-400 focus:shadow-outline focus:outline-none text-black font-bold py-2 px-4 rounded max-w-[180px] mb-4"
                             type="button"
+                            value={"choiceKing"}
+                            onClick={ choiceKing ? submitCheckout : undefined }
+                            disabled={ !choiceKing }
                         >
-                            Book from $375
+                            { choiceKing ? "Book from $375" : "Unavailable" }
                         </button>
                     </div>
                     <div className=" text-center m-10  bg-black p-4 rounded-xl shadow-lg shadow-black">
@@ -188,8 +246,11 @@ const Rooms = () => {
                         <button
                             className=" content-center bg-[rgba(207,181,59)] hover:bg-cyan-400 focus:shadow-outline focus:outline-none text-black font-bold py-2 px-4 rounded max-w-[180px] mb-4"
                             type="button"
+                            value={"deluxeKing"}
+                            onClick={ deluxeKing ? submitCheckout : undefined }
+                            disabled={ !deluxeKing }
                         >
-                            Book from $590
+                            { deluxeKing ? "Book from $590" : "Unavailable" }
                         </button>
                     </div>
                     <div className=" text-center m-10  bg-black p-4 rounded-xl shadow-lg shadow-black">
@@ -209,8 +270,11 @@ const Rooms = () => {
                         <button
                             className=" content-center bg-[rgba(207,181,59)] hover:bg-cyan-400 focus:shadow-outline focus:outline-none text-black font-bold py-2 px-4 rounded max-w-[180px] mb-4"
                             type="button"
+                            value={"executiveKing"}
+                            onClick={ executiveKing ? submitCheckout : undefined }
+                            disabled={ !executiveKing }
                         >
-                            Book from $800
+                            { executiveKing ? "Book from $800" : "Unavailable" }
                         </button>
                     </div>
                     <div className=" text-center m-10  bg-black p-4 rounded-xl shadow-lg shadow-black">
@@ -230,8 +294,11 @@ const Rooms = () => {
                         <button
                             className=" content-center bg-[rgba(207,181,59)] hover:bg-cyan-400 focus:shadow-outline focus:outline-none text-black font-bold py-2 px-4 rounded max-w-[180px] mb-4"
                             type="button"
+                            value={"choiceQueen"}
+                            onClick={ choiceQueen ? submitCheckout : undefined }
+                            disabled={ !choiceQueen }
                         >
-                            Book from $375
+                            { choiceQueen ? "Book from $375" : "Unavailable" }
                         </button>
                     </div>
                     <div className=" text-center m-10  bg-black p-4 rounded-xl shadow-lg shadow-black">
@@ -251,8 +318,11 @@ const Rooms = () => {
                         <button
                             className=" content-center bg-[rgba(207,181,59)] hover:bg-cyan-400 focus:shadow-outline focus:outline-none text-black font-bold py-2 px-4 rounded max-w-[180px] mb-4"
                             type="button"
+                            value={"deluxeQueen"}
+                            onClick={ deluxeQueen ? submitCheckout : undefined }
+                            disabled={ !deluxeQueen }
                         >
-                            Book from $590
+                            { deluxeQueen ? "Book from $590" : "Unavailable" }
                         </button>
                     </div>
                     <div className=" text-center m-10  bg-black p-4 rounded-xl shadow-lg shadow-black">
@@ -272,8 +342,11 @@ const Rooms = () => {
                         <button
                             className=" content-center bg-[rgba(207,181,59)] hover:bg-cyan-400 focus:shadow-outline focus:outline-none text-black font-bold py-2 px-4 rounded max-w-[180px] mb-4"
                             type="button"
+                            value={"executiveQueen"}
+                            onClick={ executiveQueen ? submitCheckout : undefined }
+                            disabled={ !executiveQueen }
                         >
-                            Book from $800
+                            { executiveQueen ? "Book from $800" : "Unavailable" }
                         </button>
                     </div>
             </div>

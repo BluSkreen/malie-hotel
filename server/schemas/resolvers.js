@@ -1,6 +1,6 @@
 const { User, Hotel, Room, Reservation, Order } = require("../models");
 
-const { signToken } = require("../utils/auth");
+const { signToken, signAdmin } = require("../utils/auth");
 const { AuthenticationError } = require("apollo-server-express");
 const stripe = require("stripe")(
   "sk_test_51MS6bZCzq6l4n83nFjK2P29D5fUKZj5wh4SWqYeoW1EV8ihcN8hlLmtZSmtHKcOVATT527RtTqawBVsFy8juFQp100wKgBAuNz"
@@ -203,20 +203,20 @@ const resolvers = {
       // if (session.success_url == "complete") {
       //   console.log("success");
       // }
-      if (session) {
-        await Reservation.create({
-          roomNumbers: room,
+      //if (session) {
+        //await Reservation.create({
+        //  roomNumbers: room,
 
-          startDate: [2021, 11, 23],
-          endDate: [2021, 11, 24],
-          cost: cost,
-          accomodations: ["Tv"],
-          email: context.user.email,
-        });
+        //  startDate: [2021, 11, 23],
+        //  endDate: [2021, 11, 24],
+        //  cost: cost,
+        //  accomodations: ["Tv"],
+        //  email: context.user.email,
+        //});
         console.log("/////////////////////////////");
         console.log(session);
         console.log("/////////////////////////////");
-      }
+      //}
 
       return { session: session.id };
     },
@@ -259,10 +259,19 @@ const resolvers = {
       if (!correctPw) {
         throw new AuthenticationError("Incorrect password!");
       }
-
-      const token = signToken(user);
+      let token;
+      if (user.isAdmin) {
+          // signAdmin
+           token = signAdmin(user);
+      } else {
+          token = signToken(user);
+      }
       return { token, user };
     },
+
+    //admin: async (parent, { email, password }) => {
+                        
+    //}
     // addOrder: async (parent, { user }, context) => {
     //   console.log(args);
     //   // if (context.user) {
