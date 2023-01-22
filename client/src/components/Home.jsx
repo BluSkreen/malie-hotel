@@ -4,6 +4,10 @@ import { useDateContext } from "../utils/DateContext";
 import { useMutation, useQuery } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
 
+
+
+
+
 const Home = () => {
     const navigate = useNavigate();
     const {
@@ -51,7 +55,11 @@ const Home = () => {
         checkDates();
         setEndDate("");
         setStartDate("");
+
+       
     }
+    
+   
     return (
         <div>
             <section>
@@ -116,7 +124,7 @@ const Home = () => {
                 </form>
             </section>
 
-            <section className=" bg-[#faf7eb] border-y-8 border-[#d2b947] flex flex-wrap justify-between ">
+            <section className=" bg-[#faf7eb] border-8 border-[#d2b947] flex flex-wrap justify-between ">
                 <div className=" mb-10 w-1/2 ">
                     <h1 className="text-[48px] font-economica font-bold  drop-shadow-[2px_2px_.5px_#d2b947] p-10">
                         Come Stay with Us
@@ -160,7 +168,7 @@ const Home = () => {
                             alt="hotel room"
                             className="max-w-[450px] border-solid border-2 border-[#665919] mb-4"
                         />
-                        
+
                         <h2 className="text-[34px] text-center underline py-4 font-bold ">
                             Choice Guest Room
                         </h2>
@@ -227,87 +235,12 @@ const Home = () => {
                 <h1 className=" text-[48px] p-4 pt-10 text-[rgba(207,181,59)] font-economica font-bold pl-10 drop-shadow-[2px_2px_.5px_white]">
                     Activities & Events
                 </h1>
+            </section>
 
-                {/* 
-        <div date-rangepicker className="flex items-center" id="dateRangePickerId">
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                  <svg
-                    aria-hidden="true"
-                    className="w-5 h-5 text-gray-500 dark:text-gray-400"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                      clipRule="evenodd"
-                    ></path>
-                  </svg>
-                </div>
-                <input
-                  id="start"
-                  name="start"
-                  type="text"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Select date start"
-                />
-              </div>
-              <span className="mx-4 text-gray-500">to</span>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                  <svg
-                    aria-hidden="true"
-                    className="w-5 h-5 text-gray-500 dark:text-gray-400"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                      clipRule="evenodd"
-                    ></path>
-                  </svg>
-                </div>
-                <input
-                  id="end"
-                  name="end"
-                  type="text"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Select date end"
-                />
-              </div>
-            </div> */}
-                {/* <div className="flex">
-          <div className="   bg-grey-900 text-white p-8 border-solid border-4 border-[rgba(207,181,59)]">
-            <img
-              src="https://images.unsplash.com/photo-1662515049537-5c4442e107d6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDV8fGJlYWNoJTIwZ29sZnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
-              alt="golf"
-              className=" max-w-[500px]  border-solid border-[rgba(207,181,59)] border-4 rounded"
-            />
-            <p className="pt-6 font-amita">18 Hole Professional Course</p>
-          </div>
-          <div className="   bg-grey-900 text-white p-8 border-solid border-4 border-[rgba(207,181,59)]">
-            <img
-              src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8c3BhfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
-              alt=""
-              className=" max-w-[500px]  border-solid border-[rgba(207,181,59)] border-4 rounded"
-            />
-            <p className="pt-6 font-amita">World Class Spa Experience</p>
-          </div>
-          <div className="   bg-grey-900 text-white p-8 border-solid border-4 border-[rgba(207,181,59)]">
-            <img
-              src="https://images.unsplash.com/photo-1638693940422-b676efe57668?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fHRyb3BpY2FsJTIwd2VkZGluZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
-              alt=""
-              className=" max-w-[500px]  border-solid border-[rgba(207,181,59)] border-4 rounded"
-            />
-            <p className="pt-6 font-amita">
-              Breathtaking Wedding Accomodations
-            </p>
-          </div>
-        </div> */}
+            <section className="border-y-8 border-[#d2b947]">
+            <iframe width="100%" height="712" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" id="gmap_canvas" src="https://maps.google.com/maps?width=1201&amp;height=712&amp;hl=en&amp;q=%20kihei+(The%20Malie%20Hotel)&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href='https://maps-generator.com/'></a>
+
+
             </section>
         </div>
     );

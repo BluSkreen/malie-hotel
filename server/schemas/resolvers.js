@@ -168,20 +168,20 @@ const resolvers = {
       // if (session.success_url == "complete") {
       //   console.log("success");
       // }
-      if (session) {
-        await Reservation.create({
-          roomNumbers: room,
+      // if (session) {
+      //   await Reservation.create({
+      //     roomNumbers: room,
 
-          startDate: [2021, 11, 23],
-          endDate: [2021, 11, 24],
-          cost: cost,
-          accomodations: ["Tv"],
-          email: context.user.email,
-        });
-        console.log("/////////////////////////////");
-        console.log(session);
-        console.log("/////////////////////////////");
-      }
+      //     startDate: [2021, 11, 23],
+      //     endDate: [2021, 11, 24],
+      //     cost: cost,
+      //     accomodations: ["Tv"],
+      //     email: context.user.email,
+      //   });
+      //   console.log("/////////////////////////////");
+      //   console.log(session);
+      //   console.log("/////////////////////////////");
+      // }
 
       return { session: session.id };
     },
