@@ -212,7 +212,7 @@ const resolvers = {
             "cost": cost,
             "email": context.user.email,
             "prodId": paymentId,
-        }
+        },
 
         // automatic_tax: {
         //   enabled: true,
