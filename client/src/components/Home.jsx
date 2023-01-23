@@ -208,7 +208,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section className=" bg-black text-[30px]">
+      <section className=" bg-black text-[30px] pb-20">
         <h1 className=" text-[48px] p-4 pt-10 text-[rgba(207,181,59)] font-economica font-bold pl-10 drop-shadow-[2px_2px_.5px_white]">
           Activities & Events
         </h1>
