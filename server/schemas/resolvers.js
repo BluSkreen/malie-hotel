@@ -205,7 +205,14 @@ const resolvers = {
         payment_method_types: ["card"],
         line_items,
         mode: "payment",
-        client_reference_id: paymentId,
+        metadata: { 
+            "roomNumbers": [roomNumber],
+            "startDate": startDate,
+            "endDate": endDate,
+            "cost": cost,
+            "email": context.user.email,
+            "prodId": paymentId,
+        }
 
         // automatic_tax: {
         //   enabled: true,

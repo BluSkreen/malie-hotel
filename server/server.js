@@ -44,7 +44,7 @@ app.post('/webhook', (request, response) => {
     console.log("req body")
     console.log(request.body);
     if(request.body.type == 'payment_intent.succeeded'){
-        console.log(request.body.data.object);
+        console.log(request.body.data.object.metadata);
         console.log("payment success");
         //makeReservation(request.body);
           //const reservationObj = {
