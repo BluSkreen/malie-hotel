@@ -117,7 +117,7 @@ const Home = () => {
           </div>
         </form>
       </section>
-
+      {/* come stay with us */}
       <section className="p-4 mt-10">
         <h1 className="text-[48px] font-amita font-bold pl-10">
           Come Stay with Us
@@ -146,7 +146,7 @@ const Home = () => {
           />
         </div>
       </section>
-
+      {/* about our rooms */}
       <section className="bg-[rgba(207,181,59)] text-white mt-10 p-4 pb-10">
         <h1 className="text-[48px] font-amita font-bold mt-10 pl-10">
           About Our Rooms
@@ -202,94 +202,206 @@ const Home = () => {
           </div>
         </div>
       </section>
-
+      {/* activites */}
       <section className=" bg-grey-900 text-[30px]">
         <h1 className=" text-[48px] p-4 pt-10 text-[rgba(207,181,59)] font-amita font-bold pl-10">
           Activities & Events
         </h1>
-        {/* 
-        <div date-rangepicker className="flex items-center" id="dateRangePickerId">
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                  <svg
-                    aria-hidden="true"
-                    className="w-5 h-5 text-gray-500 dark:text-gray-400"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                      clipRule="evenodd"
-                    ></path>
-                  </svg>
-                </div>
-                <input
-                  id="start"
-                  name="start"
-                  type="text"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Select date start"
+
+        <div className="flex flex-wrap justify-around mt-10 rounded">
+          <div class="flex justify-center mb-8 mt-2 border-solid border-[rgba(207,181,59)] border-4 rounded max-w-[700px]">
+            <div class="rounded-lg shadow-lg bg-black max-w-sm">
+              <a href="#!" data-mdb-ripple="true" data-mdb-ripple-color="light">
+                <img
+                  class="rounded-t-lg"
+                  src={require("../assets/golfImgLink.jpg")}
+                  alt=""
                 />
+              </a>
+              <div class="p-6">
+                <h5 class="text-[rgba(207,181,59)] text-xl font-medium mb-2">
+                  Golf in places so beautiful that you will never want to leave!
+                </h5>
+                <button
+                  type="button"
+                  class="w-full inline-block px-6 py-2 border-2 border-[rgba(207,181,59)] text-white font-medium text-xs leading-normal uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+                >
+                  Click here to swing like a Pro!
+                </button>
               </div>
-              <span className="mx-4 text-gray-500">to</span>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                  <svg
-                    aria-hidden="true"
-                    className="w-5 h-5 text-gray-500 dark:text-gray-400"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                      clipRule="evenodd"
-                    ></path>
-                  </svg>
-                </div>
-                <input
-                  id="end"
-                  name="end"
-                  type="text"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Select date end"
+            </div>
+          </div>
+                  {/* Swing like a pro in a true paradise setting! */}
+
+          <div class="flex justify-center mb-8 mt-2 border-solid border-[rgba(207,181,59)] border-4 rounded max-w-[700px]">
+            <div class="rounded-lg shadow-lg bg-black max-w-sm">
+              <a href="#!" data-mdb-ripple="true" data-mdb-ripple-color="light">
+                <img
+                  class="rounded-t-lg"
+                  src={require("../assets/spaImgLink.jpg")}
+                  alt=""
                 />
+              </a>
+              <div class="p-6">
+                <h5 class="text-[rgba(207,181,59)] text-xl font-medium mb-2">
+                  After one day with us you will feel like royalty!
+                </h5>
+                <button
+                  type="button"
+                  class="w-full inline-block px-6 py-2 border-2 border-[rgba(207,181,59)] text-white font-medium text-xs leading-normal uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+                >
+                  Click here to let your worries melt away in our luxurious spa.
+                </button>
               </div>
-            </div> */}
-        {/* <div className="flex">
-          <div className="   bg-grey-900 text-white p-8 border-solid border-4 border-[rgba(207,181,59)]">
-            <img
-              src="https://images.unsplash.com/photo-1662515049537-5c4442e107d6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDV8fGJlYWNoJTIwZ29sZnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
-              alt="golf"
-              className=" max-w-[500px]  border-solid border-[rgba(207,181,59)] border-4 rounded"
-            />
-            <p className="pt-6 font-amita">18 Hole Professional Course</p>
+            </div>
           </div>
-          <div className="   bg-grey-900 text-white p-8 border-solid border-4 border-[rgba(207,181,59)]">
-            <img
-              src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8c3BhfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
-              alt=""
-              className=" max-w-[500px]  border-solid border-[rgba(207,181,59)] border-4 rounded"
-            />
-            <p className="pt-6 font-amita">World Class Spa Experience</p>
+
+          <div class="flex justify-center mb-8 mt-2 border-solid border-[rgba(207,181,59)] border-4 rounded max-w-[700px]">
+            <div class="rounded-lg shadow-lg bg-black max-w-sm">
+              <a href="#!" data-mdb-ripple="true" data-mdb-ripple-color="light">
+                <img
+                  class="rounded-t-lg"
+                  src={require("../assets/foodImgLink.jpg")}
+                  alt=""
+                />
+              </a>
+              <div class="p-6">
+                <h5 class="text-[rgba(207,181,59)] text-xl font-medium mb-2">
+                  Every flavor imaginable from every corner of the world.
+                </h5>
+                <button
+                  type="button"
+                  class="w-full inline-block px-6 py-2 border-2 border-[rgba(207,181,59)] text-white font-medium text-xs leading-normal uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+                >
+                  Click here to feast like a king in our award-winning restaurants.
+                </button>
+              </div>
+            </div>
           </div>
-          <div className="   bg-grey-900 text-white p-8 border-solid border-4 border-[rgba(207,181,59)]">
-            <img
-              src="https://images.unsplash.com/photo-1638693940422-b676efe57668?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fHRyb3BpY2FsJTIwd2VkZGluZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
-              alt=""
-              className=" max-w-[500px]  border-solid border-[rgba(207,181,59)] border-4 rounded"
-            />
-            <p className="pt-6 font-amita">
-              Breathtaking Wedding Accomodations
-            </p>
-          </div>
-        </div> */}
+
+          <div class="overflow-hidden text-gray-700">
+  <div class="container px-5 py-2 mx-auto lg:pt-24 lg:px-32">
+    <div class="flex flex-wrap -m-1 md:-m-2">
+      <div class="flex flex-wrap w-1/2">
+        <div class="w-1/2 p-1 md:p-2">
+          <img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg"
+            src={require("../assets/music1.jpg")}></img>
+        </div>
+        <div class="w-1/2 p-1 md:p-2">
+          <img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg"
+            src={require("../assets/music2.jpg")}></img>
+        </div>
+        <div class="w-full p-1 md:p-2">
+          <img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg"
+            src={require("../assets/music3.jpg")}></img>
+        </div>
+      </div>
+      <div class="flex flex-wrap w-1/2">
+        <div class="w-full p-1 md:p-2">
+          <img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg"
+            src={require("../assets/music4.jpg")}></img>
+        </div>
+        <div class="w-1/2 p-1 md:p-2">
+          <img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg"
+            src={require("../assets/music5.jpg")}></img>
+        </div>
+        <div class="w-1/2 p-1 md:p-2">
+          <img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg"
+            src={require("../assets/music6.jpg")}></img>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
       </section>
     </div>
   );
 };
 
+{
+  /* 
+<div date-rangepicker className="flex items-center" id="dateRangePickerId">
+      <div className="relative">
+        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+          <svg
+            aria-hidden="true"
+            className="w-5 h-5 text-gray-500 dark:text-gray-400"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fillRule="evenodd"
+              d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+              clipRule="evenodd"
+            ></path>
+          </svg>
+        </div>
+        <input
+          id="start"
+          name="start"
+          type="text"
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Select date start"
+        />
+      </div>
+      <span className="mx-4 text-gray-500">to</span>
+      <div className="relative">
+        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+          <svg
+            aria-hidden="true"
+            className="w-5 h-5 text-gray-500 dark:text-gray-400"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fillRule="evenodd"
+              d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+              clipRule="evenodd"
+            ></path>
+          </svg>
+        </div>
+        <input
+          id="end"
+          name="end"
+          type="text"
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Select date end"
+        />
+      </div>
+    </div> */
+}
+{
+  /* <div className="flex">
+  <div className="   bg-grey-900 text-white p-8 border-solid border-4 border-[rgba(207,181,59)]">
+    <img
+      src="https://images.unsplash.com/photo-1662515049537-5c4442e107d6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDV8fGJlYWNoJTIwZ29sZnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
+      alt="golf"
+      className=" max-w-[500px]  border-solid border-[rgba(207,181,59)] border-4 rounded"
+    />
+    <p className="pt-6 font-amita">18 Hole Professional Course</p>
+  </div>
+  <div className="   bg-grey-900 text-white p-8 border-solid border-4 border-[rgba(207,181,59)]">
+    <img
+      src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8c3BhfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
+      alt=""
+      className=" max-w-[500px]  border-solid border-[rgba(207,181,59)] border-4 rounded"
+    />
+    <p className="pt-6 font-amita">World Class Spa Experience</p>
+  </div>
+  <div className="   bg-grey-900 text-white p-8 border-solid border-4 border-[rgba(207,181,59)]">
+    <img
+      src="https://images.unsplash.com/photo-1638693940422-b676efe57668?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fHRyb3BpY2FsJTIwd2VkZGluZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
+      alt=""
+      className=" max-w-[500px]  border-solid border-[rgba(207,181,59)] border-4 rounded"
+    />
+    <p className="pt-6 font-amita">
+      Breathtaking Wedding Accomodations
+    </p>
+  </div>
+</div> */
+}
 export default Home;
