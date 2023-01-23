@@ -6,7 +6,7 @@ const { authMiddleware } = require("./utils/auth");
 const { typeDefs, resolvers } = require("./schemas");
 const db = require("./config/connection");
 const { Reservation } = require("./models");
-// const { makeReservation } = require("./webhooks/index");
+const { makeReservation } = require("./webhooks/index");
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -41,14 +41,30 @@ app.post('/webhook', (request, response) => {
 
     let event;
 
-    //console.log("req body")
-    //console.log(request.body);
+    console.log("req body")
+    console.log(request.body);
     if(request.body.type == 'payment_intent.succeeded'){
         console.log(request.body.data.object);
         console.log("payment success");
-
-
-    // response.status(200).json(makeReservation(request.body));
+        //makeReservation(request.body);
+          //const reservationObj = {
+          //    "roomNumbers": [roomNumber],
+          //    "startDate": startDate,
+          //    "endDate": endDate,
+          //    "cost": cost,
+          //    "email": context.user.email,
+          //    "prodId": paymentId,
+          //    "payment": "pending",
+          //}
+          //const { _id } = await Reservation.create({ ...reservationObj });
+          //const room = await Room.findOneAndUpdate(
+          //    { roomNumber: roomNumber },
+          //    {
+          //        $addToSet: {
+          //            reservations: _id,
+          //        },
+          //    },
+          //);
 
     } else if (request.body.type == 'payment_intent.canceled' || 'payment_intent.canceled') {
         console.log("not successful");

@@ -222,28 +222,28 @@ const resolvers = {
       console.log(session);
           //console.log(context)
       // console.log(sessionId);
-      try { 
-          const reservationObj = {
-              "roomNumbers": [roomNumber],
-              "startDate": startDate,
-              "endDate": endDate,
-              "cost": cost,
-              "email": context.user.email,
-              "prodId": paymentId,
-              "payment": "pending",
-          }
-          const { _id } = await Reservation.create({ ...reservationObj });
-          const room = await Room.findOneAndUpdate(
-              { roomNumber: roomNumber },
-              {
-                  $addToSet: {
-                      reservations: _id,
-                  },
-              },
-          );
-      } catch (err) {
-          console.log(err);
-      }
+      //try { 
+          //const reservationObj = {
+          //    "roomNumbers": [roomNumber],
+          //    "startDate": startDate,
+          //    "endDate": endDate,
+          //    "cost": cost,
+          //    "email": context.user.email,
+          //    "prodId": paymentId,
+          //    "payment": "pending",
+          //}
+          //const { _id } = await Reservation.create({ ...reservationObj });
+          //const room = await Room.findOneAndUpdate(
+          //    { roomNumber: roomNumber },
+          //    {
+          //        $addToSet: {
+          //            reservations: _id,
+          //        },
+          //    },
+          //);
+      //} catch (err) {
+      //    console.log(err);
+      //}
 
 
       // });
