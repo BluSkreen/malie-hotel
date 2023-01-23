@@ -209,8 +209,12 @@ const resolvers = {
         payment_intent_data: {
             metadata: { 
             roomNumbers: roomNumber,
-            startDate: JSON.stringify(startDate),
-            endDate: JSON.stringify(endDate),
+            startYear: startDate[0],
+            startMonth: startDate[1],
+            startDay: startDate[2],
+            endYear: endDate[0],
+            endMonth: endDate[1],
+            endDay: endDate[2],
             cost: cost,
             email: context.user.email,
             prodId: paymentId,
