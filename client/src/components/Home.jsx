@@ -283,6 +283,7 @@ const Home = () => {
             <div class="container px-5 py-2 mx-auto lg:pt-24 lg:px-32">
               <div class="flex flex-wrap -m-1 md:-m-2">
                 <div class="flex flex-wrap w-1/2">
+
                   <div class="w-1/2 p-1 md:p-2 relative overflow-hidden bg-no-repeat bg-cover max-w-xs">
                     <img
                       alt="gallery"
@@ -290,48 +291,51 @@ const Home = () => {
                       src={require("../assets/music1.jpg")}
                     ></img>
                     <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full rounded-lg overflow-hidden bg-fixed opacity-0 hover:opacity-70 transition duration-300 ease-in-out bg-[rgba(207,181,59)]"></div>
-                    <p class="text-[38px] hover:opacity-50 transition duration-300 ease-in-out z-[10] hover:text-black">
-                  “The only way to keep your health is to eat what you don’t
-                  want, drink what you don’t like, and do what you’d rather
-                  not.”
-                </p>
                   </div>
-                  <div class="w-1/2 p-1 md:p-2 ">
+
+                  <div class="w-1/2 p-1 md:p-2 relative overflow-hidden bg-no-repeat bg-cover max-w-xs">
                     <img
                       alt="gallery"
                       class="block object-cover object-center w-full h-full rounded-lg"
                       src={require("../assets/music6.jpg")}
                     ></img>
+                    <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full rounded-lg overflow-hidden bg-fixed opacity-0 hover:opacity-70 transition duration-300 ease-in-out bg-[rgba(207,181,59)]"></div>
                   </div>
-                  <div class="w-full p-1 md:p-2">
+
+                  <div class="w-full p-1 md:p-2 bg-no-repeat bg-cover relative">
                     <img
                       alt="gallery"
                       class="block object-cover object-center w-full h-full rounded-lg"
                       src={require("../assets/music3.jpg")}
                     ></img>
+                    <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full rounded-lg overflow-hidden bg-fixed opacity-0 hover:opacity-70 transition duration-300 ease-in-out bg-[rgba(207,181,59)]"></div>
                   </div>
                 </div>
+
                 <div class="flex flex-wrap w-1/2">
-                  <div class="w-full p-1 md:p-2">
+                  <div class="w-full p-1 md:p-2 bg-no-repeat bg-cover relative">
                     <img
                       alt="gallery"
                       class="block object-cover object-center w-full h-full rounded-lg"
                       src={require("../assets/music4.jpg")}
                     ></img>
+                    <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full rounded-lg overflow-hidden bg-fixed opacity-0 hover:opacity-70 transition duration-300 ease-in-out bg-[rgba(207,181,59)]"></div>
                   </div>
-                  <div class="w-1/2 p-1 md:p-2">
+                  <div class="w-1/2 p-1 md:p-2 relative overflow-hidden bg-no-repeat bg-cover max-w-xs">
                     <img
                       alt="gallery"
                       class="block object-cover object-center w-full h-full rounded-lg"
                       src={require("../assets/music5.jpg")}
                     ></img>
+                    <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full rounded-lg overflow-hidden bg-fixed opacity-0 hover:opacity-70 transition duration-300 ease-in-out bg-[rgba(207,181,59)]"></div>
                   </div>
-                  <div class="w-1/2 p-1 md:p-2">
+                  <div class="w-1/2 p-1 md:p-2 w-1/2 p-1 md:p-2 relative overflow-hidden bg-no-repeat bg-cover max-w-xs">
                     <img
                       alt="gallery"
                       class="block object-cover object-center w-full h-full rounded-lg"
                       src={require("../assets/music2.jpg")}
                     ></img>
+                    <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full rounded-lg overflow-hidden bg-fixed opacity-0 hover:opacity-70 transition duration-300 ease-in-out bg-[rgba(207,181,59)]"></div>
                   </div>
                 </div>
               </div>
