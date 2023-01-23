@@ -39,6 +39,7 @@ app.post('/webhook', (request, response) => {
 
     let event;
 
+    console.log("req body")
     console.log(request.body);
     try {
         event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
@@ -47,21 +48,26 @@ app.post('/webhook', (request, response) => {
         return;
     }
 
+    console.log("event");
     console.log(event);
 
     // Handle the event
-    switch (event.type) {
-        case 'payment_intent.succeeded':
-            const paymentIntent = event.data.object;
-            console.log("paymentIntent");
-            console.log(paymentIntent);
 
-            // Then define and call a function to handle the event payment_intent.succeeded
-            break;
-            // ... handle other event types
-        default:
-            console.log(`Unhandled event type ${event.type}`);
+    if(event.type == 'payment_intent.succeeded'){
+        console.log(event.data.object);
     }
+    //switch (event.type) {
+    //    case 'payment_intent.succeeded':
+    //        const paymentIntent = event.data.object;
+    //        console.log("paymentIntent");
+    //        console.log(paymentIntent);
+
+    //        // Then define and call a function to handle the event payment_intent.succeeded
+    //        break;
+            // ... handle other event types
+    //    default:
+    //        console.log(`Unhandled event type ${event.type}`);
+    //}
 
     // Return a 200 response to acknowledge receipt of the event
     response.send();
