@@ -1,6 +1,8 @@
 import React, { PureComponent } from "react";
 import ReactWeather, { useOpenWeather } from "react-open-weather";
 import { getProfile } from "../utils/auth.js";
+import { useNavigate } from "react-router-dom";
+import Auth from "../utils/auth.js";
 import {
   LineChart,
   Line,
