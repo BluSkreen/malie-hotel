@@ -2,15 +2,14 @@ const {  Room, Reservation } = require("../models");
 
 module.exports = {
 
-    async makeReservation(data) {
+    async makeReservation(metadata) {
         try {
             //const users = await User.find();
           console.log("webhook reservation");
-            console.log(data);
-            let metadata = JSON.parse(data);
+            //console.log(data);
             console.log(metadata);
             let newReservation = {
-                roomNumbers: parseInt(metadata.roomNumbers),
+                roomNumbers: [parseInt(metadata.roomNumbers)],
                 startDate: [
                     parseInt(metadata.startYear),
                     parseInt(metadata.startMonth),
