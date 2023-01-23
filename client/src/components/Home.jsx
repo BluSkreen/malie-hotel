@@ -213,13 +213,9 @@ const Home = () => {
           Activities & Events
         </h1>
         <div className="flex flex-wrap justify-around mt-10 rounded">
-          //{" "}
           <div class="flex justify-center mb-8 mt-2 border-solid border-[rgba(207,181,59)] border-4 rounded max-w-[700px]">
-            //{" "}
             <div class="rounded-lg shadow-lg bg-black max-w-sm">
-              //{" "}
               <a href="#!" data-mdb-ripple="true" data-mdb-ripple-color="light">
-                //{" "}
                 <img
                   class="rounded-t-lg"
                   src={require("../assets/golfImgLink.jpg")}
@@ -227,12 +223,12 @@ const Home = () => {
                 />
               </a>
               <div class="p-6">
-                <h5 class="text-[rgba(207,181,59)] text-xl font-medium mb-2">
+                <h5 class="text-[rgba(207,181,59)] text-xl font-medium mb-2 drop-shadow-[2px_2px_1.5px_white]">
                   Golf in places so beautiful that you will never want to leave!
                 </h5>
                 <button
                   type="button"
-                  class="w-full inline-block px-6 py-2 border-2 border-[rgba(207,181,59)] text-white font-medium text-xs leading-normal uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+                  class="w-full inline-block px-6 py-2 border-2 border-[rgba(207,181,59)] text-white font-medium text-xs leading-normal uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out drop-shadow-[2px_2px_1.5px_white]"
                 >
                   Click here to swing like a Pro!
                 </button>
@@ -249,12 +245,12 @@ const Home = () => {
                 />
               </a>
               <div class="p-6">
-                <h5 class="text-[rgba(207,181,59)] text-xl font-medium mb-2">
+                <h5 class="text-[rgba(207,181,59)] text-xl font-medium mb-2 drop-shadow-[2px_2px_1.5px_white]">
                   After one day with us you will feel like royalty!
                 </h5>
                 <button
                   type="button"
-                  class="w-full inline-block px-6 py-2 border-2 border-[rgba(207,181,59)] text-white font-medium text-xs leading-normal uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+                  class="w-full inline-block px-6 py-2 border-2 border-[rgba(207,181,59)] text-white font-medium text-xs leading-normal uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out drop-shadow-[2px_2px_1.5px_white]"
                 >
                   Click here to let your worries melt away in our luxurious spa.
                 </button>
@@ -271,12 +267,12 @@ const Home = () => {
                 />
               </a>
               <div class="p-6">
-                <h5 class="text-[rgba(207,181,59)] text-xl font-medium mb-2">
+                <h5 class="text-[rgba(207,181,59)] text-xl font-medium mb-2 drop-shadow-[2px_2px_1.5px_white]">
                   Every flavor imaginable from every corner of the world.
                 </h5>
                 <button
                   type="button"
-                  class="w-full inline-block px-6 py-2 border-2 border-[rgba(207,181,59)] text-white font-medium text-xs leading-normal uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+                  class="w-full inline-block px-6 py-2 border-2 border-[rgba(207,181,59)] text-white font-medium text-xs leading-normal uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out drop-shadow-[2px_2px_1.5px_white]"
                 >
                   Click here to feast like a king in our award-winning
                   restaurants.
@@ -295,48 +291,51 @@ const Home = () => {
                       src={require("../assets/music1.jpg")}
                     ></img>
                     <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full rounded-lg overflow-hidden bg-fixed opacity-0 hover:opacity-70 transition duration-300 ease-in-out bg-[rgba(207,181,59)]"></div>
-                    <p class="text-[38px] hover:opacity-50 transition duration-300 ease-in-out z-[10] hover:text-black">
-                      “The only way to keep your health is to eat what you don’t
-                      want, drink what you don’t like, and do what you’d rather
-                      not.”
-                    </p>
                   </div>
-                  <div class="w-1/2 p-1 md:p-2 ">
+
+                  <div class="w-1/2 p-1 md:p-2 relative overflow-hidden bg-no-repeat bg-cover max-w-xs">
                     <img
                       alt="gallery"
                       class="block object-cover object-center w-full h-full rounded-lg"
                       src={require("../assets/music6.jpg")}
                     ></img>
+                    <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full rounded-lg overflow-hidden bg-fixed opacity-0 hover:opacity-70 transition duration-300 ease-in-out bg-[rgba(207,181,59)]"></div>
                   </div>
-                  <div class="w-full p-1 md:p-2">
+
+                  <div class="w-full p-1 md:p-2 bg-no-repeat bg-cover relative">
                     <img
                       alt="gallery"
                       class="block object-cover object-center w-full h-full rounded-lg"
                       src={require("../assets/music3.jpg")}
                     ></img>
+                    <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full rounded-lg overflow-hidden bg-fixed opacity-0 hover:opacity-70 transition duration-300 ease-in-out bg-[rgba(207,181,59)]"></div>
                   </div>
                 </div>
+
                 <div class="flex flex-wrap w-1/2">
-                  <div class="w-full p-1 md:p-2">
+                  <div class="w-full p-1 md:p-2 bg-no-repeat bg-cover relative">
                     <img
                       alt="gallery"
                       class="block object-cover object-center w-full h-full rounded-lg"
                       src={require("../assets/music4.jpg")}
                     ></img>
+                    <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full rounded-lg overflow-hidden bg-fixed opacity-0 hover:opacity-70 transition duration-300 ease-in-out bg-[rgba(207,181,59)]"></div>
                   </div>
-                  <div class="w-1/2 p-1 md:p-2">
+                  <div class="w-1/2 p-1 md:p-2 relative overflow-hidden bg-no-repeat bg-cover max-w-xs">
                     <img
                       alt="gallery"
                       class="block object-cover object-center w-full h-full rounded-lg"
                       src={require("../assets/music5.jpg")}
                     ></img>
+                    <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full rounded-lg overflow-hidden bg-fixed opacity-0 hover:opacity-70 transition duration-300 ease-in-out bg-[rgba(207,181,59)]"></div>
                   </div>
-                  <div class="w-1/2 p-1 md:p-2">
+                  <div class="w-1/2 p-1 md:p-2 w-1/2 p-1 md:p-2 relative overflow-hidden bg-no-repeat bg-cover max-w-xs">
                     <img
                       alt="gallery"
                       class="block object-cover object-center w-full h-full rounded-lg"
                       src={require("../assets/music2.jpg")}
                     ></img>
+                    <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full rounded-lg overflow-hidden bg-fixed opacity-0 hover:opacity-70 transition duration-300 ease-in-out bg-[rgba(207,181,59)]"></div>
                   </div>
                 </div>
               </div>
