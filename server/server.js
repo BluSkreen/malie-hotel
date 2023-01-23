@@ -5,6 +5,7 @@ const { authMiddleware } = require("./utils/auth");
 
 const { typeDefs, resolvers } = require("./schemas");
 const db = require("./config/connection");
+// const { makeReservation } = require("./webhooks/index");
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -16,9 +17,9 @@ const server = new ApolloServer({
 const stripe = require('stripe');
 
 // This is your Stripe CLI webhook secret for testing your endpoint locally.
-// const endpointSecret = "whsec_234db6f1bf5247050818477e5b438ed17b3aab52ca2dcba4cb92d65539dfd314";
+const endpointSecret = "whsec_234db6f1bf5247050818477e5b438ed17b3aab52ca2dcba4cb92d65539dfd314";
 
-const endpointSecret = process.env.STRIPESECRET;
+//const endpointSecret = process.env.STRIPESECRET;
 
 app.use(express.urlencoded({ extended: false }));
 // app.use(express.urlencoded({ extended: false }));
@@ -42,8 +43,10 @@ app.post('/webhook', (request, response) => {
     console.log("req body")
     console.log(request.body);
     if(request.body.type == 'payment_intent.succeeded'){
-        console.log(request.data.object);
+        console.log(request.body.data.object);
         console.log("payment success");
+        // response.status(200).json(makeReservation(request.body));
+
     }
 
     response.status(200);
