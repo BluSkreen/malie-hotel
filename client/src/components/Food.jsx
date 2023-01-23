@@ -1,11 +1,21 @@
 import React from "react";
 import { useEffect } from "react";
 // import localImage from "../assets/oceanBanner";
+import { useNavigate } from "react-router-dom";
+import Auth from "../utils/auth.js";
 
 const Food = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  });
+    const navigate = useNavigate();
+    let userToken;
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        if(Auth.loggedIn()){
+            userToken = Auth.getProfile();
+            if (userToken.data.isAdmin){
+                navigate("/admin");
+            }
+        }
+    }, []);
   return (
     <div>
       {/* intro photo */}

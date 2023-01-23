@@ -1,9 +1,10 @@
 import { lux } from "../assets";
-import React, { useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { useDateContext } from "../utils/DateContext";
 import { useMutation, useQuery } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
 import { checkDEV } from "@apollo/client/utilities/globals";
+import Auth from "../utils/auth.js";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -20,6 +21,18 @@ const Home = () => {
     onEndDateChange,
     // handleFormSubmit,
   } = useDateContext();
+
+  let userToken;
+
+  useEffect(() => {
+      if(Auth.loggedIn()){
+          userToken = Auth.getProfile();
+          if (userToken.data.isAdmin){
+              navigate("/admin");
+          }
+      }
+    
+  }, [])
 
   function checkDates() {
     if (startDateStr !== "" && endDateStr !== "") {

@@ -224,7 +224,7 @@ const resolvers = {
         // automatic_tax: {
         //   enabled: true,
         // },
-        success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+        success_url: `${url}/`,
         cancel_url: `${url}/`,
       });
       // .then(() => {
@@ -329,13 +329,13 @@ const resolvers = {
       if (!correctPw) {
         throw new AuthenticationError("Incorrect password!");
       }
-      let token;
-      if (user.isAdmin) {
+      let token = signToken(user);
+      //if (user.isAdmin) {
         // signAdmin
-        token = signAdmin(user);
-      } else {
-        token = signToken(user);
-      }
+        //token = signAdmin(user);
+      //} else {
+        //token = signToken(user);
+      //}
       return { token, user };
     },
 

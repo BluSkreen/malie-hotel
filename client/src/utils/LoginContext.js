@@ -11,6 +11,7 @@ export const LoginProvider = ({ children }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
+  const [admin, setAdmin] = useState("");
 
   const onEmailChange = (e) => {
     const emailInput = e.target.value;
@@ -43,6 +44,8 @@ export const LoginProvider = ({ children }) => {
         username,
         onUsernameChange,
         setUsername,
+        admin,
+        setAdmin
       }}
     >
       {/* We render children in our component so that any descendent can access the value from the provider */}

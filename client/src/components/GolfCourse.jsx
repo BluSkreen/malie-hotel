@@ -1,11 +1,21 @@
 import React from "react";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import Auth from "../utils/auth.js";
 
 const GolfCourse = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  });
-  return (
+    const navigate = useNavigate();
+    let userToken;
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        if(Auth.loggedIn()){
+            userToken = Auth.getProfile();
+            if (userToken.data.isAdmin){
+                navigate("/admin");
+            }
+        }
+    }, []);
+    return (
     <div>
       {/* section for carousel */}
       <section className="bg-[rgba(207,181,59)] text-white pt-5 pb-20" >

@@ -2,6 +2,7 @@ import { close, logo, menu } from "../assets";
 import { useLoginContext } from "../utils/LoginContext";
 import Auth from "../utils/auth";
 import { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 
 import { useMutation, useQuery } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
@@ -17,12 +18,16 @@ const Modal = ({ visible, onClose }) => {
     onPasswordChange,
     username,
     onUsernameChange,
+    admin,
     setPassword,
     setUsername,
     setEmail,
+    setAdmin
   } = useLoginContext();
   const [login, { error }] = useMutation(LOGIN_USER);
   const [addUser] = useMutation(ADD_USER);
+  const navigate = useNavigate();
+
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -34,6 +39,8 @@ const Modal = ({ visible, onClose }) => {
         });
         // localStorage.setItem("data", JSON.stringify(data));
         Auth.login(data.login.token);
+        const tokenData = Auth.getProfile();
+        console.log(tokenData.data);
       } else {
         let { data } = await addUser({
           variables: { email, password, username },

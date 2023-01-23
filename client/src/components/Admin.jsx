@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import ReactWeather, { useOpenWeather } from "react-open-weather";
-
+import { getProfile } from "../utils/auth.js";
 import {
     LineChart,
     Line,
@@ -16,6 +16,8 @@ import {
 } from "recharts";
 
 const Admin = () => {
+
+
     const { data, isLoading, errorMessage } = useOpenWeather({
         key: "e757412b6a4d63da3a66b29d23f46628",
         lat: "20.746143",
@@ -115,6 +117,7 @@ const Admin = () => {
         },
     ];
     return (
+        
         <div className="py-10 bg-black text-center">
             <div>
                 <h1 className="text-[#d2b947] font-economica font-bold text-[50px] mb-10 ">

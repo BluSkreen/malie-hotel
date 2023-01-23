@@ -6,14 +6,22 @@ import { useLazyQuery, useQuery, useMutation } from "@apollo/client";
 import { QUERY_ROOMS, QUERY_CHECKOUT } from "../utils/queries";
 import { loadStripe } from "@stripe/stripe-js";
 import { words } from "../assets";
+import Auth from "../utils/auth.js";
 
 const Rooms = () => {
+    const navigate = useNavigate();
+    let userToken;
     useEffect(() => {
         window.scrollTo(0, 0);
-    });
+        if(Auth.loggedIn()){
+            userToken = Auth.getProfile();
+            if (userToken.data.isAdmin){
+                navigate("/admin");
+            }
+        }
+    }, []);
     // make useState true on load
     // allow checkout
-    const navigate = useNavigate();
     const {
         startDateStr,
         setStartDateStr,
