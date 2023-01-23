@@ -201,18 +201,19 @@ const resolvers = {
       });
       // }
 
+      console.log(context.user);
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
         line_items,
         mode: "payment",
         payment_intent_data: {
             metadata: { 
-            "roomNumbers": roomNumber,
-            "startDate": startDate,
-            "endDate": endDate,
-            "cost": cost,
-            "email": context.user.email,
-            "prodId": paymentId,
+            roomNumbers: roomNumber,
+            startDate: JSON.stringify(startDate),
+            endDate: JSON.stringify(endDate),
+            cost: cost,
+            email: context.user.email,
+            prodId: paymentId,
             },
         },
 

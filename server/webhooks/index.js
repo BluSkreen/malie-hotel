@@ -5,7 +5,10 @@ module.exports = {
     async makeReservation(metadata) {
         try {
             //const users = await User.find();
-          const { _id } = await Reservation.create(metadata);
+          console.log("webhook reservation");
+          let startDate = JSON.parse(metadata.startDate);
+          let endDate = JSON.parse(metadata.endDate);
+          const { _id } = await Reservation.create({...metadata, ["startDate"]:startDate, ["endDate"]:endDate});
           const room = await Room.findOneAndUpdate(
               { roomNumber: roomNumber },
               {
