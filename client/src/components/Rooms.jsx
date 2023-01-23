@@ -91,6 +91,7 @@ const Rooms = () => {
   // console.log(stripePromise);
   const [getCheckout, { data: checkoutData }] = useLazyQuery(QUERY_CHECKOUT);
 
+    console.log(stripePromise);
   useEffect(() => {
     console.log("----------------");
     console.log(checkoutData);
@@ -137,9 +138,15 @@ const Rooms = () => {
     }
 
       // AUTHENTICATE USER BEFORE SENDING TO CHECKOUT -----------------------TODO
+    
+
+    console.log(startDateArr);
+    console.log(endDateArr);
+    console.log(targetRoom[0]);
+    console.log("dataRooms");
     console.log(dataRooms.filterRooms.availableRooms[e.target.value]);
     getCheckout({
-        variables: { roomNumber: targetRoom[0].roomNumber, startDate: [startDateArr], endDate: [endDateArr], description: targetRoom[0].desc, cost: targetRoom[0].cost },
+        variables: { roomNumber: targetRoom[0].roomNumber, startDate: startDateArr, endDate: endDateArr, description: targetRoom[0].desc, cost: targetRoom[0].price },
     });
     
 

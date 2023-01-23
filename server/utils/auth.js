@@ -17,18 +17,18 @@ module.exports = {
     }
 
     try {
-      if (req.body.isAdmin(true)) {
-        const { data: dataAdmin } = jwt.verify(token, adminSecret, {
-          maxAge: expiration,
-        });
+      //if (req.body.isAdmin(true)) {
+      //  const { data: dataAdmin } = jwt.verify(token, adminSecret, {
+      //    maxAge: expiration,
+      //  });
         // console.log(dataAdmin);
-        req.user = dataAdmin;
-      } else {
+      //  req.user = dataAdmin;
+      //} else {
         const { data: dataUser } = jwt.verify(token, secret, {
           maxAge: expiration,
         });
         req.user = dataUser;
-      }
+      //}
     } catch {
       console.log("Invalid token");
     }

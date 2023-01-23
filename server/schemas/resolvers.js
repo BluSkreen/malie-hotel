@@ -140,8 +140,10 @@ const resolvers = {
 
     checkout: async (parent, { roomNumber, startDate, endDate, description, cost }, context) => {
       // console.log("Hi Sid: " + room, cost, description);
-      // console.log(context.headers.referer);
+      console.log(context.headers.referer);
       // const header = "https://localhost:3001";
+    
+          const paymentId = Math.random().toString(36).substring(2,7);
       const url = new URL(context.headers.referer).origin;
       // console.log(context.headers.referer);
       // const url = new URL(header).origin;
@@ -167,13 +169,14 @@ const resolvers = {
       // for (let i = 0; i < reservation.length; i++) {
       const reservations = await stripe.products.create({
         // name: reservation.name,
-        name: "reservation" + " : " + room,
+        name: "reservation" + " : " + roomNumber,
         // default_price_data: cost,
         description: description,
         // price: reservation.cost,
 
         // images: [`${url}/images/${reservations[i].image}`],
       });
+      console.log("hi resrvations");
       // Find user based off the the context
       // write the credit info into model
       // console.log("sid", args.reservation._id);
@@ -188,7 +191,7 @@ const resolvers = {
         currency: "usd",
       });
 
-      // console.log("hello");
+      console.log("hello");
       // console.log(price);
 
       line_items.push({
@@ -202,6 +205,7 @@ const resolvers = {
         payment_method_types: ["card"],
         line_items,
         mode: "payment",
+        client_reference_id: paymentId,
 
         // automatic_tax: {
         //   enabled: true,
@@ -216,23 +220,30 @@ const resolvers = {
       // );
       console.log("sessionId");
       console.log(session);
-      //console.log(sessionId);
-      const reservationObj = {
-          "roomNumbers": [roomNumber],
-          "startDate": startDate,
-          "endDate": endDate,
-          "cost": cost,
-          "email": context.email,
-      }
-      const { _id } = await Reservation.create(reservationObj);
-      const room = await Room.findOneAndUpdate(
-          { roomNumber },
-          {
-              $addToSet: {
-                  resrevations: _id,
+          //console.log(context)
+      // console.log(sessionId);
+      try { 
+          const reservationObj = {
+              "roomNumbers": [roomNumber],
+              "startDate": startDate,
+              "endDate": endDate,
+              "cost": cost,
+              "email": context.user.email,
+              "prodId": paymentId,
+              "payment": "pending",
+          }
+          const { _id } = await Reservation.create({ ...reservationObj });
+          const room = await Room.findOneAndUpdate(
+              { roomNumber: roomNumber },
+              {
+                  $addToSet: {
+                      reservations: _id,
+                  },
               },
-          },
-      );
+          );
+      } catch (err) {
+          console.log(err);
+      }
 
 
       // });

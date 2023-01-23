@@ -4,41 +4,53 @@
         "startDate": [2023,4,23],
         "endDate": [2023,4,25],
         "cost": 120,
-        "email": "jason@gg.gg"
+        "email": "jason@gg.gg",
+        "prodId": "affsefsadfse",
+        "payment": "complete"
     },
     {
         "roomNumbers": [202],
         "startDate": [2023,4,27],
         "endDate": [2023,4,28],
         "cost": 120,
-        "email": "jason@gg.gg"
+        "email": "jason@gg.gg",
+        "prodId": "afjnsdnfkds",
+        "payment": "complete"
     },
     {
         "roomNumbers": [203],
         "startDate": [2023,4,10],
         "endDate": [2023,4,20],
         "cost": 120,
-        "email": "jason@gg.gg"
+        "email": "jason@gg.gg",
+        "prodId": "asfjnnkvksjfe",
+        "payment": "complete"
     },
     {
         "roomNumbers": [204],
         "startDate": [2023,4,24],
         "endDate": [2023,4,25],
         "cost": 120,
-        "email": "jason@gg.gg"
+        "email": "jason@gg.gg",
+        "prodId": "asfntgjfncj",
+        "payment": "complete"
     },
     {
         "roomNumbers": [205],
         "startDate": [2023,4,19],
         "endDate": [2023,4,20],
         "cost": 120,
-        "email": "jason@gg.gg"
+        "email": "jason@gg.gg",
+        "prodId": "adsfjgdri",
+        "payment": "complete"
     },
     {
         "roomNumbers": [206],
         "startDate": [2023,4,24],
         "endDate": [2023,4,25],
         "cost": 120,
-        "email": "jason@gg.gg"
+        "email": "jason@gg.gg",
+        "prodId": "awfesfsdfe",
+        "payment": "complete"
     }
 ]

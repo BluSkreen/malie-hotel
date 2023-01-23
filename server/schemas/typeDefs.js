@@ -41,6 +41,8 @@ const typeDefs = gql`
     cost: Int
     accomodations: [String]
     email: String
+    prodId: String
+    payment: String
   }
 
   type roomTypes {

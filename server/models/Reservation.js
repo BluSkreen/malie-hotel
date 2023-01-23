@@ -4,7 +4,7 @@ const ReservationSchema = new Schema(
         roomNumbers: {
             type: [Number],
             required: true,
-            unique: true,
+            unique: false,
         },
         startDate: {
             type: [Number],
@@ -23,6 +23,12 @@ const ReservationSchema = new Schema(
         email: {
             type: String,
         },
+        prodId: {
+            type: String,
+        },
+        payment: {
+            type: String,
+        }
     },
     { timestamps: true }
 );

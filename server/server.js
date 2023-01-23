@@ -5,6 +5,7 @@ const { authMiddleware } = require("./utils/auth");
 
 const { typeDefs, resolvers } = require("./schemas");
 const db = require("./config/connection");
+const { Reservation } = require("./models");
 // const { makeReservation } = require("./webhooks/index");
 
 const PORT = process.env.PORT || 3001;
@@ -35,23 +36,26 @@ app.get("/", (req, res) => {
 
 app.post('/webhook', (request, response) => {
     const sig = request.headers['stripe-signature'];
-    console.log("sig");
-    console.log(sig);
+    //console.log("sig");
+    //console.log(sig);
 
     let event;
 
-    console.log("req body")
-    console.log(request.body);
-    if(request.body.data.object.status == 'succeeded'){
+    //console.log("req body")
+    //console.log(request.body);
+    if(request.body.type == 'payment_intent.succeeded'){
         console.log(request.body.data.object);
         console.log("payment success");
-        // response.status(200).json(makeReservation(request.body));
 
-    } else {
+
+    // response.status(200).json(makeReservation(request.body));
+
+    } else if (request.body.type == 'payment_intent.canceled' || 'payment_intent.canceled') {
         console.log("not successful");
+        Reservation.deleteOne({ prodId: request.body.data.object.client_reference_id });
     }
 
-    response.status(200);
+    //return response.status(200);
     try {
         event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
     } catch (err) {
@@ -59,8 +63,8 @@ app.post('/webhook', (request, response) => {
         return;
     }
 
-    console.log("event");
-    console.log(event);
+    //console.log("event");
+    //console.log(event);
 
     // Handle the event
 
@@ -78,7 +82,7 @@ app.post('/webhook', (request, response) => {
     //}
 
     // Return a 200 response to acknowledge receipt of the event
-    response.status(200);
+    return response.status(200);
 });
 
 // Create a new instance of an Apollo server with the GraphQL schema
