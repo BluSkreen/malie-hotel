@@ -32,19 +32,22 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
-app.post('/webhook', express.raw({type: 'application/json'}), (request, response) => {
+app.post('/webhook'), (request, response) => {
     const sig = request.headers['stripe-signature'];
     console.log("sig");
     console.log(sig);
 
     let event;
 
+    console.log(request.body);
     try {
         event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
     } catch (err) {
         response.status(400).send(`Webhook Error: ${err.message}`);
         return;
     }
+
+    console.log(event);
 
     // Handle the event
     switch (event.type) {
