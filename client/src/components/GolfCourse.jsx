@@ -8,8 +8,8 @@ const GolfCourse = () => {
   return (
     <div>
       {/* section for carousel */}
-      <section className="bg-[rgba(207,181,59)] text-white pt-5 pb-20">
-        <h1 className="text-[48px] font-amita font-bold pl-10 pb-5 drop-shadow-[2px_2px_.5px_black]">
+      <section className="bg-[rgba(207,181,59)] text-white pt-5 pb-20" >
+        <h1 className="text-[48px] font-economica font-bold pl-10 pb-5 drop-shadow-[2px_2px_.5px_black]">
           Golfing at your Dream Resort
         </h1>
         <div
@@ -121,7 +121,7 @@ const GolfCourse = () => {
 
       {/* section for about */}
       <section className="p-4 bg-stone-300">
-        <h1 className="text-[48px] font-amita font-bold pt-4 pl-10 drop-shadow-[2px_2px_.5px_#d2b947]">
+        <h1 className="text-[48px] font-economica font-bold pt-4 pl-10 drop-shadow-[2px_2px_.5px_#d2b947]">
           The Golf Trip of a Lifetime
         </h1>
         <div className="flex flex-wrap justify-around mt-6 mb-6">
@@ -199,7 +199,7 @@ const GolfCourse = () => {
       <section className="p-4 bg-stone-300">
         {/* <div className="container px-5 py-2 mx-auto lg:pt-24 lg:px-32"> */}
         {/* <div className="mt-5 p-4 pb-10"> */}
-        <h1 className="text-[48px] font-amita font-bold pt-10 pl-10 drop-shadow-[2px_2px_.5px_#d2b947]">
+        <h1 className="text-[48px] font-economica font-bold pt-10 pl-10 drop-shadow-[2px_2px_.5px_#d2b947]">
           Royal Golfing Experience
         </h1>
         <div className="flex flex-wrap justify-around mt-6 mb-6">

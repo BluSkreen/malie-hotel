@@ -41,6 +41,8 @@ const typeDefs = gql`
     cost: Int
     accomodations: [String]
     email: String
+    prodId: String
+    payment: String
   }
 
   type roomTypes {
@@ -48,8 +50,9 @@ const typeDefs = gql`
     choiceQueen: Boolean!
     deluxKing: Boolean!
     deluxQueen: Boolean!
-    exclusiveKing: Boolean!
-    exclusiveQueen: Boolean!
+    executiveKing: Boolean!
+    executiveQueen: Boolean!
+    availableRooms: [Room]
   }
   type Order {
     _id: ID
@@ -69,8 +72,8 @@ const typeDefs = gql`
     hotel(_id: ID): Hotel
     room(_id: ID): Room
     filterRooms(
-      startDate: [Int]!
-      endDate: [Int]!
+      startDate: [Int]
+      endDate: [Int]
       roomNum: Int
       hotelId: ID
       title: String
@@ -78,7 +81,7 @@ const typeDefs = gql`
     ): roomTypes
     allReservations(roomNumber: Int): [Reservation]
     singleReservation(_id: ID, email: String): Reservation
-    checkout(room: Int, description: String, cost: Int): Checkout
+    checkout(roomNumber: Int, startDate: [Int], endDate: [Int], description: String, cost: Int): Checkout
     order(_id: ID!): Order
     checkoutCard(
       Credit_card_number: Int!

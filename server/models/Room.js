@@ -16,6 +16,9 @@ const RoomSchema = new Schema(
         desc: {
             type: String,
         },
+        payment: {
+            type: String,
+        },
         hotelId: {
             type: Schema.Types.ObjectId,
             ref: "Hotel",

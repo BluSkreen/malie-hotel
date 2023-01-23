@@ -3,21 +3,26 @@ import React, { useState } from "react";
 import { useDateContext } from "../utils/DateContext";
 import { useMutation, useQuery } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
+import { checkDEV } from "@apollo/client/utilities/globals";
 
 const Home = () => {
   const navigate = useNavigate();
   const {
-    startDate,
-    setStartDate,
-    endDate,
-    setEndDate,
+    startDateStr,
+    setStartDateStr,
+    endDateStr,
+    setEndDateStr,
+    startDateArr,
+    setStartDateArr,
+    endDateArr,
+    setEndDateArr,
     onStartDateChange,
     onEndDateChange,
     // handleFormSubmit,
   } = useDateContext();
 
   function checkDates() {
-    if (startDate !== "" && endDate !== "") {
+    if (startDateStr !== "" && endDateStr !== "") {
       //   <Navigate to="/rooms" replace={true} />;
       navigate("/rooms");
     } else {
@@ -27,28 +32,24 @@ const Home = () => {
   }
   function handleFormSubmit(event) {
     event.preventDefault();
-    const startDateControl = document.getElementById("start").value.toString();
-    const endDateControl = document.getElementById("end").value.toString();
+    const startDateControl = document.getElementById("start").value;
+    const endDateControl = document.getElementById("end").value;
 
-    const startD = startDateControl.replace(
-      /(\d\d\d\d)-(\d\d)-(\d\d)/,
-      "[$1,$2,$3]"
-    );
-    const endD = endDateControl.replace(
-      /(\d\d\d\d)-(\d\d)-(\d\d)/,
-      "[$1,$2,$3]"
-    );
-
-    const obj = {
-      endDate: startD,
-      startDate: endD,
-    };
-
-    localStorage.setItem("saveDates", JSON.stringify(obj));
-    console.log(localStorage.getItem("saveDates"));
+    setStartDateStr(startDateControl);
+    setEndDateStr(endDateControl);
+    setStartDateArr([
+      parseInt(startDateControl.split("-")[0]),
+      parseInt(startDateControl.split("-")[1]),
+      parseInt(startDateControl.split("-")[2]),
+    ]);
+    setEndDateArr([
+      parseInt(endDateControl.split("-")[0]),
+      parseInt(endDateControl.split("-")[1]),
+      parseInt(endDateControl.split("-")[2]),
+    ]);
     checkDates();
-    setEndDate("");
-    setStartDate("");
+    // console.log(startDateArr);
+    // console.log(endDateArr);
   }
   return (
     <div>
@@ -80,7 +81,7 @@ const Home = () => {
                 id="start"
                 name="trip-start"
                 onChange={onStartDateChange}
-                value={startDate}
+                value={startDateStr}
                 // min="2018-01-01"
                 // max="2018-12-31"
               />
@@ -91,7 +92,7 @@ const Home = () => {
                 id="end"
                 name="trip-end"
                 onChange={onEndDateChange}
-                value={endDate}
+                value={endDateStr}
                 // min="2018-01-01"
                 // max="2018-12-31"
               />
@@ -108,7 +109,7 @@ const Home = () => {
         </form>
       </section>
 
-      <section className=" bg-[#faf7eb] border-y-8 border-[#d2b947] flex flex-wrap justify-between ">
+      <section className=" bg-[#faf7eb] border-8 border-[#d2b947] flex flex-wrap justify-between ">
         <div className=" mb-10 w-1/2 ">
           <h1 className="text-[48px] font-economica font-bold  drop-shadow-[2px_2px_.5px_#d2b947] p-10">
             Come Stay with Us
@@ -207,7 +208,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section className=" bg-black text-[30px]">
+      <section className=" bg-black text-[30px] pb-20">
         <h1 className=" text-[48px] p-4 pt-10 text-[rgba(207,181,59)] font-economica font-bold pl-10 drop-shadow-[2px_2px_.5px_white]">
           Activities & Events
         </h1>
@@ -222,12 +223,12 @@ const Home = () => {
                 />
               </a>
               <div class="p-6">
-                <h5 class="text-[rgba(207,181,59)] text-xl font-medium mb-2">
+                <h5 class="text-[rgba(207,181,59)] text-xl font-medium mb-2 drop-shadow-[2px_2px_1.5px_white]">
                   Golf in places so beautiful that you will never want to leave!
                 </h5>
                 <button
                   type="button"
-                  class="w-full inline-block px-6 py-2 border-2 border-[rgba(207,181,59)] text-white font-medium text-xs leading-normal uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+                  class="w-full inline-block px-6 py-2 border-2 border-[rgba(207,181,59)] text-white font-medium text-xs leading-normal uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out drop-shadow-[2px_2px_1.5px_white]"
                 >
                   Click here to swing like a Pro!
                 </button>
@@ -244,12 +245,12 @@ const Home = () => {
                 />
               </a>
               <div class="p-6">
-                <h5 class="text-[rgba(207,181,59)] text-xl font-medium mb-2">
+                <h5 class="text-[rgba(207,181,59)] text-xl font-medium mb-2 drop-shadow-[2px_2px_1.5px_white]">
                   After one day with us you will feel like royalty!
                 </h5>
                 <button
                   type="button"
-                  class="w-full inline-block px-6 py-2 border-2 border-[rgba(207,181,59)] text-white font-medium text-xs leading-normal uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+                  class="w-full inline-block px-6 py-2 border-2 border-[rgba(207,181,59)] text-white font-medium text-xs leading-normal uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out drop-shadow-[2px_2px_1.5px_white]"
                 >
                   Click here to let your worries melt away in our luxurious spa.
                 </button>
@@ -266,12 +267,12 @@ const Home = () => {
                 />
               </a>
               <div class="p-6">
-                <h5 class="text-[rgba(207,181,59)] text-xl font-medium mb-2">
+                <h5 class="text-[rgba(207,181,59)] text-xl font-medium mb-2 drop-shadow-[2px_2px_1.5px_white]">
                   Every flavor imaginable from every corner of the world.
                 </h5>
                 <button
                   type="button"
-                  class="w-full inline-block px-6 py-2 border-2 border-[rgba(207,181,59)] text-white font-medium text-xs leading-normal uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+                  class="w-full inline-block px-6 py-2 border-2 border-[rgba(207,181,59)] text-white font-medium text-xs leading-normal uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out drop-shadow-[2px_2px_1.5px_white]"
                 >
                   Click here to feast like a king in our award-winning
                   restaurants.
@@ -283,7 +284,6 @@ const Home = () => {
             <div class="container px-5 py-2 mx-auto lg:pt-24 lg:px-32">
               <div class="flex flex-wrap -m-1 md:-m-2">
                 <div class="flex flex-wrap w-1/2">
-
                   <div class="w-1/2 p-1 md:p-2 relative overflow-hidden bg-no-repeat bg-cover max-w-xs">
                     <img
                       alt="gallery"
@@ -342,9 +342,155 @@ const Home = () => {
             </div>
           </div>
         </div>
-        {/* </section> */}
+      </section>
+
+      <section className="border-y-8 border-[#d2b947]">
+        <iframe
+          width="100%"
+          height="712"
+          frameborder="0"
+          scrolling="no"
+          marginheight="0"
+          marginwidth="0"
+          id="gmap_canvas"
+          src="https://maps.google.com/maps?width=1201&amp;height=712&amp;hl=en&amp;q=%20kihei+(The%20Malie%20Hotel)&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+        ></iframe>
+        <a href="https://maps-generator.com/"></a>
       </section>
     </div>
   );
 };
 export default Home;
+
+// <div className="flex flex-wrap justify-around mt-10 rounded">
+// <div class="flex justify-center mb-8 mt-2 border-solid border-[rgba(207,181,59)] border-4 rounded max-w-[700px]">
+//   <div class="rounded-lg shadow-lg bg-black max-w-sm">
+//     <a href="#!" data-mdb-ripple="true" data-mdb-ripple-color="light">
+//       <img
+//         class="rounded-t-lg"
+//         src={require("../assets/golfImgLink.jpg")}
+//         alt=""
+//       />
+//     </a>
+//     <div class="p-6">
+//       <h5 class="text-[rgba(207,181,59)] text-xl font-medium mb-2">
+//         Golf in places so beautiful that you will never want to leave!
+//       </h5>
+//       <button
+//         type="button"
+//         class="w-full inline-block px-6 py-2 border-2 border-[rgba(207,181,59)] text-white font-medium text-xs leading-normal uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+//       >
+//         Click here to swing like a Pro!
+//       </button>
+//     </div>
+//   </div>
+// </div>
+// <div class="flex justify-center mb-8 mt-2 border-solid border-[rgba(207,181,59)] border-4 rounded max-w-[700px]">
+//   <div class="rounded-lg shadow-lg bg-black max-w-sm">
+//     <a href="#!" data-mdb-ripple="true" data-mdb-ripple-color="light">
+//       <img
+//         class="rounded-t-lg"
+//         src={require("../assets/spaImgLink.jpg")}
+//         alt=""
+//       />
+//     </a>
+//     <div class="p-6">
+//       <h5 class="text-[rgba(207,181,59)] text-xl font-medium mb-2">
+//         After one day with us you will feel like royalty!
+//       </h5>
+//       <button
+//         type="button"
+//         class="w-full inline-block px-6 py-2 border-2 border-[rgba(207,181,59)] text-white font-medium text-xs leading-normal uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+//       >
+//         Click here to let your worries melt away in our luxurious spa.
+//       </button>
+//     </div>
+//   </div>
+// </div>
+// <div class="flex justify-center mb-8 mt-2 border-solid border-[rgba(207,181,59)] border-4 rounded max-w-[700px]">
+//   <div class="rounded-lg shadow-lg bg-black max-w-sm">
+//     <a href="#!" data-mdb-ripple="true" data-mdb-ripple-color="light">
+//       <img
+//         class="rounded-t-lg"
+//         src={require("../assets/foodImgLink.jpg")}
+//         alt=""
+//       />
+//     </a>
+//     <div class="p-6">
+//       <h5 class="text-[rgba(207,181,59)] text-xl font-medium mb-2">
+//         Every flavor imaginable from every corner of the world.
+//       </h5>
+//       <button
+//         type="button"
+//         class="w-full inline-block px-6 py-2 border-2 border-[rgba(207,181,59)] text-white font-medium text-xs leading-normal uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+//       >
+//         Click here to feast like a king in our award-winning
+//         restaurants.
+//       </button>
+//     </div>
+//   </div>
+// </div>
+// <div class="overflow-hidden text-gray-700">
+//   <div class="container px-5 py-2 mx-auto lg:pt-24 lg:px-32">
+//     <div class="flex flex-wrap -m-1 md:-m-2">
+//       <div class="flex flex-wrap w-1/2">
+//         <div class="w-1/2 p-1 md:p-2 relative overflow-hidden bg-no-repeat bg-cover max-w-xs">
+//           <img
+//             alt="gallery"
+//             class="block object-cover object-center w-full h-full rounded-lg"
+//             src={require("../assets/music1.jpg")}
+//           ></img>
+//           <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full rounded-lg overflow-hidden bg-fixed opacity-0 hover:opacity-70 transition duration-300 ease-in-out bg-[rgba(207,181,59)]"></div>
+//           <p class="text-[38px] hover:opacity-50 transition duration-300 ease-in-out z-[10] hover:text-black">
+//         “The only way to keep your health is to eat what you don’t
+//         want, drink what you don’t like, and do what you’d rather
+//         not.”
+//       </p>
+//         </div>
+//         <div class="w-1/2 p-1 md:p-2 ">
+//           <img
+//             alt="gallery"
+//             class="block object-cover object-center w-full h-full rounded-lg"
+//             src={require("../assets/music6.jpg")}
+//           ></img>
+//         </div>
+//         <div class="w-full p-1 md:p-2">
+//           <img
+//             alt="gallery"
+//             class="block object-cover object-center w-full h-full rounded-lg"
+//             src={require("../assets/music3.jpg")}
+//           ></img>
+//         </div>
+//       </div>
+//       <div class="flex flex-wrap w-1/2">
+//         <div class="w-full p-1 md:p-2">
+//           <img
+//             alt="gallery"
+//             class="block object-cover object-center w-full h-full rounded-lg"
+//             src={require("../assets/music4.jpg")}
+//           ></img>
+//         </div>
+//         <div class="w-1/2 p-1 md:p-2">
+//           <img
+//             alt="gallery"
+//             class="block object-cover object-center w-full h-full rounded-lg"
+//             src={require("../assets/music5.jpg")}
+//           ></img>
+//         </div>
+//         <div class="w-1/2 p-1 md:p-2">
+//           <img
+//             alt="gallery"
+//             class="block object-cover object-center w-full h-full rounded-lg"
+//             src={require("../assets/music2.jpg")}
+//           ></img>
+//         </div>
+//       </div>
+//     </div>
+//   </div>
+// </div>
+// </div>
+// {/* </section> */}
+// </section>
+// </div>
+// );
+// };

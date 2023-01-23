@@ -1,6 +1,6 @@
 const { User, Hotel, Room, Reservation, Order } = require("../models");
 
-const { signToken } = require("../utils/auth");
+const { signToken, signAdmin } = require("../utils/auth");
 const { AuthenticationError } = require("apollo-server-express");
 const stripe = require("stripe")(
   "sk_test_51MS6bZCzq6l4n83nFjK2P29D5fUKZj5wh4SWqYeoW1EV8ihcN8hlLmtZSmtHKcOVATT527RtTqawBVsFy8juFQp100wKgBAuNz"
@@ -13,19 +13,6 @@ const resolvers = {
     users: async () => {
       return User.find();
     },
-    // checkoutCard: async (parent, { cardInfo }, context) => {
-    //   if (context.user) {
-    //     return User.findOneAndUpdate(context.user._id, {
-    //       $push: {
-    //         Credit_card_number: Credit_card_number,
-    //         Credit_card_month: Credit_card_month,
-    //         Credit_card_year: Credit_card_year,
-    //         Credit_card_cvv: Credit_card_cvv,
-    //       },
-    //     });
-    //     // return userData;
-    //   }
-    // },
 
     // TODO: Add numberOfRooms paramater
     filterRooms: async (
@@ -34,14 +21,15 @@ const resolvers = {
     ) => {
       // date format is a stringified array --> "[yyyy,mm,dd]"
       let queryStartDate = new Date(startDate);
+      //console.log(startDate);
+
       queryStartDate = queryStartDate.valueOf();
       let queryEndDate = new Date(endDate);
+
       queryEndDate = queryEndDate.valueOf();
 
       let roomFilter = {};
-      // if (hotelId != null) { roomFilter["hotelId"] = hotelId };
-      // if (title != null) { roomFilter["title"] = title };
-      // if (price != null) { roomFilter["price"] = price };
+
       roomFilter = await Room.find(roomFilter).populate("reservations");
 
       let roomTypes = {
@@ -49,142 +37,116 @@ const resolvers = {
         choiceQueen: false,
         deluxKing: false,
         deluxQueen: false,
-        exclusiveKing: false,
-        exclusiveQueen: false,
+        executiveKing: false,
+        executiveQueen: false,
+        availableRooms: [],
       };
 
       // TODO: use room list for multi room search
       let roomList = [];
 
       for await (let room of roomFilter) {
+        if (
+          roomTypes.choiceKing === true &&
+          roomTypes.choiceQueen === true &&
+          roomTypes.deluxKing === true &&
+          roomTypes.deluxQueen === true &&
+          roomTypes.executiveKing === true &&
+          roomTypes.executiveQueen === true
+        ) {
+          // break;
+        }
         let available = true;
         for await (let reservation of room.reservations) {
           // use the epoch to check difference in time
           let resStart = reservation.startDate;
           resStart = new Date(resStart);
+
           resStart = resStart.valueOf();
           let resEnd = reservation.endDate;
           resEnd = new Date(resEnd);
+
           resEnd = resEnd.valueOf();
 
           // The reservation must be before or after the query date
-          if (resStart < queryStartDate && !(resEnd <= queryEndDate)) {
+          if (resStart < queryStartDate && resEnd <= queryStartDate) {
+          } else if (resStart >= queryEndDate) {
+          } else {
             available = false;
-            console.log("bad");
-            break;
-          } else if (!resStart > queryEndDate) {
-            available = false;
-            console.log("bad");
-            break;
           }
         }
-        if (available === true) {
-          let roomType = room.title;
+        let roomType = room.title;
+
+        if (available === true && roomTypes[roomType] !== true) {
           roomList.push(room);
-          roomTypes[roomType] = true;
+          roomTypes[`${roomType}`] = true;
+          roomTypes.availableRooms.push(room);
         }
-      } // for loop
+      }
 
       return roomTypes;
     },
-    // order: async (parent, { _id }, context) => {
-    //   if (context.user) {
-    //     const user = await User.findById(context.user._id).populate({
-    //       path: "orders.reservation",
-    //       // populate: "category",
-    //     });
 
-    //     return user.orders.id(_id);
-    //   }
-
-    //   throw new AuthenticationError("Not logged in");
-    // },
-    checkout: async (parent, { room, cost, description }, context) => {
-      console.log("Hi Sid: " + room, cost, description);
+    checkout: async (
+      parent,
+      { roomNumber, startDate, endDate, description, cost },
+      context
+    ) => {
       console.log(context.headers.referer);
       // const header = "https://localhost:3001";
+
+      const paymentId = Math.random().toString(36).substring(2, 7);
       const url = new URL(context.headers.referer).origin;
-      // console.log(context.headers.referer);
-      // const url = new URL(header).origin;
-      // const order = new Order({ reservation: args.reservation });
+
       const line_items = [];
-      // console.log("helpME: " + order);
 
-      // const { reservation } = await order.populate("reservation");
-      // const updateReservation = await Reservation.create(args.reservation);
-      // console.log("updateReservation: " + updateReservation);
-      // console.log("sod");
-      // const resData = {
-      //   roomNumbers: [202],
-      //   startDate: [2023, 4, 24],
-      //   endDate: [2023, 4, 25],
-      //   cost: 100,
-      //   accomodations: ["TV", "hotub"],
-      //   email: "jason@gg.gg",
-      // };
-      // const updateReservation = await Reservation.create({ resData });
-      // console.log(updateReservation);
-
-      // for (let i = 0; i < reservation.length; i++) {
       const reservations = await stripe.products.create({
-        // name: reservation.name,
-        name: "reservation" + " : " + room,
-        // default_price_data: cost,
-        description: description,
-        // price: reservation.cost,
+        name: "reservation" + " : " + roomNumber,
 
-        // images: [`${url}/images/${reservations[i].image}`],
+        description: description,
       });
-      // Find user based off the the context
-      // write the credit info into model
-      // console.log("sid", args.reservation._id);
-      console.log(reservations);
+
       const price = await stripe.prices.create({
-        // product: reservations.id,
         product: reservations.id,
-        unit_amount: 100 * 100,
-        // cost: reservation.cost,
-        // unit_amount: reservations.price * 100,
+
+        unit_amount: cost * 100,
+
         currency: "usd",
       });
-
-      // console.log("hello");
-      // console.log(price);
 
       line_items.push({
         price: price.id,
         quantity: 1,
+        tax_rates: ["txr_1MSro2Czq6l4n83ndLKLmb8o"],
       });
-      // }
 
+      console.log(context.user);
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
         line_items,
         mode: "payment",
+        payment_intent_data: {
+          metadata: {
+            roomNumbers: roomNumber,
+            startYear: startDate[0],
+            startMonth: startDate[1],
+            startDay: startDate[2],
+            endYear: endDate[0],
+            endMonth: endDate[1],
+            endDay: endDate[2],
+            cost: cost,
+            email: context.user.email,
+            prodId: paymentId,
+          },
+        },
 
         success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${url}/`,
       });
-      // if (session.success_url == "complete") {
-      //   console.log("success");
-      // }
-      if (session) {
-        await Reservation.create({
-          roomNumbers: room,
-
-          startDate: [2021, 11, 23],
-          endDate: [2021, 11, 24],
-          cost: cost,
-          accomodations: ["Tv"],
-          email: context.user.email,
-        });
-        console.log("/////////////////////////////");
-        console.log(session);
-        console.log("/////////////////////////////");
-      }
 
       return { session: session.id };
     },
+
     singleReservation: async (parent, { _id, email }) => {
       try {
         // either id or email will work
@@ -224,24 +186,15 @@ const resolvers = {
       if (!correctPw) {
         throw new AuthenticationError("Incorrect password!");
       }
-
-      const token = signToken(user);
+      let token;
+      if (user.isAdmin) {
+        // signAdmin
+        token = signAdmin(user);
+      } else {
+        token = signToken(user);
+      }
       return { token, user };
     },
-    // addOrder: async (parent, { user }, context) => {
-    //   console.log(args);
-    //   // if (context.user) {
-    //   const order = new Order(args.reservation);
-    //   const userID = "63c702f4bd5534f73956af44";
-    //   await User.findByIdAndUpdate(context.userID, {
-    //     $push: { orders: order },
-    //   });
-    //   console.log(order);
-    //   return order;
-    //   // }
-
-    //   // throw new AuthenticationError("Not logged in");
-    // },
   },
 };
 
