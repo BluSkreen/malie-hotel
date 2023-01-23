@@ -278,7 +278,7 @@ const Rooms = () => {
                     <button
                         className=" content-center bg-[rgba(207,181,59)] hover:bg-[#dcc970] focus:outline-none focus:ring-2 focus:ring-[rgba(207,181,59)] focus:ring-offset-2 text-black font-bold py-2 px-4 rounded max-w-[180px] mb-4"
                         type="button"
-                        value={"deluxeKing"}
+                        value={"deluxKing"}
                         onClick={deluxKing ? submitCheckout : undefined}
                         disabled={!deluxKing}
                     >
@@ -350,7 +350,7 @@ const Rooms = () => {
                     <button
                         className=" content-center bg-[rgba(207,181,59)] hover:bg-[#dcc970] focus:outline-none focus:ring-2 focus:ring-[rgba(207,181,59)] focus:ring-offset-2 text-black font-bold py-2 px-4 rounded max-w-[180px] mb-4"
                         type="button"
-                        value={"deluxeQueen"}
+                        value={"deluxQueen"}
                         onClick={deluxQueen ? submitCheckout : undefined}
                         disabled={!deluxQueen}
                     >
