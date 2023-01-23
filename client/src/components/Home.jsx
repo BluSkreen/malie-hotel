@@ -360,7 +360,6 @@ const Home = () => {
     </div>
   );
 };
-
 export default Home;
 
 // <div className="flex flex-wrap justify-around mt-10 rounded">
