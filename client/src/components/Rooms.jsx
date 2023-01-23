@@ -26,8 +26,8 @@ const Rooms = () => {
 
     const [choiceKing, setChoiceKing] = useState(true);
     const [choiceQueen, setChoiceQueen] = useState(true);
-    const [deluxeKing, setDeluxeKing] = useState(true);
-    const [deluxeQueen, setDeluxeQueen] = useState(true);
+    const [deluxKing, setDeluxKing] = useState(true);
+    const [deluxQueen, setDeluxQueen] = useState(true);
     const [executiveKing, setExecutiveKing] = useState(true);
     const [executiveQueen, setExecutiveQueen] = useState(true);
 
@@ -70,8 +70,8 @@ const Rooms = () => {
     useEffect(() => {
         setChoiceKing(dataRooms?.filterRooms.choiceKing);
         setChoiceQueen(dataRooms?.filterRooms.choiceQueen);
-        setDeluxeKing(dataRooms?.filterRooms.deluxeKing);
-        setDeluxeQueen(dataRooms?.filterRooms.deluxeQueen);
+        setDeluxKing(dataRooms?.filterRooms.deluxeKing);
+        setDeluxQueen(dataRooms?.filterRooms.deluxeQueen);
         setExecutiveKing(dataRooms?.filterRooms.executiveKing);
         setExecutiveQueen(dataRooms?.filterRooms.executiveQueen);
         // console.log(data)
@@ -121,12 +121,28 @@ const Rooms = () => {
     })
       console.log(targetRoom);
 
+        const startDateControl = document
+            .getElementById("start")
+            .value.toString();
+        const endDateControl = document.getElementById("end").value.toString();
+      var startDateConversion = new Date(startDateControl);
+    var endDateConversion = new Date(endDateControl);
+    if (
+      startDateConversion > endDateConversion ||
+      startDateConversion < Date.now()
+    ) {
+      console.log("bad");
+    } else {
+      console.log("good");
+    }
 
       // AUTHENTICATE USER BEFORE SENDING TO CHECKOUT -----------------------TODO
-    // console.log(dataRooms.filterRooms.availableRooms[e.target.value]);
-    //getCheckout({
-      //variables: { room: targetRoom[0].roomNumber, cost: targetRoom[0].cost, description: target[0].desc },
-    //});
+    console.log(dataRooms.filterRooms.availableRooms[e.target.value]);
+    getCheckout({
+      variables: { room: targetRoom[0].roomNumber, cost: targetRoom[0].cost, description: targetRoom[0].desc },
+    });
+    
+
     console.log({ checkoutData });
     console.log("!!!!!!!!!!!!");
     console.log(checkoutData);
@@ -247,10 +263,10 @@ const Rooms = () => {
                             className=" content-center bg-[rgba(207,181,59)] hover:bg-cyan-400 focus:shadow-outline focus:outline-none text-black font-bold py-2 px-4 rounded max-w-[180px] mb-4"
                             type="button"
                             value={"deluxeKing"}
-                            onClick={ deluxeKing ? submitCheckout : undefined }
-                            disabled={ !deluxeKing }
+                            onClick={ deluxKing ? submitCheckout : undefined }
+                            disabled={ !deluxKing }
                         >
-                            { deluxeKing ? "Book from $590" : "Unavailable" }
+                            { deluxKing ? "Book from $590" : "Unavailable" }
                         </button>
                     </div>
                     <div className=" text-center m-10  bg-black p-4 rounded-xl shadow-lg shadow-black">
@@ -319,10 +335,10 @@ const Rooms = () => {
                             className=" content-center bg-[rgba(207,181,59)] hover:bg-cyan-400 focus:shadow-outline focus:outline-none text-black font-bold py-2 px-4 rounded max-w-[180px] mb-4"
                             type="button"
                             value={"deluxeQueen"}
-                            onClick={ deluxeQueen ? submitCheckout : undefined }
-                            disabled={ !deluxeQueen }
+                            onClick={ deluxQueen ? submitCheckout : undefined }
+                            disabled={ !deluxQueen }
                         >
-                            { deluxeQueen ? "Book from $590" : "Unavailable" }
+                            { deluxQueen ? "Book from $590" : "Unavailable" }
                         </button>
                     </div>
                     <div className=" text-center m-10  bg-black p-4 rounded-xl shadow-lg shadow-black">

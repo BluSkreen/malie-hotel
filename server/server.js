@@ -16,8 +16,9 @@ const server = new ApolloServer({
 const stripe = require('stripe');
 
 // This is your Stripe CLI webhook secret for testing your endpoint locally.
-const endpointSecret = "whsec_234db6f1bf5247050818477e5b438ed17b3aab52ca2dcba4cb92d65539dfd314";
+// const endpointSecret = "whsec_234db6f1bf5247050818477e5b438ed17b3aab52ca2dcba4cb92d65539dfd314";
 
+const endpointSecret = process.env.STRIPESECRET;
 
 app.use(express.urlencoded({ extended: false }));
 // app.use(express.urlencoded({ extended: false }));
