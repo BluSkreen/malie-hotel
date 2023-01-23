@@ -206,7 +206,7 @@ const resolvers = {
         line_items,
         mode: "payment",
         metadata: { 
-            "roomNumbers": [roomNumber],
+            "roomNumbers": roomNumber,
             "startDate": startDate,
             "endDate": endDate,
             "cost": cost,

@@ -68,7 +68,6 @@ app.post('/webhook', (request, response) => {
 
     } else if (request.body.type == 'payment_intent.canceled' || 'payment_intent.canceled') {
         console.log("not successful");
-        Reservation.deleteOne({ prodId: request.body.data.object.client_reference_id });
     }
 
     //return response.status(200);
