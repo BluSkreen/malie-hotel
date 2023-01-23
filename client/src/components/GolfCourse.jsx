@@ -8,7 +8,7 @@ const GolfCourse = () => {
   return (
     <div>
       {/* section for carousel */}
-      <section className="bg-[rgba(207,181,59)] text-white pt-5 pb-20">
+      <section className="bg-[rgba(207,181,59)] text-white pt-5 pb-20" >
         <h1 className="text-[48px] font-economica font-bold pl-10 pb-5 drop-shadow-[2px_2px_.5px_black]">
           Golfing at your Dream Resort
         </h1>
