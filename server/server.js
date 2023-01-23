@@ -34,6 +34,7 @@ app.get("/", (req, res) => {
 
 app.post('/webhook', express.raw({type: 'application/json'}), (request, response) => {
     const sig = request.headers['stripe-signature'];
+    console.log("sig");
     console.log(sig);
 
     let event;
@@ -49,6 +50,7 @@ app.post('/webhook', express.raw({type: 'application/json'}), (request, response
     switch (event.type) {
         case 'payment_intent.succeeded':
             const paymentIntent = event.data.object;
+            console.log(paymentIntent);
             console.log(paymentIntent);
             // Then define and call a function to handle the event payment_intent.succeeded
             break;
