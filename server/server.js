@@ -32,7 +32,7 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
-app.post('/webhook'), (request, response) => {
+app.post('/webhook', (request, response) => {
     const sig = request.headers['stripe-signature'];
     console.log("sig");
     console.log(sig);
@@ -53,8 +53,9 @@ app.post('/webhook'), (request, response) => {
     switch (event.type) {
         case 'payment_intent.succeeded':
             const paymentIntent = event.data.object;
+            console.log("paymentIntent");
             console.log(paymentIntent);
-            console.log(paymentIntent);
+
             // Then define and call a function to handle the event payment_intent.succeeded
             break;
             // ... handle other event types
