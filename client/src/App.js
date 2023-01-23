@@ -7,6 +7,7 @@ import {
   Payment,
   Food,
   Admin,
+  Spa,
 } from "./components";
 
 import "./App.css";
@@ -58,6 +59,7 @@ function App() {
                 <Route exact path="/payment" element={<Payment />} />
                 <Route exact path="/food" element={<Food />} />
                 <Route exact path="/admin" element={<Admin />} />
+                <Route exact path="/spa" element={<Spa />} />
               </Routes>
 
               <Footer />

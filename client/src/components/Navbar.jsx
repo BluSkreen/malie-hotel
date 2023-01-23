@@ -49,7 +49,7 @@ const Navbar = () => {
                     <Link
                         className={` cursor-pointer text-[22px] text-[#d2b947]   mr-12 hover:text-[#faf7ab] focus:text-[#faf7ab] hover:transition ease-in-out delay-150  duration-300`}
                         aria-current="page"
-                        to="/contact"
+                        to="/spa"
                     >
                         Relax
                     </Link>
