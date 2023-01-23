@@ -139,7 +139,7 @@ const Rooms = () => {
       // AUTHENTICATE USER BEFORE SENDING TO CHECKOUT -----------------------TODO
     console.log(dataRooms.filterRooms.availableRooms[e.target.value]);
     getCheckout({
-      variables: { room: targetRoom[0].roomNumber, cost: targetRoom[0].cost, description: targetRoom[0].desc },
+        variables: { roomNumber: targetRoom[0].roomNumber, startDate: [startDateArr], endDate: [endDateArr], description: targetRoom[0].desc, cost: targetRoom[0].cost },
     });
     
 

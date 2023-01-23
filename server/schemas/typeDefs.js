@@ -79,7 +79,7 @@ const typeDefs = gql`
     ): roomTypes
     allReservations(roomNumber: Int): [Reservation]
     singleReservation(_id: ID, email: String): Reservation
-    checkout(room: Int, description: String, cost: Int): Checkout
+    checkout(roomNumber: Int, startDate: [Int], endDate: [Int], description: String, cost: Int): Checkout
     order(_id: ID!): Order
     checkoutCard(
       Credit_card_number: Int!

@@ -32,8 +32,8 @@ export const GET_USERS = gql`
   }
 `;
 export const QUERY_CHECKOUT = gql`
-  query getCheckout($room: Int, $description: String, $cost: Int) {
-    checkout(room: $room, description: $description, cost: $cost) {
+  query getCheckout($roomNumber: Int, $startDate: [Int], $endDate: [Int], $description: String, $cost: Int) {
+    checkout(roomNumber: $roomNumber, startDate: $startDate, endDate: $endDate, description: $description, cost: $cost) {
       session
     }
   }

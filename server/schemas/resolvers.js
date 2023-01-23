@@ -136,7 +136,9 @@ const resolvers = {
 
     //   throw new AuthenticationError("Not logged in");
     // },
-    checkout: async (parent, { room, cost, description }, context) => {
+
+
+    checkout: async (parent, { roomNumber, startDate, endDate, description, cost }, context) => {
       // console.log("Hi Sid: " + room, cost, description);
       // console.log(context.headers.referer);
       // const header = "https://localhost:3001";
@@ -179,6 +181,7 @@ const resolvers = {
       const price = await stripe.prices.create({
         // product: reservations.id,
         product: reservations.id,
+          // TODO USE THE COST -------------!!!!!!!!!!!!!!!
         unit_amount: 100 * 100,
         // cost: reservation.cost,
         // unit_amount: reservations.price * 100,
@@ -213,7 +216,25 @@ const resolvers = {
       // );
       console.log("sessionId");
       console.log(session);
-      // console.log(sessionId);
+      //console.log(sessionId);
+      const reservationObj = {
+          "roomNumbers": [roomNumber],
+          "startDate": startDate,
+          "endDate": endDate,
+          "cost": cost,
+          "email": context.email,
+      }
+      const { _id } = await Reservation.create(reservationObj);
+      const room = await Room.findOneAndUpdate(
+          { roomNumber },
+          {
+              $addToSet: {
+                  resrevations: _id,
+              },
+          },
+      );
+
+
       // });
       // console.log("fdfd");
       // if (session.success_url.length > 0) {

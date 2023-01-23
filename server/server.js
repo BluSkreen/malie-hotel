@@ -42,11 +42,13 @@ app.post('/webhook', (request, response) => {
 
     console.log("req body")
     console.log(request.body);
-    if(request.body.type == 'payment_intent.succeeded'){
+    if(request.body.data.object.status == 'succeeded'){
         console.log(request.body.data.object);
         console.log("payment success");
         // response.status(200).json(makeReservation(request.body));
 
+    } else {
+        console.log("not successful");
     }
 
     response.status(200);
