@@ -28,16 +28,19 @@ const Modal = ({ visible, onClose }) => {
     event.preventDefault();
     try {
       // console.log("email " + email + "password: " + password);
-
-      const { data } = modalSignIn
-        ? await login({
-            variables: { email, password },
-          })
-        : await addUser({
-            variables: { email, password, username },
-          });
-
-      Auth.login(data.login.token);
+      if (modalSignIn) {
+        let { data } = await login({
+          variables: { email, password },
+        });
+        // localStorage.setItem("data", JSON.stringify(data));
+        Auth.login(data.login.token);
+      } else {
+        let { data } = await addUser({
+          variables: { email, password, username },
+        });
+        // localStorage.setItem("data", JSON.stringify(data));
+        Auth.login(data.addUser.token);
+      }
     } catch (err) {
       console.error(err);
     }
@@ -66,9 +69,15 @@ const Modal = ({ visible, onClose }) => {
               src={logo}
               alt="Your Company"
             />
-            <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-white">
-              Sign in to your account
-            </h2>
+            {modalSignIn ? (
+              <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-white">
+                Sign in to your account
+              </h2>
+            ) : (
+              <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-white">
+                Create your account
+              </h2>
+            )}
             <p className="mt-2 text-center text-sm text-gray-600"></p>
           </div>
           <form
@@ -92,7 +101,7 @@ const Modal = ({ visible, onClose }) => {
                     autoComplete="email"
                     onChange={onEmailChange}
                     required
-                    className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                    className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-[rgba(207,181,59)] focus:outline-none focus:ring-[rgba(207,181,59)] sm:text-sm"
                     placeholder="Email address"
                   />
                 </div>
@@ -108,7 +117,7 @@ const Modal = ({ visible, onClose }) => {
                     onChange={onPasswordChange}
                     autoComplete="current-password"
                     required
-                    className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                    className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-[rgba(207,181,59)] focus:outline-none focus:ring-[rgba(207,181,59)] sm:text-sm"
                     placeholder="Password"
                   />
                 </div>
@@ -127,7 +136,7 @@ const Modal = ({ visible, onClose }) => {
                     // autoComplete="text"
                     onChange={onUsernameChange}
                     required
-                    className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                    className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-[rgba(207,181,59)] focus:outline-none focus:ring-[rgba(207,181,59)] sm:text-sm"
                     placeholder="username"
                   />
                 </div>
@@ -143,7 +152,7 @@ const Modal = ({ visible, onClose }) => {
                     value={email}
                     autoComplete="email"
                     required
-                    className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                    className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-[rgba(207,181,59)] focus:outline-none focus:ring-[rgba(207,181,59)] sm:text-sm"
                     placeholder="Email address"
                   />
                 </div>
@@ -159,7 +168,7 @@ const Modal = ({ visible, onClose }) => {
                     type="password"
                     autoComplete="current-password"
                     required
-                    className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                    className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-[rgba(207,181,59)] focus:outline-none focus:ring-[rgba(207,181,59)] sm:text-sm"
                     placeholder="Password"
                   />
                 </div>
@@ -186,7 +195,7 @@ const Modal = ({ visible, onClose }) => {
               <div className="text-sm">
                 <a
                   href="#"
-                  className="font-medium text-indigo-600 hover:text-indigo-500"
+                  className="font-medium text-indigo-600 hover:text-[rgba(207,181,59)]"
                 >
                   {/* Forgot your password? */}
                 </a>
@@ -198,7 +207,7 @@ const Modal = ({ visible, onClose }) => {
                 <div>
                   <button
                     type="submit"
-                    className="group relative flex w-full justify-center rounded-md border border-transparent bg-[rgba(207,181,59)] py-2 px-4 text-sm font-medium text-black hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    className="group relative flex w-full justify-center rounded-md border border-transparent bg-[rgba(207,181,59)] py-2 px-4 text-sm font-medium text-black hover:bg-[rgba(207,181,59)] focus:outline-none focus:ring-2 focus:ring-[rgba(207,181,59)] focus:ring-offset-2"
                   >
                     <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                       {/* <LockClosedIcon className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" aria-hidden="true" /> */}
@@ -215,7 +224,7 @@ const Modal = ({ visible, onClose }) => {
                 <div>
                   <button
                     type="button"
-                    className="group relative flex w-full justify-center rounded-md border border-transparent bg-[rgba(207,181,59)] py-2 px-4 text-sm font-medium text-black hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    className="group relative flex w-full justify-center rounded-md border border-transparent bg-[rgba(207,181,59)] py-2 px-4 text-sm font-medium text-black hover:bg-[rgba(207,181,59)] focus:outline-none focus:ring-2 focus:ring-[rgba(207,181,59)] focus:ring-offset-2"
                     onClick={() => setModalSignIn(false)}
                   >
                     <span className="absolute inset-y-0 left-0 flex items-center pl-3">
@@ -229,31 +238,31 @@ const Modal = ({ visible, onClose }) => {
               <>
                 <div>
                   <button
-                    type="button"
-                    className="group relative flex w-full justify-center rounded-md border border-transparent bg-[rgba(207,181,59)] py-2 px-4 text-sm font-medium text-black hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                    onClick={() => setModalSignIn(true)}
+                    type="submit"
+                    className="group relative flex w-full justify-center rounded-md border border-transparent bg-[rgba(207,181,59)] py-2 px-4 text-sm font-medium text-black hover:bg-[#dcc970] focus:outline-none focus:ring-2 focus:ring-[rgba(207,181,59)] focus:ring-offset-2"
                   >
                     <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                       {/* <LockClosedIcon className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" aria-hidden="true" /> */}
                     </span>
-                    Sign in
+                    Create Account
                   </button>
                 </div>
                 <p
                   className="text-center
                 "
                 >
-                  Not a member?
+                  Already a Member?
                 </p>
                 <div>
                   <button
-                    type="submit"
-                    className="group relative flex w-full justify-center rounded-md border border-transparent bg-[rgba(207,181,59)] py-2 px-4 text-sm font-medium text-black hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    type="button"
+                    className="group relative flex w-full justify-center rounded-md border border-transparent bg-[rgba(207,181,59)] py-2 px-4 text-sm font-medium text-black hover:bg-[#dcc970] focus:outline-none focus:ring-2 focus:ring-[rgba(207,181,59)] focus:ring-offset-2"
+                    onClick={() => setModalSignIn(true)}
                   >
                     <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                       {/* <LockClosedIcon className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" aria-hidden="true" /> */}
                     </span>
-                    Create an Account!
+                    Login!
                   </button>
                 </div>
               </>

@@ -6,8 +6,9 @@
     "city": "boulder",
     "address": "10940",
     "phone": "8884205849",
-    "Credit_card_number": 1234567891123456,
-    "Credit_card_expiration": 4543,
+    "Credit_card_number": 4242424242424242,
+    "Credit_card_year": 2026,
+    "Credit_card_month": 11,
     "Credit_card_cvv": 2345,
     "isAdmin": false
   },
@@ -18,8 +19,9 @@
     "city": "Newark",
     "address": "10940",
     "phone": "8884205849",
-    "Credit_card_number": 1234567891123456,
-    "Credit_card_expiration": 4543,
+    "Credit_card_number": 4242424242424242,
+    "Credit_card_year": 2026,
+    "Credit_card_month": 11,
     "Credit_card_cvv": 2345,
     "isAdmin": false
   },
@@ -31,8 +33,9 @@
     "city": "Tucson",
     "address": "10940",
     "phone": "8884205849",
-    "Credit_card_number": 1234567891123456,
-    "Credit_card_expiration": 4543,
+    "Credit_card_number": 4242424242424242,
+    "Credit_card_year": 2026,
+    "Credit_card_month": 11,
     "Credit_card_cvv": 2345,
     "isAdmin": false
   }

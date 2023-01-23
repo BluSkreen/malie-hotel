@@ -1,7 +1,11 @@
 import React from "react";
+import { useEffect } from "react";
 // import localImage from "../assets/oceanBanner";
 
 const Food = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   return (
     <div>
       {/* intro photo */}
@@ -15,7 +19,7 @@ const Food = () => {
 
       {/* about section */}
       <section className="p-4 bg-[rgba(207,181,59)]">
-        <h1 className="text-[48px] font-amita font-bold pl-10">
+        <h1 className="text-[48px] font-amita font-bold pl-10 pt-4 drop-shadow-[2px_2px_.5px_white]">
           Culinary Craftsmanship
         </h1>
         <div className="flex flex-wrap justify-around mt-6 mb-6">

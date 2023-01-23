@@ -7,4 +7,8 @@ import Rooms from "./Rooms";
 import Payment from "./Payment";
 import Food from "./Food";
 
-export { Navbar, Home, Footer, Modal, GolfCourse, Rooms, Payment, Food };
+import Admin from "./Admin"
+
+export { Navbar, Home, Footer, Modal, GolfCourse, Rooms, Payment, Food, Admin };
+
+
