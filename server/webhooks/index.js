@@ -25,9 +25,9 @@ module.exports = {
                 prodId: metadata.prodId,
 
             };
-          const { _id } = await Reservation.create(newReservation);
+          const { _id, roomNumbers } = await Reservation.create(newReservation);
           const room = await Room.findOneAndUpdate(
-              { roomNumber: roomNumber },
+              { roomNumber: roomNumbers[0] },
               {
                   $addToSet: {
                       reservations: _id,
