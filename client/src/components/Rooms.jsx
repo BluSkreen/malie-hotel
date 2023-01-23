@@ -30,8 +30,8 @@ const Rooms = () => {
 
     const [choiceKing, setChoiceKing] = useState(true);
     const [choiceQueen, setChoiceQueen] = useState(true);
-    const [deluxeKing, setDeluxeKing] = useState(true);
-    const [deluxeQueen, setDeluxeQueen] = useState(true);
+    const [deluxKing, setDeluxKing] = useState(true);
+    const [deluxQueen, setDeluxQueen] = useState(true);
     const [executiveKing, setExecutiveKing] = useState(true);
     const [executiveQueen, setExecutiveQueen] = useState(true);
 
@@ -75,8 +75,8 @@ const Rooms = () => {
     useEffect(() => {
         setChoiceKing(dataRooms?.filterRooms.choiceKing);
         setChoiceQueen(dataRooms?.filterRooms.choiceQueen);
-        setDeluxeKing(dataRooms?.filterRooms.deluxeKing);
-        setDeluxeQueen(dataRooms?.filterRooms.deluxeQueen);
+        setDeluxKing(dataRooms?.filterRooms.deluxeKing);
+        setDeluxQueen(dataRooms?.filterRooms.deluxeQueen);
         setExecutiveKing(dataRooms?.filterRooms.executiveKing);
         setExecutiveQueen(dataRooms?.filterRooms.executiveQueen);
         // console.log(data)
@@ -96,50 +96,70 @@ const Rooms = () => {
     // console.log(stripePromise);
     const [getCheckout, { data: checkoutData }] = useLazyQuery(QUERY_CHECKOUT);
 
-    useEffect(() => {
-        console.log("----------------");
-        console.log(checkoutData);
-        console.log("----------------");
-        if (checkoutData) {
-            console.log("if data");
-            console.log(checkoutData);
-            stripePromise.then((res) => {
-                res.redirectToCheckout({
-                    sessionId: checkoutData.checkout.session,
-                });
-            });
-        }
-    }, [checkoutData]);
-    // console.log("data");
-    function submitCheckout(e) {
-        // const roomId = [];
-        console.log("----------------");
-        console.log(checkoutData);
-        console.log("----------------");
-        console.log("ss");
-        // e.preventDefault();
-        console.log(e);
-        e.preventDefault();
-        console.log(e.target.value);
-        // if variable are good then get checkout
-        console.log("dddd");
-        const targetRoom = dataRooms.filterRooms.availableRooms.filter(
-            (item) => {
-                return item.title == e.target.value;
-            }
-        );
-        console.log(targetRoom);
-
-        // AUTHENTICATE USER BEFORE SENDING TO CHECKOUT -----------------------TODO
-        // console.log(dataRooms.filterRooms.availableRooms[e.target.value]);
-        //getCheckout({
-        //variables: { room: targetRoom[0].roomNumber, cost: targetRoom[0].cost, description: target[0].desc },
-        //});
-        console.log({ checkoutData });
-        console.log("!!!!!!!!!!!!");
-        console.log(checkoutData);
-        console.log(getCheckout);
+    console.log(stripePromise);
+  useEffect(() => {
+    console.log("----------------");
+    console.log(checkoutData);
+    console.log("----------------");
+    if (checkoutData) {
+        console.log("if data");
+      console.log(checkoutData);
+      stripePromise.then((res) => {
+        res.redirectToCheckout({ sessionId: checkoutData.checkout.session });
+      });
     }
+  }, [checkoutData]);
+  // console.log("data");
+  function submitCheckout(e) {
+    // const roomId = [];
+    console.log("----------------");
+    console.log(checkoutData);
+    console.log("----------------");
+    console.log("ss");
+    // e.preventDefault();
+    console.log(e);
+    e.preventDefault();
+    console.log(e.target.value);
+    // if variable are good then get checkout 
+    console.log("dddd");
+    const targetRoom = dataRooms.filterRooms.availableRooms.filter((item) => {
+        return item.title == e.target.value;
+    })
+      console.log(targetRoom);
+
+        const startDateControl = document
+            .getElementById("start")
+            .value.toString();
+        const endDateControl = document.getElementById("end").value.toString();
+      var startDateConversion = new Date(startDateControl);
+    var endDateConversion = new Date(endDateControl);
+    if (
+      startDateConversion > endDateConversion ||
+      startDateConversion < Date.now()
+    ) {
+      console.log("bad");
+    } else {
+      console.log("good");
+    }
+
+      // AUTHENTICATE USER BEFORE SENDING TO CHECKOUT -----------------------TODO
+    
+
+    console.log(startDateArr);
+    console.log(endDateArr);
+    console.log(targetRoom[0]);
+    console.log("dataRooms");
+    console.log(dataRooms.filterRooms.availableRooms[e.target.value]);
+    getCheckout({
+        variables: { roomNumber: targetRoom[0].roomNumber, startDate: startDateArr, endDate: endDateArr, description: targetRoom[0].desc, cost: targetRoom[0].price },
+    });
+    
+
+    console.log({ checkoutData });
+    console.log("!!!!!!!!!!!!");
+    console.log(checkoutData);
+    console.log(getCheckout);
+  }
     return (
         <div className="bg-[#faf7eb] w-full overflow-hidden">
             <form
@@ -259,10 +279,10 @@ const Rooms = () => {
                         className=" content-center bg-[rgba(207,181,59)] hover:bg-[#dcc970] focus:outline-none focus:ring-2 focus:ring-[rgba(207,181,59)] focus:ring-offset-2 text-black font-bold py-2 px-4 rounded max-w-[180px] mb-4"
                         type="button"
                         value={"deluxeKing"}
-                        onClick={deluxeKing ? submitCheckout : undefined}
-                        disabled={!deluxeKing}
+                        onClick={deluxKing ? submitCheckout : undefined}
+                        disabled={!deluxKing}
                     >
-                        {deluxeKing ? "Book from $590" : "Unavailable"}
+                        {deluxKing ? "Book from $590" : "Unavailable"}
                     </button>
                 </div>
                 <div className=" text-center m-10  bg-black p-4 rounded shadow-lg shadow-black border-solid border-2 border-[#665919]">
@@ -331,10 +351,10 @@ const Rooms = () => {
                         className=" content-center bg-[rgba(207,181,59)] hover:bg-[#dcc970] focus:outline-none focus:ring-2 focus:ring-[rgba(207,181,59)] focus:ring-offset-2 text-black font-bold py-2 px-4 rounded max-w-[180px] mb-4"
                         type="button"
                         value={"deluxeQueen"}
-                        onClick={deluxeQueen ? submitCheckout : undefined}
-                        disabled={!deluxeQueen}
+                        onClick={deluxQueen ? submitCheckout : undefined}
+                        disabled={!deluxQueen}
                     >
-                        {deluxeQueen ? "Book from $590" : "Unavailable"}
+                        {deluxQueen ? "Book from $590" : "Unavailable"}
                     </button>
                 </div>
                 <div className=" text-center m-10  bg-black p-4 rounded shadow-lg shadow-black border-solid border-2 border-[#665919]">

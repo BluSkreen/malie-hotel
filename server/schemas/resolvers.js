@@ -136,10 +136,14 @@ const resolvers = {
 
     //   throw new AuthenticationError("Not logged in");
     // },
-    checkout: async (parent, { room, cost, description }, context) => {
+
+
+    checkout: async (parent, { roomNumber, startDate, endDate, description, cost }, context) => {
       // console.log("Hi Sid: " + room, cost, description);
-      // console.log(context.headers.referer);
+      console.log(context.headers.referer);
       // const header = "https://localhost:3001";
+    
+          const paymentId = Math.random().toString(36).substring(2,7);
       const url = new URL(context.headers.referer).origin;
       // console.log(context.headers.referer);
       // const url = new URL(header).origin;
@@ -165,13 +169,14 @@ const resolvers = {
       // for (let i = 0; i < reservation.length; i++) {
       const reservations = await stripe.products.create({
         // name: reservation.name,
-        name: "reservation" + " : " + room,
+        name: "reservation" + " : " + roomNumber,
         // default_price_data: cost,
         description: description,
         // price: reservation.cost,
 
         // images: [`${url}/images/${reservations[i].image}`],
       });
+      console.log("hi resrvations");
       // Find user based off the the context
       // write the credit info into model
       // console.log("sid", args.reservation._id);
@@ -179,13 +184,14 @@ const resolvers = {
       const price = await stripe.prices.create({
         // product: reservations.id,
         product: reservations.id,
+          // TODO USE THE COST -------------!!!!!!!!!!!!!!!
         unit_amount: 100 * 100,
         // cost: reservation.cost,
         // unit_amount: reservations.price * 100,
         currency: "usd",
       });
 
-      // console.log("hello");
+      console.log("hello");
       // console.log(price);
 
       line_items.push({
@@ -195,10 +201,25 @@ const resolvers = {
       });
       // }
 
+      console.log(context.user);
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
         line_items,
         mode: "payment",
+        payment_intent_data: {
+            metadata: { 
+            roomNumbers: roomNumber,
+            startYear: startDate[0],
+            startMonth: startDate[1],
+            startDay: startDate[2],
+            endYear: endDate[0],
+            endMonth: endDate[1],
+            endDay: endDate[2],
+            cost: cost,
+            email: context.user.email,
+            prodId: paymentId,
+            },
+        },
 
         // automatic_tax: {
         //   enabled: true,
@@ -213,7 +234,32 @@ const resolvers = {
       // );
       console.log("sessionId");
       console.log(session);
+          //console.log(context)
       // console.log(sessionId);
+      //try { 
+          //const reservationObj = {
+          //    "roomNumbers": [roomNumber],
+          //    "startDate": startDate,
+          //    "endDate": endDate,
+          //    "cost": cost,
+          //    "email": context.user.email,
+          //    "prodId": paymentId,
+          //    "payment": "pending",
+          //}
+          //const { _id } = await Reservation.create({ ...reservationObj });
+          //const room = await Room.findOneAndUpdate(
+          //    { roomNumber: roomNumber },
+          //    {
+          //        $addToSet: {
+          //            reservations: _id,
+          //        },
+          //    },
+          //);
+      //} catch (err) {
+      //    console.log(err);
+      //}
+
+
       // });
       // console.log("fdfd");
       // if (session.success_url.length > 0) {
