@@ -41,6 +41,12 @@ app.post('/webhook', (request, response) => {
 
     console.log("req body")
     console.log(request.body);
+    if(request.body.type == 'payment_intent.succeeded'){
+        console.log(request.data.object);
+        console.log("payment success");
+    }
+
+    response.status(200);
     try {
         event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
     } catch (err) {
@@ -53,9 +59,6 @@ app.post('/webhook', (request, response) => {
 
     // Handle the event
 
-    if(event.type == 'payment_intent.succeeded'){
-        console.log(event.data.object);
-    }
     //switch (event.type) {
     //    case 'payment_intent.succeeded':
     //        const paymentIntent = event.data.object;
@@ -70,7 +73,7 @@ app.post('/webhook', (request, response) => {
     //}
 
     // Return a 200 response to acknowledge receipt of the event
-    response.send();
+    response.status(200);
 });
 
 // Create a new instance of an Apollo server with the GraphQL schema
